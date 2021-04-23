@@ -84,5 +84,9 @@ Welcome to my Connect Four game
     
     ## As a Adult, I want
         * Some brain trigger while relaxing
-        * Able to play without much other distractions
-        * 
+        * Able to play without much other distractions (advertisement)
+        * Able to play with friend or kids
+
+    #   Design Choice
+
+        
