@@ -1,45 +1,70 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+Welcome to my Connect Four game
 
-Welcome USER_NAME,
+#   Table of Content
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+ 1. UX
+    *   Project Goals
+    *   Player Goals
+    *   Developer Goals
+    *   User Stories
+    *   Design Choice
+    *   Wireframe
 
-## Gitpod Reminders
+ 2. Features
+    *   Existing Features
+    *   Features for the future development
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+3.  Technologies Used
 
-`python3 -m http.server`
+4.  Testing
 
-A blue button should appear to click: _Make Public_,
+5. Deployment
 
-Another blue button should appear to click: _Open Browser_.
+6. Credits
+    *   Content
+    *   Media
+    *   Code
+    *   Acknolwdgement  
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+ # UX
 
-A blue button should appear to click: _Make Public_,
+    ##  Project Goal
+    Main goal of the project is develop fun, exciting and stragergic game which can be played alone or with friend.
+    Game is designed mainly for kids of age 5+ years. Game can also be played by adults for brain trigger.
 
-Another blue button should appear to click: _Open Browser_.
+    ##   Player Goal
+    A game is meant to be used specially by kids but can be used by adults to play with kids or by adult or combination.
+    
+        * Easy game to play which teaches to think stratergically 
+        * Easy controls so that kids can play easily
+        * Can be played alone (computer as 2nd player) or with family member or friend
+        * Simple understanble instructions about how to play game
+        * Easy to start new game to start from beggining
+        * Audio/muscial interaction to feel good and gives feeling of what's happening in the game
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+    ##   Parent Goal
 
-## Updates Since The Instructional Video
+        * Game which is easy to play but also will teach my kid about how to think logically
+        * Iteraction with audio
+        * Big buttons with easy to understand function
+        * Easily understanble and accesable instructions if required
+        * Game which parent can able to play with kid and generate bond
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+    ##   Adult Goal
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+        * Game which give a small trigger to brain while relaxing
+        * Game which can be play with computer or with friend
+        * Able to mute music
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+    ## Developer Goal
+        To develop game which has
+        * Simple design which kids can easily understand and play
+        * Big buttons which are suitable for screen size 
+        
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+# User Stories
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+    ## As a kid (age 5 to 10 year) , I want
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
----
-
-Happy coding!
+    * Easy to u 
