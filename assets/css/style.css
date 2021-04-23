@@ -1,0 +1,21 @@
+#game-container{
+    width: 80%;
+    height: 90vh;
+    margin: 0 auto;
+    background-color: antiquewhite;
+    border-radius: 1rem;
+}
+
+#game-controller{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#game-area{
+    display: flex;
+    justify-content: center;
+}
+
