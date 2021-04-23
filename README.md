@@ -49,12 +49,15 @@ Welcome to my Connect Four game
         * Big buttons with easy to understand function
         * Easily understanble and accesable instructions if required
         * Game which parent can able to play with kid and generate bond
+        * Just game which will not divert kids with any unwanted advertisements
 
     ##   Adult Goal
 
         * Game which give a small trigger to brain while relaxing
         * Game which can be play with computer or with friend
         * Able to mute music
+        * Don't want to see diverion advertisement as aim to relax
+       
 
     ## Developer Goal
         To develop game which has
@@ -67,4 +70,19 @@ Welcome to my Connect Four game
 
     ## As a kid (age 5 to 10 year) , I want
 
-    * Easy to u 
+        * Easy to use screen layout with less buttons
+        * Game where I can play with less controls
+        * Game which I can play alone and also with friends or with my parent
+        * Game which will think me to think stratergically
+
+    ##  As a Parent, I want
+        * Easy and simple screen layout so that my kids can play game easily
+        * Simple and minimal control 
+        * No advertisement so that kids are not getting divert to unwanted stuff
+        * Learn to develop logical thinking ability while playing
+        * Able to play with my kid just for fun to generabe parental bonding together
+    
+    ## As a Adult, I want
+        * Some brain trigger while relaxing
+        * Able to play without much other distractions
+        * 
