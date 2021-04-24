@@ -21,7 +21,7 @@ body {
 #game-area{
     display: flex;
     justify-content: center;
-    background-color: blue;
+    background-color: white;
     border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
@@ -37,3 +37,38 @@ body {
     flex-direction: column-reverse;
 }
 
+
+.square-cell-game-board{
+    flex: 1 1;
+    background-color: blue;
+    border: 0.1em black solid;
+}
+
+.square-cell-entry{
+    flex: 1 1;
+    background-color: white;
+}
+
+.empty-coin{
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-color: white;
+    margin: 5% auto;
+}
+
+.red-coin{
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-color: red;
+    margin: 5% auto;
+}
+
+.yellow-coin{
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-color:yellow;
+    margin: 5% auto;
+}

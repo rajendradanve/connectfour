@@ -20,3 +20,34 @@ let gameAreaMargin = (availableHeightForGameArea-gameAreaSize)/2;
 $("#game-area").css("width", gameAreaSize+"px");
 $("#game-area").css("height", gameAreaSize+"px");
 $("#game-area").css("margin-top", gameAreaMargin+"px");
+
+//adding column and cells html using javascript and JQuery
+// number of rows will be 7 including row for coin insert. i: number of column, j: number of row
+// when row is top row  j = 6 class of square-cell-entry is added and for other rows square-cell-game-board is added to create board look
+// for each square cell and coin circle unique id is generated. 
+for(let i=0; i<7; i++){
+    // i is number for column from left to right
+    $("#game-area").append(`<div id="column${i}"></div>`);
+    $(`#column${i}`).addClass("column");
+    for (let j=0; j<7; j++){
+        // j is number of row. i and j both creat cell grid.
+        $(`#column${i}`).append(`<div id="square-cell-${i}${j}"><div id="coin${i}${j}" class= "empty-coin"></div></div></div>`);
+        if(j==6){
+            $(`#square-cell-${i}${j}`).addClass("square-cell-entry");
+        }else{
+        $(`#square-cell-${i}${j}`).addClass("square-cell-game-board");
+        }
+        
+        
+    }
+
+}
+
+//Below for loop event is created for mouse enter and mouse leave to get the coin at entry area. 
+for(let i=0; i<7; i++){
+    $(`#column${i}`).mouseenter(function(){
+        $(`#coin${i}6`).removeClass("empty-coin").addClass("red-coin");
+    }).mouseleave(function(){
+        $(`#coin${i}6`).removeClass("red-coin").addClass("empty-coin");
+    })
+}
