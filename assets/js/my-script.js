@@ -39,25 +39,57 @@ for(let i=0; i<7; i++){
         } 
     }
 }
+//Till above code is creating html DOM strcture for the game.
 
-
-
+let isPlayer1Turn = true; //setup to define who is playing if player1turn is false means player2 is playing
+let coinClass = "red-coin"; // setup coin class. Currently giving red coin to first player.
 
 //Below for loop event is created for mouse enter and mouse leave to get the coin at entry area. 
 for(let i=0; i<7; i++){
     $(`#column${i}`).mouseenter(function(){
-        $(`#coin${i}6`).removeClass("empty-coin").addClass("red-coin");
-    }).mouseleave(function(){
-        $(`#coin${i}6`).removeClass("red-coin").addClass("empty-coin");
-    }).click(function(){
-        for(let j=0; j<7; j++){
-        
-            //check if cell-ij is filled and if not then add suitable coin
-            while(){
-
-            }
+        if($(`#coin${i}5`).hasClass("empty-coin")){ //only allowed if last row in game board is not filled with coin
+        $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
         }
-       
+    }).mouseleave(function(){
+        
+        $(`#coin${i}6`).removeClass(coinClass).addClass("empty-coin");
+        
+    }).click(function(){
+        if($(`#coin${i}5`).hasClass("empty-coin")){ //only allowed if last row in game board is not filled with coin
+        for(let j=0; j<6; j++){ // row (j) required to checked only 6 rows from bottom.
+            
+            if($(`#coin${i}${j}`).hasClass("empty-coin")){
+                $(`#coin${i}${j}`).removeClass("empty-coin").addClass(coinClass);
+
+                if(j==5){
+                    //if coin goes to top last row of the game board then that column shall not be used for further play.
+                    $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
+                }
+                break; //come out of for loop for j
+            }
+            
+        
+        }
+
+        //below code changes player and active class
+        $(`#coin${i}6`).addClass("empty-coin").removeClass(coinClass);
+        if(isPlayer1Turn){
+        isPlayer1Turn = false;
+        coinClass = "yellow-coin";
+    }else {
+        isPlayer1Turn = true;
+        coinClass = "red-coin"
+    }
+
+    if(j!=5){
+    $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
+    }
+
+    }else { // if top last row of game board don't have empty class then this column shall not be used for further play
+
+        $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
+
+    }
 
     });
 }
