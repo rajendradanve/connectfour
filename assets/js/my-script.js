@@ -36,12 +36,12 @@ for(let i=0; i<7; i++){
             $(`#square-cell-${i}${j}`).addClass("square-cell-entry");
         }else{
         $(`#square-cell-${i}${j}`).addClass("square-cell-game-board");
-        }
-        
-        
+        } 
     }
-
 }
+
+
+
 
 //Below for loop event is created for mouse enter and mouse leave to get the coin at entry area. 
 for(let i=0; i<7; i++){
@@ -49,5 +49,15 @@ for(let i=0; i<7; i++){
         $(`#coin${i}6`).removeClass("empty-coin").addClass("red-coin");
     }).mouseleave(function(){
         $(`#coin${i}6`).removeClass("red-coin").addClass("empty-coin");
-    })
+    }).click(function(){
+        for(let j=0; j<7; j++){
+        
+            //check if cell-ij is filled and if not then add suitable coin
+            while(){
+
+            }
+        }
+       
+
+    });
 }

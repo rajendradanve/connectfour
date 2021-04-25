@@ -22,7 +22,6 @@ body {
     display: flex;
     justify-content: center;
     background-color: white;
-    border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
@@ -42,6 +41,7 @@ body {
     flex: 1 1;
     background-color: blue;
     border: 0.1em black solid;
+    border-radius: 5px;
 }
 
 .square-cell-entry{
@@ -63,6 +63,8 @@ body {
     border-radius: 50%;
     background-color: red;
     margin: 5% auto;
+    border: 2px black solid;
+    box-sizing: border-box;
 }
 
 .yellow-coin{
