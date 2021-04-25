@@ -73,24 +73,29 @@ for (let i = 0; i < 7; i++) {
                     
                     break; //come out of for loop for j after condition is satisfied once.
                 }
+
                 rowNumber++;
             }
 
             $(`#coin${i}6`).addClass("empty-coin").removeClass(coinClass);
 
             //check if wining condition satify if not game goes on
-
-            if (checkIfWin(columnNumber, rowNumber, coinClass)) {
+           
+            if (isColumnWinning(columnNumber, rowNumber, coinClass)) {
                 //write code about what to do after wining
                 if(coinClass === "red-coin"){
                     alert("player one wins");
                 }else {
                     alert( "player 2 wins");
                 }
-            } else {
-                //below code changes player and active class
+            } else if(isRowWining(columnNumber, rowNumber, coinClass)) {
+            
+            }else if(isDiagonalWinning(columnNumber, rowNumber, coinClass)){
 
-                
+            }else{
+
+                // no condition for winning is satified.
+                //below code changes player and active class
                 if (isPlayer1Turn) {
                     isPlayer1Turn = false;
                     coinClass = "yellow-coin";
@@ -125,25 +130,53 @@ This function checks if there are any four same coins in a
     function will return true if any of above condition satified. 
 */
 
-function checkIfWin(column, row, coinColorClass) {
+function isColumnWinning(column, row, coinColorClass) {
 
-    let numberOfCoins = 1; //to check if 4 coins are in a row. 
-    let iswinner = false;
-
+    let numberOfCoinsColumn = 1; //to check if 4 coins are in a row. 
+    let isColumnWinner = false;
     if (row > 2) { //don't need to check column winning condition if row is less than 3. 
 
+
         //for loop to check if there are same coins in a column
-        for (let j = (row - 1); j >= 0; j--) {
+        for (let j = (row - 1); j >= (row-3); j--) {
 
             if ($(`#coin${column}${j}`).hasClass(coinColorClass)) {
-                numberOfCoins += 1;
+                numberOfCoinsColumn ++ ;
             }
 
-            if (numberOfCoins == 4) {
-                iswinner= true;
+            if (numberOfCoinsColumn == 4) {
+                isColumnWinner= true;
             } 
         }
 
     }
-    return iswinner;
+    return isColumnWinner;
+}
+
+//Below function checking if four same coins are in a same row.
+function isRowWining(column, row, coinColorClass){
+
+    let numberOfCoinsRow = 0;
+//to be work on
+
+    for(let i=0; i<6; i++){
+
+        if($(`#coin${i}${row}`).hasClass(coinColorClass)){
+            numberOfCoinsRow++;
+        }
+
+        if(numberOfCoinsRow==4){
+
+        }
+
+    }
+
+    $(`#coin${column}${j}`
+
+
+}
+
+function isDiagonalWinning(column, row, coinColorClass){
+
+
 }
