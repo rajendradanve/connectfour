@@ -156,20 +156,55 @@ function isColumnWinning(column, row, coinColorClass) {
 //Below function checking if four same coins are in a same row.
 function isRowWining(column, row, coinColorClass){
 
-    let numberOfCoinsRow = 0;
-//to be work on
+    let numberOfCoinsRow = 1;
+    let isRowWinner = false;
+    let minColumnCheck = column<=3 ? 0 : (column-3);
+    let maxColumnCheck = column>=3 ? 6 : (column+3);
+    let i = column-1;
 
-    for(let i=0; i<6; i++){
+    //below while loop checking left side of the row if same conis are present
 
-        if($(`#coin${i}${row}`).hasClass(coinColorClass)){
-            numberOfCoinsRow++;
+        while(i>= minColumnCheck){
+
+            if($(`#coin${i}${row}`).hasClass(coinColorClass)){
+
+                numberOfCoinsRow++;
+                
+            }else{
+                break; // loop breaks if immidate cells don't have same class. 
+            }
+
+            i--;
         }
 
-        if(numberOfCoinsRow==4){
+        //below while loop checks right of the row if same class present
+
+        if(numberOfCoinsRow != 4){
+
+            let j = column +1;
+
+            while(j<= maxColumnCheck){
+
+                if($(`#coin${j}${row}`).hasClass(coinColorClass)){
+
+                numberOfCoinsRow++;
+                
+
+            }else{
+                break; // loop breaks if immidate cells don't have same class. 
+            }
+
+            j++;
+
+            }
 
         }
 
-    }
+        if (numberOfCoinsColumn == 4) {
+                isRowWinner = true;
+            } 
+
+
 
     $(`#coin${column}${j}`
 
@@ -177,6 +212,8 @@ function isRowWining(column, row, coinColorClass){
 }
 
 function isDiagonalWinning(column, row, coinColorClass){
+
+        
 
 
 }
