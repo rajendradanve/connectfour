@@ -58,7 +58,7 @@ for (let i = 0; i < 7; i++) {
     }).click(function () {
 
         let columnNumber = i;
-        let rowNumber =0;
+        let rowNumber = 0;
 
         if ($(`#coin${i}5`).hasClass("empty-coin")) { //only allowed if last row in game board is not filled with coin
             while (rowNumber < 6) { // row (j) required to checked only 6 rows from bottom.
@@ -70,7 +70,7 @@ for (let i = 0; i < 7; i++) {
                         //if coin goes to top last row of the game board then that column shall not be used for further play.
                         $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
                     }
-                    
+
                     break; //come out of for loop for j after condition is satisfied once.
                 }
 
@@ -80,25 +80,31 @@ for (let i = 0; i < 7; i++) {
             $(`#coin${i}6`).addClass("empty-coin").removeClass(coinClass);
 
             //check if wining condition satify if not game goes on
-           
+
             if (isColumnWinning(columnNumber, rowNumber, coinClass)) {
                 //write code about what to do after wining
-                if(coinClass === "red-coin"){
+                if (coinClass === "red-coin") {
                     alert("player one wins");
-                }else {
-                    alert( "player 2 wins");
+                } else {
+                    alert("player 2 wins");
                 }
-            } else if(isRowWining(columnNumber, rowNumber, coinClass)) {
+            } else if (isRowWining(columnNumber, rowNumber, coinClass)) {
 
-                if(coinClass === "red-coin"){
+                if (coinClass === "red-coin") {
                     alert("player one wins");
-                }else {
-                    alert( "player 2 wins");
+                } else {
+                    alert("player 2 wins");
                 }
-            
-            }else if(isDiagonalWinning(columnNumber, rowNumber, coinClass)){
 
-            }else{
+            } else if (isDiagonalWinning(columnNumber, rowNumber, coinClass)) {
+
+                if (coinClass === "red-coin") {
+                    alert("player one wins");
+                } else {
+                    alert("player 2 wins");
+                }
+
+            } else {
 
                 // no condition for winning is satified.
                 //below code changes player and active class
@@ -114,7 +120,7 @@ for (let i = 0; i < 7; i++) {
                     $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
                 }
 
-               
+
 
             }
 
@@ -124,7 +130,7 @@ for (let i = 0; i < 7; i++) {
 
         }
 
-         
+
     });
 }
 
@@ -147,15 +153,15 @@ function isColumnWinning(column, row, coinColorClass) {
 
 
         //for loop to check if there are same coins in a column
-        for (let j = (row - 1); j >= (row-3); j--) {
+        for (let j = (row - 1); j >= (row - 3); j--) {
 
             if ($(`#coin${column}${j}`).hasClass(coinColorClass)) {
-                numberOfCoinsColumn ++ ;
+                numberOfCoinsColumn++;
             }
 
             if (numberOfCoinsColumn == 4) {
-                isColumnWinner= true;
-            } 
+                isColumnWinner = true;
+            }
         }
 
     }
@@ -163,76 +169,197 @@ function isColumnWinning(column, row, coinColorClass) {
 }
 
 //Below function checking if four same coins are in a same row.
-function isRowWining(column, row, coinColorClass){
+function isRowWining(column, row, coinColorClass) {
 
     let numberOfCoinsRow = 1;
     let isRowWinner = false;
-    let minColumnCheck = column<=3 ? 0 : (column-3); //only need to check max 3 columns on left if available
-    let maxColumnCheck = column>=3 ? 6 : (column+3); // only need to check max 3 column on right if available
-    let i = column-1;
+    let minColumnCheck = column <= 3 ? 0 : (column - 3); //only need to check max 3 columns on left if available
+    let maxColumnCheck = column >= 3 ? 6 : (column + 3); // only need to check max 3 column on right if available
+    let i = column - 1;
 
     //below while loop checking left side of the row if same conis are present
 
-        while(i>= minColumnCheck){
+    while (i >= minColumnCheck) {
 
-            if($(`#coin${i}${row}`).hasClass(coinColorClass)){
+        if ($(`#coin${i}${row}`).hasClass(coinColorClass)) {
 
-                numberOfCoinsRow++;
-                
-            }else{
-                break; // loop breaks if immidate cells don't have same class. 
-            }
+            numberOfCoinsRow++;
 
-            i--;
+        } else {
+            break; // loop breaks if immidate cells don't have same class. 
         }
 
-        //below while loop checks right of the row if same class present
+        i--;
+    }
 
-        if(numberOfCoinsRow != 4){
+    //below while loop checks right of the row if same class present
 
-            let j = column +1;
+    if (numberOfCoinsRow != 4) {
 
-            while(j<= maxColumnCheck){
+        let j = column + 1;
 
-                if($(`#coin${j}${row}`).hasClass(coinColorClass)){
+        while (j <= maxColumnCheck) {
+
+            if ($(`#coin${j}${row}`).hasClass(coinColorClass)) {
 
                 numberOfCoinsRow++;
-                
 
-            }else{
+
+            } else {
                 break; // loop breaks if immidate cells don't have same class. 
             }
 
             j++;
 
-            }
-
         }
 
-        if (numberOfCoinsRow == 4) {
-                isRowWinner = true;
-            } 
+    }
+
+    if (numberOfCoinsRow == 4) {
+        isRowWinner = true;
+    }
 
 
 
-   return isRowWinner;
+    return isRowWinner;
 
 
 }
 
-function isDiagonalWinning(column, row, coinColorClass){
-    let numberOfDiagonal = 1;
+function isDiagonalWinning(column, row, coinColorClass) {
+
     let diagonalWinner = false;
-    
-        
-    //left to right check
-    let minColumnCheckLeftToRight = column<=3 ? 0 : (column-3); //only need to check max 3 columns on left if available
-    let maxColumnCheckLeftToRight = column>=3 ? 6 : (column+3); // only need to check max 3 column on right if available
-    let minRowCheckLeftToRight = row<=3 ? 0 : (row-3); // only need to check 3 down rows if available
-    let maxRowCheckLeftToRight = row>=3 ? 5 : (row+3); // only need to check 3 up rows if available of max 5
-    
 
 
-    //right to left check
+    //left to right check. As per testing condition for left top cells and right bottom cells diagonal winning is not possible.
+    // below if statement is used to remove above cells from checking.
 
+    if ((row > column && (row - column) >= 3) || (row < column && (column - row) >= 4)) {
+
+        diagonalWinner = false;
+
+    } else {
+
+        let numberOfDiagonalLeftToRight = 1; // for left to right condition. Value one is given as current cell will already pass the test
+        let minColumnCheckLeftToRight = column <= 3 ? 0 : (column - 3); //only need to check max 3 columns on left if available
+        let maxColumnCheckLeftToRight = column >= 3 ? 6 : (column + 3); // only need to check max 3 column on right if available
+        let minRowCheckLeftToRight = row <= 3 ? 0 : (row - 3); // only need to check 3 down rows if available
+        let maxRowCheckLeftToRight = row >= 3 ? 5 : (row + 3); // only need to check 3 up rows if available of max 5
+        let i = column - 1; //to check downward items. 
+        let j = row - 1; // to check downward items
+
+        //below while loop check diagonal cells to left side (if cells are available)
+        while (i >= minColumnCheckLeftToRight && j >= minRowCheckLeftToRight) {
+
+            if ($(`#coin${i}${j}`).hasClass(coinColorClass)) {
+
+                numberOfDiagonalLeftToRight++;
+
+            } else {
+                break; // loop breaks if immidate cells don't have same class. 
+            }
+
+            i--;
+            j--;
+        }
+
+        //if condition check winning condition already acheived or not
+        if (numberOfDiagonalLeftToRight != 4) {
+
+            //reassign value to i and j
+            i = column + 1;
+            j = row + 1;
+            //Below while loop check diagonal cell to right (if cells are available)
+            while (i <= maxColumnCheckLeftToRight && j <= maxRowCheckLeftToRight) {
+
+                if ($(`#coin${i}${j}`).hasClass(coinColorClass)) {
+
+                    numberOfDiagonalLeftToRight++;
+
+                } else {
+                    break; // loop breaks if immidate cells don't have same class. 
+                }
+                i++;
+                j++;
+
+            }
+
+        }
+
+        if (numberOfDiagonalLeftToRight == 4) {
+            diagonalWinner = true;
+        }
+
+    }
+
+    //Right to Left check
+    // Right to left check required to done if left to right condition doesn't satisfy winning condition.
+    if (!diagonalWinner) {
+
+        // As per testing condition left bottom cells and right top cells diagonal winning is not possible.
+        // below if statement is used to remove above cells from checking.
+        if ((row + column) <= 2 || (column + row) >= 9) {
+
+            diagonalWinner = false;
+
+        } else {
+
+            let numberOfDiagonalRightToLeft = 1; // for Rith to left condition. Value one is given as current cell will already pass the test
+
+            let minColumnCheckRightToLeft = column <= 3 ? 0 : (column - 3); //only need to check max 3 columns on left if available
+            let maxColumnCheckRightToLeft = column >= 3 ? 6 : (column + 3); // only need to check max 3 column on right if available
+            let minRowCheckRightToLeft = row <= 3 ? 0 : (row - 3); // only need to check 3 down rows if available
+            let maxRowCheckRightToLeft = row >= 3 ? 5 : (row + 3); // only need to check 3 up rows if available of max 5
+
+            //reassigning values to i (column) and j (rows)
+            i = column + 1; //to check downward items towards right . Number of column increases towards right
+            j = row - 1; // to check downward items towards right
+
+            //below while loop check diagonal cells to left side (if cells are available)
+            while (i <= maxColumnCheckRightToLeft && j >= minRowCheckRightToLeft) {
+
+                if ($(`#coin${i}${j}`).hasClass(coinColorClass)) {
+
+                    numberOfDiagonalRightToLeft++;
+
+                } else {
+                    break; // loop breaks if immidate cells don't have same class. 
+                }
+
+                i++;
+                j--;
+            }
+
+            //if condition check winning condition already acheived or not
+            if (numberOfDiagonalRightToLeft != 4) {
+
+                //reassign value to i and j
+                i = column - 1;
+                j = row + 1;
+                //Below while loop check diagonal cell to right (if cells are available)
+                while (i >= minColumnCheckRightToLeft && j <= maxRowCheckRightToLeft) {
+
+                    if ($(`#coin${i}${j}`).hasClass(coinColorClass)) {
+
+                        numberOfDiagonalRightToLeft++;
+
+                    } else {
+                        break; // loop breaks if immidate cells don't have same class. 
+                    }
+                    i--;
+                    j++;
+
+                }
+
+
+            }
+
+            if (numberOfDiagonalRightToLeft == 4) {
+                diagonalWinner = true;
+            }
+
+        }
+    }
+
+    return diagonalWinner;
 }
