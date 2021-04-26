@@ -89,6 +89,12 @@ for (let i = 0; i < 7; i++) {
                     alert( "player 2 wins");
                 }
             } else if(isRowWining(columnNumber, rowNumber, coinClass)) {
+
+                if(coinClass === "red-coin"){
+                    alert("player one wins");
+                }else {
+                    alert( "player 2 wins");
+                }
             
             }else if(isDiagonalWinning(columnNumber, rowNumber, coinClass)){
 
@@ -108,6 +114,8 @@ for (let i = 0; i < 7; i++) {
                     $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
                 }
 
+               
+
             }
 
         } else { // if top last row of game board don't have empty class then this column shall not be used for further play
@@ -116,6 +124,7 @@ for (let i = 0; i < 7; i++) {
 
         }
 
+         
     });
 }
 
@@ -200,13 +209,13 @@ function isRowWining(column, row, coinColorClass){
 
         }
 
-        if (numberOfCoinsColumn == 4) {
+        if (numberOfCoinsRow == 4) {
                 isRowWinner = true;
             } 
 
 
 
-    $(`#coin${column}${j}`
+   return isRowWinner;
 
 
 }
