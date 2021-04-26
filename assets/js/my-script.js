@@ -167,8 +167,8 @@ function isRowWining(column, row, coinColorClass){
 
     let numberOfCoinsRow = 1;
     let isRowWinner = false;
-    let minColumnCheck = column<=3 ? 0 : (column-3);
-    let maxColumnCheck = column>=3 ? 6 : (column+3);
+    let minColumnCheck = column<=3 ? 0 : (column-3); //only need to check max 3 columns on left if available
+    let maxColumnCheck = column>=3 ? 6 : (column+3); // only need to check max 3 column on right if available
     let i = column-1;
 
     //below while loop checking left side of the row if same conis are present
@@ -221,8 +221,18 @@ function isRowWining(column, row, coinColorClass){
 }
 
 function isDiagonalWinning(column, row, coinColorClass){
-
+    let numberOfDiagonal = 1;
+    let diagonalWinner = false;
+    
         
+    //left to right check
+    let minColumnCheckLeftToRight = column<=3 ? 0 : (column-3); //only need to check max 3 columns on left if available
+    let maxColumnCheckLeftToRight = column>=3 ? 6 : (column+3); // only need to check max 3 column on right if available
+    let minRowCheckLeftToRight = row<=3 ? 0 : (row-3); // only need to check 3 down rows if available
+    let maxRowCheckLeftToRight = row>=3 ? 5 : (row+3); // only need to check 3 up rows if available of max 5
+    
 
+
+    //right to left check
 
 }
