@@ -81,11 +81,11 @@ for (let i = 0; i < 7; i++) {
 
             //check if wining condition satify if not game goes on
 
-            if (isColumnWinning(columnNumber, rowNumber, coinClass) || isRowWining(columnNumber, rowNumber, coinClass)|| isDiagonalWinning(columnNumber, rowNumber, coinClass) ) {
-                
+            if (isColumnWinning(columnNumber, rowNumber, coinClass) || isRowWining(columnNumber, rowNumber, coinClass) || isDiagonalWinning(columnNumber, rowNumber, coinClass)) {
+
                 afterWin(coinClass);
 
-            }  else {
+            } else {
 
                 // no condition for winning is satified.
                 //below code changes player and active class
@@ -100,8 +100,6 @@ for (let i = 0; i < 7; i++) {
                 if (columnNumber != 5) {
                     $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
                 }
-
-
 
             }
 
@@ -345,12 +343,12 @@ function isDiagonalWinning(column, row, coinColorClass) {
     return diagonalWinner;
 }
 
-function afterWin(coinColor){
+function afterWin(coinColor) {
 
-     if (coinColor === "red-coin") {
-                    alert("player one wins");
-                } else {
-                    alert("player 2 wins");
-                }
+    if (coinColor === "red-coin") {
+        alert("player one wins");
+    } else {
+        alert("player 2 wins");
+    }
 
 }
