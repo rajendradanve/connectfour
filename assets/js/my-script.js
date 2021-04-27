@@ -81,30 +81,11 @@ for (let i = 0; i < 7; i++) {
 
             //check if wining condition satify if not game goes on
 
-            if (isColumnWinning(columnNumber, rowNumber, coinClass)) {
-                //write code about what to do after wining
-                if (coinClass === "red-coin") {
-                    alert("player one wins");
-                } else {
-                    alert("player 2 wins");
-                }
-            } else if (isRowWining(columnNumber, rowNumber, coinClass)) {
+            if (isColumnWinning(columnNumber, rowNumber, coinClass) || isRowWining(columnNumber, rowNumber, coinClass)|| isDiagonalWinning(columnNumber, rowNumber, coinClass) ) {
+                
+                afterWin(coinClass);
 
-                if (coinClass === "red-coin") {
-                    alert("player one wins");
-                } else {
-                    alert("player 2 wins");
-                }
-
-            } else if (isDiagonalWinning(columnNumber, rowNumber, coinClass)) {
-
-                if (coinClass === "red-coin") {
-                    alert("player one wins");
-                } else {
-                    alert("player 2 wins");
-                }
-
-            } else {
+            }  else {
 
                 // no condition for winning is satified.
                 //below code changes player and active class
@@ -168,7 +149,7 @@ function isColumnWinning(column, row, coinColorClass) {
     return isColumnWinner;
 }
 
-//Below function checking if four same coins are in a same row.
+//Below function check if four same coins are in a same row.
 function isRowWining(column, row, coinColorClass) {
 
     let numberOfCoinsRow = 1;
@@ -225,7 +206,7 @@ function isRowWining(column, row, coinColorClass) {
 
 
 }
-
+// Below function check if four coins are same diagonally.
 function isDiagonalWinning(column, row, coinColorClass) {
 
     let diagonalWinner = false;
@@ -362,4 +343,14 @@ function isDiagonalWinning(column, row, coinColorClass) {
     }
 
     return diagonalWinner;
+}
+
+function afterWin(coinColor){
+
+     if (coinColor === "red-coin") {
+                    alert("player one wins");
+                } else {
+                    alert("player 2 wins");
+                }
+
 }
