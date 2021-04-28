@@ -76,3 +76,19 @@ body {
     border: 2px black solid;
     box-sizing: border-box;
 }
+
+
+#music-button-container {
+    background-color: skyblue;
+    height: auto;
+    width: auto;
+}
+
+#music {
+    
+    background: url("/assets/images/001-drum.png");
+    background-size: contain;
+    width: 75px;
+    height: 75px;
+    padding: 10px;
+}
