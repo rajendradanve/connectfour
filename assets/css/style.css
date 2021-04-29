@@ -49,6 +49,22 @@ body {
     animation: move-in-steps 5s infinite;
 }
 
+#game-input-container{
+    width: auto;
+    height: auto;
+    min-height: 40%;
+    min-width: 40%;
+    background-color: rgba(204, 0, 0, 0.5);
+    /*background-image: url("../images/pokemon-background.jpeg") ; 
+    border: 2px solid #3D7DCA ;
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+	background-size: cover;
+	box-sizing: border-box; */
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10%;
+}
+
 @keyframes move-in-steps {
   0% {
     top: -5%;
@@ -63,6 +79,10 @@ body {
   }
 }
 
+.main-button{
+    background-color: #3D7DCA;
+    color: white;
+}
 
 /* CSS for connect-four.html */
 
