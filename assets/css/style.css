@@ -1,7 +1,21 @@
+/* Common CSS */
 body {
     margin: 0;
     padding: 0;
 }
+
+/* CSS for index.html */
+
+.container {
+    background: url(/assets/images/pokemon-background.png) no-repeat auto;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+/* CSS for connect-four.html */
 
 #game-container{
     margin-left: auto;
