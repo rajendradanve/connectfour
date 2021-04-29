@@ -29,6 +29,36 @@ body {
     position: relative;
 }
 
+#random-coin-1 {
+    animation: move-in-steps 7s infinite;
+}
+
+#random-coin-2 {
+    animation: move-in-steps 5s infinite;
+}
+
+#random-coin-3 {
+    animation: move-in-steps 6s infinite;
+}
+
+#random-coin-4 {
+    animation: move-in-steps 7s infinite;
+}
+
+#random-coin-5 {
+    animation: move-in-steps 5s infinite;
+}
+
+@keyframes move-in-steps {
+  0% {
+    top: -5%;
+    
+  }
+  100% {
+    top: 100%;
+    
+  }
+}
 
 
 /* CSS for connect-four.html */
