@@ -84,6 +84,12 @@ body {
     color: white;
 }
 
+fieldset {
+    margin:0;
+    padding:0;
+    border:solid;
+}
+
 /* CSS for connect-four.html */
 
 #game-container{

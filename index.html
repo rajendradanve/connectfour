@@ -46,12 +46,25 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input id="player-1" type="radio" name="no-of-player" value="1-player">
-                    <label for="player-1">One Player</label>
-                    <br>
-                    <input id="player-2" type="radio" name="no-of-player" value="2-player">
-                    <label for="player-2">Two Player</label>
+                    <form method="post">
+                     <fieldset class="m-2">
+                        <legend>Player 1</legend>
+                         <input id="player-1-human" type="radio" name="player-1" value="player-1-human" checked>
+                         <label for="player-1-human">Human</label>
+                          <input id="player-1-computer" type="radio" name="player-1" value="player-1-computer">
+                         <label for="player-1-computer">Computer</label>
+                    </fieldset>
                     
+                    <fieldset class="m-2">
+                        <legend>Player 2</legend>
+                         <input id="player-2-human" type="radio" name="player-2" value="player-2-human" checked>
+                         <label for="player-2-human">Human</label>
+                          <input id="player-2-computer" type="radio" name="player-2" value="player-2-computer">
+                         <label for="player-2-computer">Computer</label>
+                    </fieldset>
+
+                    </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
