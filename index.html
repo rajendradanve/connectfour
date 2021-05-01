@@ -24,48 +24,81 @@
             <div id="random-coin-5" class="random-coin"></div>
         </div>
 
-         
         <div id="game-input-container" class="row position-absolute top-50 start-50 translate-middle ">
             <div class="col-6 d-grid gap-4 my-3 mx-auto ">
                 <h1 class="text-center">Connect Four</h1>
-                <button type="button" class="main-button btn border border-danger border-2 rounded">New Game</button>
-                <button type="button" class="main-button btn border border-danger border-2 rounded" data-bs-toggle="modal" data-bs-target="#model-how-to-play">How To Play</button>
+                <button type="button" class="main-button btn border border-danger border-2 rounded"
+                    data-bs-toggle="modal" data-bs-target="#model-start-play">New Game</button>
+                <button type="button" class="main-button btn border border-danger border-2 rounded"
+                    data-bs-toggle="modal" data-bs-target="#model-how-to-play">How To Play</button>
             </div>
-            
+
         </div>
-       
-        
     </div>
-      <!--model html for selecting number of player and starting game-->
-    <div id="model-how-to-play" class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-<div  class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-        <div class="modal-header mx-3">
-            <h3>Game Instruction</h3>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-            <p>Connect Four game board has 6 rows (Horizontal) and 7 columns (vertical).
-        This is 2 player game. So you can either play against computer or you can play with your friends.
-        Left click on the column where player want to put the his coin. If you are playing against computer (as player 2),
-        these moves will be played automatically. 
-    </p>
-    <h4>Winning</h4>
-    <p>Player who build first line with four his color coins is the winner. Line can be vertical, horizontal or diagonal.</p>
-    <p>So while you are trying to make your line you must think of blocking your opponents's move to avoid finishing his line.</p>
+
+    <!--model html for selecting number of player and starting the game-->
+    <div id="model-start-play" class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header mx-3">
+                    <h3>Select Number of Player</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input id="player-1" type="radio" name="no-of-player" value="1-player">
+                    <label for="player-1">One Player</label>
+                    <br>
+                    <input id="player-2" type="radio" name="no-of-player" value="2-player">
+                    <label for="player-2">Two Player</label>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Start Game</button>
+                </div>
+            </div>
+
+
+
         </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
+    </div>
+
+    <!--model html for instruction of the game-->
+    <div id="model-how-to-play" class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header mx-3">
+                    <h3>Game Instruction</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Connect Four game board has 6 rows (Horizontal) and 7 columns (vertical).
+                        This is 2 player game. So you can either play against computer or you can play with your
+                        friends.
+                        Left click on the column where player want to put the his coin. If you are playing against
+                        computer (as player 2),
+                        these moves will be played automatically.
+                    </p>
+                    <h4>Winning</h4>
+                    <p>Player who build first line with four his color coins is the winner. Line can be vertical,
+                        horizontal or diagonal.</p>
+                    <p>So while you are trying to make your line you must think of blocking your opponents's move to
+                        avoid finishing his line.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
     </div>
 
 
-    
-</div>
-    </div>
-    </div>
-
-  
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
