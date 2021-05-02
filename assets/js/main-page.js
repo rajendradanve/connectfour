@@ -9,6 +9,9 @@ $(".random-coin").css("top", -randomCoinSize*2);
 
 })
 
+function redirectToGamePage(){
+    
+}
 
 
 
