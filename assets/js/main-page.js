@@ -8,28 +8,45 @@ $(".random-coin").css("height", randomCoinSize);
 $(".random-coin").css("top", -randomCoinSize*2);
 
 $("input").click(function(){
+    setPlayer(this);
 
-    if($(this).val()==="player-1-computer"){
+});
 
+function setPlayer(player){
+
+     if($(player).val()==="player-1-computer"){
+            
         $("#player-2-computer").attr('disabled', true);
         $("#player-2-computer").attr('checked', false);
+        $(".player-2-computer-label").css('opacity', '.2');
 
-    }else if($(this).val()==="player-2-computer"){
+    }else if($(player).val()==="player-2-computer"){
         
         $("#player-1-computer").attr('disabled', true);
         $("#player-1-computer").attr('checked', false);
+        $(".player-1-computer-label").css('opacity', '.2');
         
-    }else if($(this).val()==="player-1-human" || $(this).val()==="player-2-human" ) {
+    }else {
+        
         $("#player-1-computer").attr('disabled', false);
-         $("#player-2-computer").attr('disabled', false);
+        $(".player-1-computer-label").css('opacity', '1');
+        $("#player-2-computer").attr('disabled', false);
+        $(".player-2-computer-label").css('opacity', '1');
+         
     }
 
-});
+    return;
+
+      
+}
 
 
 })
 
+
 function redirectToGamePage(){
+
+   
     
 }
 
