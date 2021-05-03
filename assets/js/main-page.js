@@ -12,19 +12,19 @@ $("input").click(function(){
 
 });
 
+})
+
 function setPlayer(player){
 
      if($(player).val()==="player-1-computer"){
             
         $("#player-2-computer").attr('disabled', true);
-       // $("#player-2-computer").attr('checked', false);
         $(".player-2-computer-label").css('opacity', '.2');
         $("#player-2-human").attr('checked', true);
 
     }else if($(player).val()==="player-2-computer"){
         
         $("#player-1-computer").attr('disabled', true);
-        //$("#player-1-computer").attr('checked', false);
         $(".player-1-computer-label").css('opacity', '.2');
         $("#player-1-human").attr('checked', true);
         
@@ -41,10 +41,6 @@ function setPlayer(player){
 
       
 }
-
-
-})
-
 
 function redirectToGamePage(){
 
