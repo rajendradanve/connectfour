@@ -50,8 +50,8 @@ function redirectToGamePage() {
     let player1 = $('input[name="player-1"]:checked').val();
     let player2 = $("input[name='player-2']:checked").val();
 
-    console.log(player1);
-    console.log(player2);
-    
+    let url = "connect-four.html?player1=" + encodeURIComponent(player1)+"&player2="+ encodeURIComponent(player2);
+
+    window.location.href = url;
 
 }
