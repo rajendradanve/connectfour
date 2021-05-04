@@ -1,176 +1,230 @@
-
 $.holdReady(true); //loading of document is hold to check if correct player information available. 
 
 getPlayerInfo(); // getting player information to check if 1 player game or 2 player game and also checks if there is any problems with player information.
 
 //if everything okay then game will be proceed. 
-$(document).ready(function (){
-
-    let queryString = new Array();
-
-    
-    setGameArea(); // Function called to setup gaming  area. HTML generated using javascript/jquery.
 
 
+function getPlayerInfo() {
+    let queryString = new Array(); // defined new array
 
-})
-
-function getPlayerInfo(){
-    let queryString = new Array (); // defined new array
-
-    if(window.location.search.split('?').length>1){
+    if (window.location.search.split('?').length > 1) {
         let params = window.location.search.split('?')[1].split('&');
-        
-        for(let param of params){
+
+        for (let param of params) {
             let key = param.split('=')[0];
             let value = decodeURIComponent(param.split('=')[1]);
-            queryString[key]=value;
+            queryString[key] = value;
         }
 
-        console.log(Object.values(queryString)[0]);
-        console.log(Object.values(queryString)[1]);
-       if(Object.values(queryString)[0]==="player-1-computer" && Object.values(queryString)[1]==="player-2-computer"){
+
+        if (Object.values(queryString)[0] === "player-1-computer" && Object.values(queryString)[1] === "player-2-computer") {
             //redirect to index page as both players are computer which is not allowed. This is not possible unless user make it manually.
-            window.location.href="/";
-            
+            window.location.href = "/";
 
-        }else{
+
+        } else {
             //load document and player now able to play game.
-            console.log("play game")
-            $.holdReady(false);
-        }
-        
 
-    }else{
+            $.holdReady(false);
+            let p1 = Object.values(queryString)[0].split('-')[2];
+            let p2 = Object.values(queryString)[1].split('-')[2];
+
+            if ((p1 != "human" && p1 != "computer") || (p2 != "human" && p2 != "computer")) {
+                //something is wrong. redirect or alert. 
+                console.log("something is wrong");
+
+            } else {
+                //everything okay start the game. :-)
+                startGame(p1, p2);
+            }
+
+
+
+        }
+
+
+    } else {
         //if length is 1 or less then player information is not available. send user back to index page to select player.
-        window.location.href="/";
+        window.location.href = "/";
     }
 
     return;
 }
 
+function startGame(player1, player2) {
 
-//Function for setting up gaming area correctly.
-function setGameArea(){
+    $(document).ready(function () {
 
-//Assign width and height for game container div based on broswer width and height
-let gameContainerWidth = window.innerWidth * 0.8;
-let gameContainerHeight = window.innerHeight;
-$("#game-container").css("width", gameContainerWidth);
-$("#game-container").css("height", gameContainerHeight);
+        setGameArea(); // Function called to setup gaming  area. HTML generated using javascript/jquery.
 
+        setUpEventHandler();
 
-//calculate height of available game-container height - game-controller height
-let availableHeightForGameArea = gameContainerHeight - parseFloat($("#game-controller").css("height").slice(0, -2));
+    })
 
-//calculated sized for game-area div based on width and height. 
-// Size required for game-area div required to be square within game-container
-// below formula compare 60% of width vs 80% of height and takes the minimum 
-let gameAreaSize = (gameContainerWidth * 0.6) >= (availableHeightForGameArea * 0.9) ? (availableHeightForGameArea * 0.9) : (gameContainerWidth * 0.6);
-
-//calculated margin available and divided for top and bottom
-let gameAreaMargin = (availableHeightForGameArea - gameAreaSize) / 2;
-
-//assign width, height and margin to game-area div
-$("#game-area").css("width", gameAreaSize + "px");
-$("#game-area").css("height", gameAreaSize + "px");
-$("#game-area").css("margin-top", gameAreaMargin + "px");
-
-//adding column and cells html using javascript and JQuery
-// number of rows will be 7 including row for coin insert. i: number of column, j: number of row
-// when row is top row  j = 6 class of square-cell-entry is added and for other rows square-cell-game-board is added to create board look
-// for each square cell and coin circle unique id is generated. 
-for (let i = 0; i < 7; i++) {
-    // i is number for column from left to right
-    $("#game-area").append(`<div id="column${i}"></div>`);
-    $(`#column${i}`).addClass("column");
-    for (let j = 0; j < 7; j++) {
-        // j is number of row. i and j both creat cell grid.
-        $(`#column${i}`).append(`<div id="square-cell-${i}${j}"><div id="coin${i}${j}" class= "empty-coin"></div></div></div>`);
-        if (j == 6) {
-            $(`#square-cell-${i}${j}`).addClass("square-cell-entry");
-        } else {
-            $(`#square-cell-${i}${j}`).addClass("square-cell-game-board");
-        }
-    }
 }
 
+
+//Function for setting up gaming area correctly.
+function setGameArea() {
+
+    //Assign width and height for game container div based on broswer width and height
+    let gameContainerWidth = window.innerWidth * 0.8;
+    let gameContainerHeight = window.innerHeight;
+    $("#game-container").css("width", gameContainerWidth);
+    $("#game-container").css("height", gameContainerHeight);
+
+
+    //calculate height of available game-container height - game-controller height
+    let availableHeightForGameArea = gameContainerHeight - parseFloat($("#game-controller").css("height").slice(0, -2));
+
+    //calculated sized for game-area div based on width and height. 
+    // Size required for game-area div required to be square within game-container
+    // below formula compare 60% of width vs 80% of height and takes the minimum 
+    let gameAreaSize = (gameContainerWidth * 0.6) >= (availableHeightForGameArea * 0.9) ? (availableHeightForGameArea * 0.9) : (gameContainerWidth * 0.6);
+
+    //calculated margin available and divided for top and bottom
+    let gameAreaMargin = (availableHeightForGameArea - gameAreaSize) / 2;
+
+    //assign width, height and margin to game-area div
+    $("#game-area").css("width", gameAreaSize + "px");
+    $("#game-area").css("height", gameAreaSize + "px");
+    $("#game-area").css("margin-top", gameAreaMargin + "px");
+
+    //adding column and cells html using javascript and JQuery
+    // number of rows will be 7 including row for coin insert. i: number of column, j: number of row
+    // when row is top row  j = 6 class of square-cell-entry is added and for other rows square-cell-game-board is added to create board look
+    // for each square cell and coin circle unique id is generated. 
+    for (let i = 0; i < 7; i++) {
+        // i is number for column from left to right
+        $("#game-area").append(`<div id="column${i}"></div>`);
+        $(`#column${i}`).addClass("column");
+        for (let j = 0; j < 7; j++) {
+            // j is number of row. i and j both creat cell grid.
+            $(`#column${i}`).append(`<div id="square-cell-${i}${j}"><div id="coin${i}${j}" class= "empty-coin"></div></div></div>`);
+            if (j == 6) {
+                $(`#square-cell-${i}${j}`).addClass("square-cell-entry");
+            } else {
+                $(`#square-cell-${i}${j}`).addClass("square-cell-game-board");
+            }
+        }
+    }
+
+
+    return;
+}
+
+function setUpEventHandler() {
+
+    let isPlayer1Turn = true; //setup to define who is playing if player1turn is false means player2 is playing
+    let coinClass = "red-coin"; // setup coin class. Currently giving red coin to first player.
+
+    //Below for loop event is created for mouse enter mouse leave and click event to get the coin at entry area. 
+    for (let i = 0; i < 7; i++) {
+        $(`#column${i}`).mouseenter(function () {
+
+            if ($(`#coin${i}5`).hasClass("empty-coin")) { //only allowed if top last row in game board is not filled with coin.
+                $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
+            }
+        }).mouseleave(function () {
+
+            $(`#coin${i}6`).removeClass(coinClass).addClass("empty-coin");
+
+        }).click(function () {
+
+            let columnNumber = i;
+            let rowNumber = 0;
+
+            if (checkEmptyClass(i, 5)) { //only allowed if last row (6th) in game board is not filled with any coin
+                while (rowNumber < 6) { // rowNumber required to checked only 6 rows from bottom.
+
+                    if (checkEmptyClass(i, rowNumber)) {
+
+                            addActivePlayerCoin(i, rowNumber, coinClass)
+
+                        break; //come out of for loop for rowNumber after condition is satisfied once.
+                    }
+
+                    rowNumber++;
+                }
+
+                $(`#coin${i}6`).addClass("empty-coin").removeClass(coinClass);
+
+                //check if wining condition satify if not game goes on
+
+                if (isColumnWinning(columnNumber, rowNumber, coinClass) || isRowWining(columnNumber, rowNumber, coinClass) || isDiagonalWinning(columnNumber, rowNumber, coinClass)) {
+
+                    afterWin(coinClass);
+
+                } else {
+
+                    // no condition for winning is satified.
+                    //below code changes player and active class
+                    if (isPlayer1Turn) {
+                        isPlayer1Turn = false;
+                        coinClass = "yellow-coin";
+                    } else {
+                        isPlayer1Turn = true;
+                        coinClass = "red-coin"
+                    }
+
+                    if (columnNumber != 5) {
+                        $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
+                    }
+
+                }
+
+            } else { // if top last row of game board don't have empty class then this column shall not be used for further play
+
+                $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
+
+            }
+
+
+        });
+    }
+
+
+}
+
+function computerPlayer(computerCoin){
+
+    let isComputerPlayed = false;
+
+    while(!isComputerPlayed){
+        let computerColumn = Math.floor(Math.random()*7);
+        let computerRow = Math.floor(Math.random()*6);
+
+        if(checkEmptyClass(computerColumn, computerRow)){
+
+        }
+
+    }
+
+}
+
+//function to check if cell is empty to add coin
+function checkEmptyClass(column, row){
+
+    return $(`#coin${column}${row}`).hasClass("empty-coin")
+
+}
+
+//function to add active player coin in the empty cell and remove column if place is not available. 
+function addActivePlayerCoin(selectedColumn, selectedRow, activePlayerCoin){
+
+    $(`#coin${selectedColumn}${selectedRow}`).removeClass("empty-coin").addClass(activePlayerCoin);
+
+      if (selectedRow == 5) {//if coin goes to top last row of the game board then that column shall not be used for further play.
+            $(`#coin${selectedColumn}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
+        }
 
     return; 
 }
 
 
-let isPlayer1Turn = true; //setup to define who is playing if player1turn is false means player2 is playing
-let coinClass = "red-coin"; // setup coin class. Currently giving red coin to first player.
-
-//Below for loop event is created for mouse enter and mouse leave to get the coin at entry area. 
-for (let i = 0; i < 7; i++) {
-    $(`#column${i}`).mouseenter(function () {
-
-        if ($(`#coin${i}5`).hasClass("empty-coin")) { //only allowed if top last row in game board is not filled with coin.
-            $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
-        }
-    }).mouseleave(function () {
-
-        $(`#coin${i}6`).removeClass(coinClass).addClass("empty-coin");
-
-    }).click(function () {
-
-        let columnNumber = i;
-        let rowNumber = 0;
-
-        if ($(`#coin${i}5`).hasClass("empty-coin")) { //only allowed if last row in game board is not filled with coin
-            while (rowNumber < 6) { // row (j) required to checked only 6 rows from bottom.
-
-                if ($(`#coin${i}${rowNumber}`).hasClass("empty-coin")) {
-                    $(`#coin${i}${rowNumber}`).removeClass("empty-coin").addClass(coinClass);
-
-                    if (rowNumber == 5) {
-                        //if coin goes to top last row of the game board then that column shall not be used for further play.
-                        $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
-                    }
-
-                    break; //come out of for loop for j after condition is satisfied once.
-                }
-
-                rowNumber++;
-            }
-
-            $(`#coin${i}6`).addClass("empty-coin").removeClass(coinClass);
-
-            //check if wining condition satify if not game goes on
-
-            if (isColumnWinning(columnNumber, rowNumber, coinClass) || isRowWining(columnNumber, rowNumber, coinClass) || isDiagonalWinning(columnNumber, rowNumber, coinClass)) {
-
-                afterWin(coinClass);
-
-            } else {
-
-                // no condition for winning is satified.
-                //below code changes player and active class
-                if (isPlayer1Turn) {
-                    isPlayer1Turn = false;
-                    coinClass = "yellow-coin";
-                } else {
-                    isPlayer1Turn = true;
-                    coinClass = "red-coin"
-                }
-
-                if (columnNumber != 5) {
-                    $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
-                }
-
-            }
-
-        } else { // if top last row of game board don't have empty class then this column shall not be used for further play
-
-            $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
-
-        }
 
 
-    });
-}
 
 /* checking if any same color 4 coins are in a row or diagonal. 
 function takes current row and column where coin goes last, active coin class.
@@ -402,6 +456,7 @@ function isDiagonalWinning(column, row, coinColorClass) {
     return diagonalWinner;
 }
 
+//function after player wins. to be updated.
 function afterWin(coinColor) {
 
     if (coinColor === "red-coin") {
