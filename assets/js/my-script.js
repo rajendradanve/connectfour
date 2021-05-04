@@ -1,3 +1,58 @@
+
+$.holdReady(true); //loading of document is hold to check if correct player information available. 
+
+getPlayerInfo(); // getting player information to check if 1 player game or 2 player game and also checks if there is any problems with player information.
+
+//if everything okay then game will be proceed. 
+$(document).ready(function (){
+
+    let queryString = new Array();
+
+    
+    setGameArea(); // Function called to setup gaming  area. HTML generated using javascript/jquery.
+
+
+
+})
+
+function getPlayerInfo(){
+    let queryString = new Array (); // defined new array
+
+    if(window.location.search.split('?').length>1){
+        let params = window.location.search.split('?')[1].split('&');
+        
+        for(let param of params){
+            let key = param.split('=')[0];
+            let value = decodeURIComponent(param.split('=')[1]);
+            queryString[key]=value;
+        }
+
+        console.log(Object.values(queryString)[0]);
+        console.log(Object.values(queryString)[1]);
+       if(Object.values(queryString)[0]==="player-1-computer" && Object.values(queryString)[1]==="player-2-computer"){
+            //redirect to index page as both players are computer which is not allowed. This is not possible unless user make it manually.
+            window.location.href="/";
+            
+
+        }else{
+            //load document and player now able to play game.
+            console.log("play game")
+            $.holdReady(false);
+        }
+        
+
+    }else{
+        //if length is 1 or less then player information is not available. send user back to index page to select player.
+        window.location.href="/";
+    }
+
+    return;
+}
+
+
+//Function for setting up gaming area correctly.
+function setGameArea(){
+
 //Assign width and height for game container div based on broswer width and height
 let gameContainerWidth = window.innerWidth * 0.8;
 let gameContainerHeight = window.innerHeight;
@@ -39,7 +94,11 @@ for (let i = 0; i < 7; i++) {
         }
     }
 }
-//Till above code is creating html DOM strcture for the game.
+
+
+    return; 
+}
+
 
 let isPlayer1Turn = true; //setup to define who is playing if player1turn is false means player2 is playing
 let coinClass = "red-coin"; // setup coin class. Currently giving red coin to first player.
