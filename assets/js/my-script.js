@@ -58,7 +58,7 @@ function startGame(player1, player2) {
 
         setGameArea(); // Function called to setup gaming  area. HTML generated using javascript/jquery.
 
-        setUpEventHandler();
+        setUpEventHandler(player1, player2);
 
     })
 
@@ -114,10 +114,14 @@ function setGameArea() {
     return;
 }
 
-function setUpEventHandler() {
+function setUpEventHandler(player1Game, player2Game) {
 
     let isPlayer1Turn = true; //setup to define who is playing if player1turn is false means player2 is playing
     let coinClass = "red-coin"; // setup coin class. Currently giving red coin to first player.
+
+    if (player1Game = "computer") {
+        computerPlayer(coinClass);
+    }
 
     //Below for loop event is created for mouse enter mouse leave and click event to get the coin at entry area. 
     for (let i = 0; i < 7; i++) {
@@ -132,27 +136,18 @@ function setUpEventHandler() {
 
         }).click(function () {
 
-            let columnNumber = i;
-            let rowNumber = 0;
+            let column = i;
+
 
             if (checkEmptyClass(i, 5)) { //only allowed if last row (6th) in game board is not filled with any coin
-                while (rowNumber < 6) { // rowNumber required to checked only 6 rows from bottom.
 
-                    if (checkEmptyClass(i, rowNumber)) {
+                let row= addActivePlayerCoin(i, coinClass);
 
-                            addActivePlayerCoin(i, rowNumber, coinClass)
-
-                        break; //come out of for loop for rowNumber after condition is satisfied once.
-                    }
-
-                    rowNumber++;
-                }
-
-                $(`#coin${i}6`).addClass("empty-coin").removeClass(coinClass);
+                
 
                 //check if wining condition satify if not game goes on
 
-                if (isColumnWinning(columnNumber, rowNumber, coinClass) || isRowWining(columnNumber, rowNumber, coinClass) || isDiagonalWinning(columnNumber, rowNumber, coinClass)) {
+                if (isColumnWinning(column, row, coinClass) || isRowWining(column, row, coinClass) || isDiagonalWinning(column, row, coinClass)) {
 
                     afterWin(coinClass);
 
@@ -168,7 +163,7 @@ function setUpEventHandler() {
                         coinClass = "red-coin"
                     }
 
-                    if (columnNumber != 5) {
+                    if (column != 5) {
                         $(`#coin${i}6`).removeClass("empty-coin").addClass(coinClass);
                     }
 
@@ -187,43 +182,59 @@ function setUpEventHandler() {
 
 }
 
-function computerPlayer(computerCoin){
+function computerPlayer(computerCoin) {
 
     let isComputerPlayed = false;
 
-    while(!isComputerPlayed){
-        let computerColumn = Math.floor(Math.random()*7);
-        let computerRow = Math.floor(Math.random()*6);
+    while (!isComputerPlayed) {
+        let computerColumn = Math.floor(Math.random() * 7);
+        let computerRow = Math.floor(Math.random() * 6);
 
-        if(checkEmptyClass(computerColumn, computerRow)){
+        if (checkEmptyClass(computerColumn, computerRow)) {
 
+            addActivePlayerCoin(computerColumn, computerCoin);
+            isComputerPlayed = true;
         }
 
     }
 
+    return;
+
 }
 
 //function to check if cell is empty to add coin
-function checkEmptyClass(column, row){
+function checkEmptyClass(column, row) {
 
     return $(`#coin${column}${row}`).hasClass("empty-coin")
 
 }
 
 //function to add active player coin in the empty cell and remove column if place is not available. 
-function addActivePlayerCoin(selectedColumn, selectedRow, activePlayerCoin){
+function addActivePlayerCoin(selectedColumn, activePlayerCoin) {
 
-    $(`#coin${selectedColumn}${selectedRow}`).removeClass("empty-coin").addClass(activePlayerCoin);
+    let rowNumber = 0;
 
-      if (selectedRow == 5) {//if coin goes to top last row of the game board then that column shall not be used for further play.
-            $(`#coin${selectedColumn}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
+    while (rowNumber < 6) { // rowNumber required to checked only 6 rows from bottom.
+
+        if (checkEmptyClass(selectedColumn, rowNumber)) {
+
+            $(`#coin${selectedColumn}${rowNumber}`).removeClass("empty-coin").addClass(activePlayerCoin);
+
+            if (rowNumber == 5) { //if coin goes to top last row of the game board then that column shall not be used for further play.
+                $(`#coin${selectedColumn}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
+            }
+
+
+            break; //come out of for loop for rowNumber after condition is satisfied once.
         }
 
-    return; 
+        rowNumber++;
+    }
+
+    $(`#coin${selectedColumn}6`).addClass("empty-coin").removeClass(activePlayerCoin); //removing coinClass for current player so that another player can play.
+
+    return rowNumber;
 }
-
-
-
 
 
 /* checking if any same color 4 coins are in a row or diagonal. 
