@@ -4,7 +4,6 @@ getPlayerInfo(); // getting player information to check if 1 player game or 2 pl
 
 //if everything okay then game will be proceed. 
 
-
 function getPlayerInfo() {
     let queryString = new Array(); // defined new array
 
@@ -16,7 +15,6 @@ function getPlayerInfo() {
             let value = decodeURIComponent(param.split('=')[1]);
             queryString[key] = value;
         }
-
 
         if (Object.values(queryString)[0] === "player-1-computer" && Object.values(queryString)[1] === "player-2-computer") {
             //redirect to index page as both players are computer which is not allowed. This is not possible unless user make it manually.
@@ -36,10 +34,9 @@ function getPlayerInfo() {
 
             } else {
                 //everything okay start the game. :-)
+
                 startGame(p1, p2);
             }
-
-
 
         }
 
@@ -54,7 +51,7 @@ function getPlayerInfo() {
 
 function startGame(player1, player2) {
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         setGameArea(); // Function called to setup gaming  area. HTML generated using javascript/jquery.
 
@@ -116,66 +113,73 @@ function setGameArea() {
 
 function setUpEventHandler(player1Game, player2Game) {
 
-   
     let coinClass = "red-coin"; // setup coin class. Currently giving red coin to first player.
     let gameResult = 0;
     let activePlayer = 1;
 
-    while (gameResult == 0) {
+    while (gameResult === 0) {
 
-        if (activePlayer == 1) {
-            if (player1Game = "computer") { //player 1 is computer
+        console.log("player:- " + activePlayer);
 
-                    gameResult = computerPlayer(coinClass);
+        if (activePlayer === 1) {
+
+            console.log("player 1"+ player1Game);
+
+            if (player1Game === "computer") { //player 1 is computer
                 
+                gameResult = computerPlayer(coinClass);
 
-            } else if (player1Game = "human") { //player 1 is human
+            } else if (player1Game === "human") { //player 1 is human
 
                 gameResult = humanPlayer(coinClass);
+                
+            }
+            
+            if (gameResult === 0) {
+
+                activePlayer = 2; // once computer played active player is changed
+                coinClass = "yellow-coin";
+
+            } else if (gameResult === 1) {
+                // Player 1 won the game
+                gameFinish(player1Game);
+                break;
+
+            } else if (gameResult === 2) {
+
+                gameFinish("draw");
+                break;
 
             }
-            if(gameResult == 0){ 
-
-                    activePlayer = 2; // once computer played active player is changed
-                    coinClass = "yellow-coin";
-                }else if(gameResult == 1){
-                    // Player 1 won the game
-                    gameFinish(player1Game);
-                    break;
-                
-                }else if(gameResult = 2){
-
-                    gameFinish("draw");
-                    break;
-
-                }
-        } else if (activePlayer == 2) {
-
-            if (player2Game = "computer") {
+            
+        } else if (activePlayer === 2) {
+             console.log("player 2"+ player2Game);
+            if (player2Game === "computer") {
 
                 gameResult = computerPlayer(coinClass);
 
-            } else if (player2Game = "human") {
+            } else if (player2Game === "human") {
 
-               gameResult = humanPlayer(coinClass);
+                gameResult = humanPlayer(coinClass);
             }
 
-            if(gameResult == 0){ 
+            if (gameResult === 0) {
 
-                    activePlayer = 1; // once computer played active player is changed
-                    coinClass = "red-coin";
-                }else if(gameResult == 1){
-                    // Player 1 won the game
-                    gameFinish(player2Game);
-                    break;
-                
-                }else if(gameResult = 2){
+                activePlayer = 1; // once computer played active player is changed
+                coinClass = "red-coin";
 
-                    gameFinish("draw");
-                    break;
+            } else if (gameResult === 1) {
+                // Player 1 won the game
+                gameFinish(player2Game);
+                break;
 
-                }
+            } else if (gameResult === 2) {
 
+                gameFinish("draw");
+                break;
+
+            }
+            
         } else {
 
             //something is wrong
@@ -197,13 +201,13 @@ function computerPlayer(computerCoin) {
 
     while (!isComputerPlayed) {
         let computerColumn = Math.floor(Math.random() * 7);
-        
+
         if (checkEmptyClass(computerColumn, 5)) {
 
-           let computerRow = addActivePlayerCoin(computerColumn, computerCoin);
+            let computerRow = addActivePlayerCoin(computerColumn, computerCoin);
             isComputerPlayed = true;
             isComputerWin = checkIfWin(computerColumn, computerRow, computerCoin)
-            
+
         }
 
     }
@@ -215,79 +219,71 @@ function computerPlayer(computerCoin) {
 function humanPlayer(humanCoin) {
     //Below for loop event is created for mouse enter mouse leave and click event to get the coin at entry area. 
     let isGameOn = 0; //to continue playing game
+    let isHumanPlayed = false;
+
     for (let i = 0; i < 7; i++) {
-        $(`#column${i}`).mouseenter(function () {
+
+        $(`#column${i}`).mouseenter(function() {
 
             if (checkEmptyClass(i, 5)) { //only allowed if top last row in game board is not filled with coin.
-                
+
                 removeAddClass(i, 6, "empty-coin", humanCoin); // not show coin in the top entry row as no empty cell available.
             }
-        }).mouseleave(function () {
+        }).mouseleave(function() {
 
             removeAddClass(i, 6, humanCoin, "empty-coin");
 
-        }).click(function () {
+        }).click(function() {
+
+            
 
             let column = i;
 
-            if (checkEmptyClass(i, 5)) { //only allowed if last row (6th) in game board is not filled with any coin
+                 if (checkEmptyClass(i, 5)) { //only allowed if last row (6th) in game board is not filled with any coin
 
-                let row = addActivePlayerCoin(i, coinClass); //add coin of active player in the selected column and available row.
+                let row = addActivePlayerCoin(i, humanCoin); //add coin of active player in the selected column and available row.
 
                 //check if wining condition satify if not game goes on
 
-                isGameOn = checkIfWin(column, row, coinClass);
-
-                /*To be deleted once code is working fine. 
-                // no condition for winning is satified.
-                    //below code changes player and active class
-                    if (isPlayer1Turn) {
-                        isPlayer1Turn = false;
-                        coinClass = "yellow-coin";
-                    } else {
-                        isPlayer1Turn = true;
-                        coinClass = "red-coin"
-                    }
-
-                    if (column != 5) {
-                        removeAddClass(i, 6, coinClass); //change coin class 
-                    }
-
-
-               */ 
-
+                isGameOn = checkIfWin(column, row, humanCoin);
+                isHumanPlayed  = true;
+                
             } else { // if top last row of game board don't have empty class then this column shall not be used for further play
 
                 $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
 
             }
+            
 
-            return isGameOn;
         });
+        if(isHumanPlayed){
+            break;
+        }
     }
-
+   
+    return isGameOn;
 
 }
 
 //checking if any of winning condition satisfied
-function checkIfWin(i, j, winningCheckClass){
-    
+function checkIfWin(i, j, winningCheckClass) {
+
     let winningInt = 0;
 
-         if (isColumnWinning(i, j, winningCheckClass) || isRowWining(i, j, winningCheckClass) || isDiagonalWinning(i, j, winningCheckClass)) {
+    if (isColumnWinning(i, j, winningCheckClass) || isRowWining(i, j, winningCheckClass) || isDiagonalWinning(i, j, winningCheckClass)) {
 
-                    winningInt = 1; // winning condition satisfied. stop game.
+        winningInt = 1; // winning condition satisfied. stop game.
 
-                } else if(isGameDraw()){
+    } else if (isGameDraw()) {
 
-                    winningInt = 2; // game is draw. No empty cells to add coins. No one wins
+        winningInt = 2; // game is draw. No empty cells to add coins. No one wins
 
-                }else {
+    } else {
 
-                    winningInt = 0 ; 
-                }
+        winningInt = 0;
+    }
 
-                return winningInt;
+    return winningInt;
 
 }
 
@@ -298,7 +294,7 @@ function checkEmptyClass(column, row) {
 
 }
 
-function removeAddClass(column, row, removeClass, addClass){
+function removeAddClass(column, row, removeClass, addClass) {
 
     return $(`#coin${column}${row}`).removeClass(removeClass).addClass(addClass);
 }
@@ -324,7 +320,7 @@ function addActivePlayerCoin(selectedColumn, activePlayerCoin) {
         rowNumber++;
     }
 
-     //removing coinClass for current player so that another player can play.
+    //removing coinClass for current player so that another player can play.
     removeAddClass(selectedColumn, 6, activePlayerCoin, "empty-coin");
     return rowNumber;
 }
@@ -560,14 +556,14 @@ function isDiagonalWinning(column, row, coinColorClass) {
     return diagonalWinner;
 }
 
-function isGameDraw(){
+function isGameDraw() {
 
     let gameDrawStatus = true;
-    
-    for(let i = 0; i<7;i++){
 
-        if(checkEmptyClass(i,5)){
-            gameDrawStatus= false;
+    for (let i = 0; i < 7; i++) {
+
+        if (checkEmptyClass(i, 5)) {
+            gameDrawStatus = false;
             break;
         }
 
@@ -586,8 +582,8 @@ function afterWin(coinColor) {
 
 }
 
-function gameFinish(winnerPlayer){
+function gameFinish(winnerPlayer) {
 
-    console.log(winnerPlayer);
+    console.log("winner player is " + winnerPlayer);
 
 }
