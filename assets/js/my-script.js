@@ -237,6 +237,7 @@ function addActivePlayerCoin(selectedColumn, activePlayerCoin) {
 }
 
 
+
 /* checking if any same color 4 coins are in a row or diagonal. 
 function takes current row and column where coin goes last, active coin class.
 This function checks if there are any four same coins in a
