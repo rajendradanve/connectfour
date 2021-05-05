@@ -116,53 +116,72 @@ function setGameArea() {
 
 function setUpEventHandler(player1Game, player2Game) {
 
-    let isPlayer1Turn = true; //setup to define who is playing if player1turn is false means player2 is playing
+   
     let coinClass = "red-coin"; // setup coin class. Currently giving red coin to first player.
-    let isGameResult = false;
+    let gameResult = 0;
     let activePlayer = 1;
 
-    while (!isGameResult) {
+    while (gameResult == 0) {
 
         if (activePlayer == 1) {
             if (player1Game = "computer") { //player 1 is computer
 
-                if(computerPlayer(coinClass)){ // 
-                    activePlayer = 2; // once computer played active player is changed
-                    coinClass = "yellow-coin";
-                }
+                    gameResult = computerPlayer(coinClass);
+                
 
             } else if (player1Game = "human") { //player 1 is human
 
-                if(humanPlayer(coinClass)){
-                    activePlayer = 2;
-                    coinClass = "yellow-coin"
-                }
+                gameResult = humanPlayer(coinClass);
+
             }
-            
+            if(gameResult == 0){ 
+
+                    activePlayer = 2; // once computer played active player is changed
+                    coinClass = "yellow-coin";
+                }else if(gameResult == 1){
+                    // Player 1 won the game
+                    gameFinish(player1Game);
+                    break;
+                
+                }else if(gameResult = 2){
+
+                    gameFinish("draw");
+                    break;
+
+                }
         } else if (activePlayer == 2) {
 
             if (player2Game = "computer") {
 
-                if(computerPlayer(coinClass)){ // 
-                    activePlayer = 1; // once computer played active player is changed
-                    coinClass = "red-coin";
-                }
+                gameResult = computerPlayer(coinClass);
 
             } else if (player2Game = "human") {
 
-                 if(humanPlayer(coinClass)){
-                    activePlayer = 1;
-                    coinClass = "red-coin"
-                }
+               gameResult = humanPlayer(coinClass);
             }
+
+            if(gameResult == 0){ 
+
+                    activePlayer = 1; // once computer played active player is changed
+                    coinClass = "red-coin";
+                }else if(gameResult == 1){
+                    // Player 1 won the game
+                    gameFinish(player2Game);
+                    break;
+                
+                }else if(gameResult = 2){
+
+                    gameFinish("draw");
+                    break;
+
+                }
 
         } else {
 
             //something is wrong
+            console.log("something is wrong")
             break;
         }
-
-
 
 
     }
@@ -173,21 +192,23 @@ function setUpEventHandler(player1Game, player2Game) {
 //function when one of the player is computer. Function will find random cell to put coin.
 function computerPlayer(computerCoin) {
 
+    let isComputerWin = 0;
     let isComputerPlayed = false;
 
     while (!isComputerPlayed) {
         let computerColumn = Math.floor(Math.random() * 7);
-        let computerRow = Math.floor(Math.random() * 6);
+        
+        if (checkEmptyClass(computerColumn, 5)) {
 
-        if (checkEmptyClass(computerColumn, computerRow)) {
-
-            addActivePlayerCoin(computerColumn, computerCoin);
+           let computerRow = addActivePlayerCoin(computerColumn, computerCoin);
             isComputerPlayed = true;
+            isComputerWin = checkIfWin(computerColumn, computerRow, computerCoin)
+            
         }
 
     }
 
-    return isComputerPlayed;
+    return isComputerWin;
 
 }
 
@@ -539,6 +560,21 @@ function isDiagonalWinning(column, row, coinColorClass) {
     return diagonalWinner;
 }
 
+function isGameDraw(){
+
+    let gameDrawStatus = true;
+    
+    for(let i = 0; i<7;i++){
+
+        if(checkEmptyClass(i,5)){
+            gameDrawStatus= false;
+            break;
+        }
+
+    }
+    return gameDrawStatus;
+}
+
 //function after player wins. to be updated.
 function afterWin(coinColor) {
 
@@ -547,5 +583,11 @@ function afterWin(coinColor) {
     } else {
         alert("player 2 wins");
     }
+
+}
+
+function gameFinish(winnerPlayer){
+
+    console.log(winnerPlayer);
 
 }
