@@ -115,13 +115,20 @@ function setUpEventHandler(player1Game, player2Game) {
     let gameResult = 0;
     let activePlayer = 1;
 
+    
+
     while (gameResult === 0) {
+
+        console.log("active Player: "+ activePlayer + "coin:-" +coinClass);
+        
 
         if (activePlayer === 1) {
 
+            console.log(coinClass);
             if (player1Game === "computer") { //player 1 is computer
                 
                 gameResult = computerPlayer(coinClass);
+                console.log("computer played")
 
             } else if (player1Game === "human") { //player 1 is human
                 
@@ -177,18 +184,15 @@ function setUpEventHandler(player1Game, player2Game) {
             
         } else {
 
-            //something is wrong
             console.log("something is wrong")
             break;
         }
 
-        
-
     }
-
 
     return;
 }
+
 //function when one of the player is computer. Function will find random cell to put coin.
 function computerPlayer(computerCoin) {
     
@@ -203,7 +207,7 @@ function computerPlayer(computerCoin) {
             let computerRow = addActivePlayerCoin(computerColumn, computerCoin);
             isComputerPlayed = true;
             isComputerWin = checkIfWin(computerColumn, computerRow, computerCoin)
-            
+            break;
         }
 
     }
