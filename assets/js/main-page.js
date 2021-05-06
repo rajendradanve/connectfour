@@ -7,11 +7,6 @@ $(document).ready(function () {
     $(".random-coin").css("height", randomCoinSize);
     $(".random-coin").css("top", -randomCoinSize * 2);
 
-    $("input").click(function () {
-        setPlayer(this);
-
-    });
-
 })
 
 

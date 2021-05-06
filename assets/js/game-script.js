@@ -1,32 +1,31 @@
 $(document).ready(function() {
     setGameArea();
 
-    getPlayerInfo();
+    let player2 = getPlayerInfo();
 
 })
 
 
 function getPlayerInfo() {
 
+    let p2= "";
+
     let queryString = new Array(); // defined new array
 
     if (window.location.search.split('?').length > 1) {
         let params = window.location.search.split('?')[1].split('&');
+            
+        let p2 = decodeURIComponent(params[0].split('=')[1]);
+    }else{
+        //set up error 
+        p2= "error";
 
-        for (let param of params) {
-            let key = param.split('=')[0];
-            let value = decodeURIComponent(param.split('=')[1]);
-            queryString[key] = value;
-        }
-
-        console.log(queryString);
-
-            let p2 = Object.values(queryString)[0].split('-')[2];
     }
-    return;
+    
+    return player2;
 }
 
-
+//DOM using java. Setting up gaming graphics
 function setGameArea() {
 
     //Assign width and height for game container div based on broswer width and height
