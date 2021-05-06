@@ -94,3 +94,8 @@ Welcome to my Connect Four game
         Icons- Drum and Mute taken from freepik.com. 
         add below div in the footer
         <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+
+        Font family
+        font-family: 'Balsamiq Sans', cursive;
+font-family: 'Kaushan Script', cursive;
