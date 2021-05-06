@@ -15,14 +15,14 @@ function getPlayerInfo() {
     if (window.location.search.split('?').length > 1) {
         let params = window.location.search.split('?')[1].split('&');
             
-        let p2 = decodeURIComponent(params[0].split('=')[1]);
+        p2 = decodeURIComponent(params[0].split('=')[1]);
     }else{
         //set up error 
         p2= "error";
 
     }
-    
-    return player2;
+
+    return p2;
 }
 
 //DOM using java. Setting up gaming graphics
