@@ -14,43 +14,14 @@ $(document).ready(function () {
 
 })
 
-//function for setting up player option. 
-// Code made so that both players can not be computer.
-function setPlayer(player) {
-
-    if ($(player).val() === "player-1-computer") {
-
-        $("#player-2-computer").attr('disabled', true);
-        $(".player-2-computer-label").css('opacity', '.2');
-        $("#player-2-human").attr('checked', true);
-
-    } else if ($(player).val() === "player-2-computer") {
-
-        $("#player-1-computer").attr('disabled', true);
-        $(".player-1-computer-label").css('opacity', '.2');
-        $("#player-1-human").attr('checked', true);
-
-    } else {
-
-        $("#player-1-computer").attr('disabled', false);
-        $(".player-1-computer-label").css('opacity', '1');
-        $("#player-2-computer").attr('disabled', false);
-        $(".player-2-computer-label").css('opacity', '1');
-
-    }
-
-    return;
-
-
-}
 
 function redirectToGamePage() {
 
-    //getting selected player values for radio button
-    let player1 = $('input[name="player-1"]:checked').val();
+    //getting selected 2nd player values for radio button
+    
     let player2 = $("input[name='player-2']:checked").val();
 
-    let url = "connect-four.html?player1=" + encodeURIComponent(player1)+"&player2="+ encodeURIComponent(player2);
+    let url = "connect-four.html?player2=" + encodeURIComponent(player2);
 
     window.location.href = url;
 
