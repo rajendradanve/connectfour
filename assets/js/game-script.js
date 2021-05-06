@@ -34,7 +34,7 @@ function getPlayerInfo() {
 
             } else {
                 //everything okay start the game. :-)
-
+                
                 startGame(p1, p2);
             }
 
@@ -52,11 +52,9 @@ function getPlayerInfo() {
 function startGame(player1, player2) {
 
     $(document).ready(function() {
-
-        setGameArea(); // Function called to setup gaming  area. HTML generated using javascript/jquery.
-
+        // Function called to setup gaming  area. HTML generated using javascript/jquery.
+        setGameArea();    
         setUpEventHandler(player1, player2);
-
     })
 
 }
@@ -119,21 +117,18 @@ function setUpEventHandler(player1Game, player2Game) {
 
     while (gameResult === 0) {
 
-        console.log("player:- " + activePlayer);
-
         if (activePlayer === 1) {
-
-            console.log("player 1"+ player1Game);
 
             if (player1Game === "computer") { //player 1 is computer
                 
                 gameResult = computerPlayer(coinClass);
 
             } else if (player1Game === "human") { //player 1 is human
-
+                
                 gameResult = humanPlayer(coinClass);
                 
             }
+            
             
             if (gameResult === 0) {
 
@@ -153,7 +148,7 @@ function setUpEventHandler(player1Game, player2Game) {
             }
             
         } else if (activePlayer === 2) {
-             console.log("player 2"+ player2Game);
+             
             if (player2Game === "computer") {
 
                 gameResult = computerPlayer(coinClass);
@@ -164,7 +159,7 @@ function setUpEventHandler(player1Game, player2Game) {
             }
 
             if (gameResult === 0) {
-
+                console.log(gameResult);
                 activePlayer = 1; // once computer played active player is changed
                 coinClass = "red-coin";
 
@@ -187,6 +182,7 @@ function setUpEventHandler(player1Game, player2Game) {
             break;
         }
 
+        
 
     }
 
@@ -195,7 +191,7 @@ function setUpEventHandler(player1Game, player2Game) {
 }
 //function when one of the player is computer. Function will find random cell to put coin.
 function computerPlayer(computerCoin) {
-
+    
     let isComputerWin = 0;
     let isComputerPlayed = false;
 
@@ -207,7 +203,7 @@ function computerPlayer(computerCoin) {
             let computerRow = addActivePlayerCoin(computerColumn, computerCoin);
             isComputerPlayed = true;
             isComputerWin = checkIfWin(computerColumn, computerRow, computerCoin)
-
+            
         }
 
     }
@@ -235,33 +231,27 @@ function humanPlayer(humanCoin) {
 
         }).click(function() {
 
-            
-
             let column = i;
 
                  if (checkEmptyClass(i, 5)) { //only allowed if last row (6th) in game board is not filled with any coin
+                    
+                    let row = addActivePlayerCoin(i, humanCoin); //add coin of active player in the selected column and available row.
 
-                let row = addActivePlayerCoin(i, humanCoin); //add coin of active player in the selected column and available row.
+                    //check if wining condition satify if not game goes on
+                    isGameOn = checkIfWin(column, row, humanCoin);
+                    isHumanPlayed  = true;
+    
+                } else { // if top last row of game board don't have empty class then this column shall not be used for further play
 
-                //check if wining condition satify if not game goes on
+                    $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
 
-                isGameOn = checkIfWin(column, row, humanCoin);
-                isHumanPlayed  = true;
-                
-            } else { // if top last row of game board don't have empty class then this column shall not be used for further play
-
-                $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
-
-            }
+                }
             
-
         });
-        if(isHumanPlayed){
-            break;
-        }
+
     }
    
-    return isGameOn;
+    
 
 }
 
@@ -310,7 +300,8 @@ function addActivePlayerCoin(selectedColumn, activePlayerCoin) {
 
             removeAddClass(selectedColumn, rowNumber, "empty-coin", activePlayerCoin)
 
-            if (rowNumber == 5) { //if coin goes to top last row of the game board then that column shall not be used for further play.
+            if (rowNumber === 5) { //if coin goes to top last row of the game board then that column shall not be used for further play.
+                
                 $(`#coin${selectedColumn}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
             }
 
