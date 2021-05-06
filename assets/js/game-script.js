@@ -115,8 +115,6 @@ function setUpEventHandler(player1Game, player2Game) {
     let gameResult = 0;
     let activePlayer = 1;
 
-    
-
     while (gameResult === 0) {
 
         console.log("active Player: "+ activePlayer + "coin:-" +coinClass);
@@ -132,10 +130,9 @@ function setUpEventHandler(player1Game, player2Game) {
 
             } else if (player1Game === "human") { //player 1 is human
                 
-                gameResult = humanPlayer(coinClass);
+                gameResult = humanPlayer(activePlayer, coinClass);
                 
             }
-            
             
             if (gameResult === 0) {
 
@@ -162,7 +159,7 @@ function setUpEventHandler(player1Game, player2Game) {
 
             } else if (player2Game === "human") {
 
-                gameResult = humanPlayer(coinClass);
+                gameResult = humanPlayer(activePlayer, coinClass);
             }
 
             if (gameResult === 0) {
@@ -216,13 +213,16 @@ function computerPlayer(computerCoin) {
 
 }
 
-function humanPlayer(humanCoin) {
+function humanPlayer(player, humanCoin) {
     //Below for loop event is created for mouse enter mouse leave and click event to get the coin at entry area. 
     let isGameOn = 0; //to continue playing game
     let isHumanPlayed = false;
+    let currentPlayer = player;
+
 
     for (let i = 0; i < 7; i++) {
 
+        
         $(`#column${i}`).mouseenter(function() {
 
             if (checkEmptyClass(i, 5)) { //only allowed if top last row in game board is not filled with coin.
@@ -240,11 +240,11 @@ function humanPlayer(humanCoin) {
                  if (checkEmptyClass(i, 5)) { //only allowed if last row (6th) in game board is not filled with any coin
                     
                     let row = addActivePlayerCoin(i, humanCoin); //add coin of active player in the selected column and available row.
-
+                    
                     //check if wining condition satify if not game goes on
                     isGameOn = checkIfWin(column, row, humanCoin);
-                    isHumanPlayed  = true;
-    
+                    isGameOn = 1;
+                    
                 } else { // if top last row of game board don't have empty class then this column shall not be used for further play
 
                     $(`#coin${i}6`).removeClass("red-coin").removeClass("yellow-coin").addClass("empty-coin");
@@ -253,10 +253,13 @@ function humanPlayer(humanCoin) {
             
         });
 
+        console.log("end of click function :- " + isHumanPlayed);
+
+        
     }
    
-    
-
+    console.log(isGameOn);
+    return isGameOn;
 }
 
 //checking if any of winning condition satisfied
