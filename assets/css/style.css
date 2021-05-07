@@ -5,7 +5,13 @@ body {
     overflow: hidden;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    font-family: 'Balsamiq Sans', cursive;
+    font-family: 'Petrona', serif;
+}
+
+h1 {
+    font-weight: 900;
+    font-style: italic;
+    color: #363b81;
 }
 
 /* CSS for index.html */
@@ -14,7 +20,7 @@ body {
     /*background-color: #FFCB05; */
     width: 100%;
     height: 100vh;
-    background: #FFCB05 url("../images/background-mainpage.jpeg") center/cover;;
+    background: #FFCB05 url("../images/pokemon-background1.jpeg") center/cover;;
 }
 #animation-container{
    width: 100%;
@@ -57,12 +63,12 @@ body {
 }
 
 #game-input-container{
-    width: auto;
-    height: auto;
+    width: fit-content;
+    height: fit-content;
+    min-width: 35%;
     min-height: 40%;
-    min-width: 40%;
-    background-color: rgba(204, 0, 0, 0.7);
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.6);
+    background-color: rgba(251,215,67, 0.9);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6);
     border-radius: 10%;
 }
 
@@ -83,12 +89,7 @@ body {
 .main-button{
     background-color: #3D7DCA;
     color: white;
-}
-
-fieldset {
-    margin:0;
-    padding:0;
-    border:solid;
+    font-weight: 900;
 }
 
 

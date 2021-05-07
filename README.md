@@ -97,5 +97,5 @@ Welcome to my Connect Four game
 
 
         Font family
-        font-family: 'Balsamiq Sans', cursive;
-font-family: 'Kaushan Script', cursive;
+        font-family: 'Petrona', serif;
+font-family: 'Roboto', sans-serif;
