@@ -24,7 +24,12 @@
     <div id="game-container">
         <div id="game-controller">
             <div onclick="redirectToHomePage()"><i class="fas fa-house-user"></i></div>
-            <div id= "music" onclick="toggleSound()"><i class="fas fa-volume-up"></i></div>
+            <div id= "music" onclick="toggleSound()">
+                <i class="fas fa-volume-up"></i>
+                <audio id="background-audio">
+                    <source src="assets/audio/bensound-ukulele.mp3" type="audio/mpeg" />
+        </audio>
+            </div>
             <div><h3><snap id="player-info">Player 1 Turn</snap></h3></div>
             <div onclick="reloadPage()"><i class="fas fa-redo-alt"></i></div>
         </div>

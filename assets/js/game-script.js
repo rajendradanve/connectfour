@@ -12,6 +12,7 @@ $(document).ready(function() {
         redirectToHomePage();
     }else{
         setGameArea();
+        $("#background-audio").play();
         startGame(player2);
     }
 
@@ -532,8 +533,11 @@ function toggleSound(){
 
     if($("#music").children("i").hasClass("fa-volume-up")){
         $("#music").children("i").removeClass("fa-volume-up").addClass("fa-volume-mute");
+       
+        $("#background-audio").pause();
     }else {
         $("#music").children("i").removeClass("fa-volume-mute").addClass("fa-volume-up");
+         $("#background-audio").play();
     }
 
 }
