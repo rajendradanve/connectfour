@@ -1,13 +1,20 @@
 const player1Coin = "red-coin";
 const player2Coin = "yellow-coin";
 const clearCell = "empty-coin";
+const draw= "Draw";
 
 $(document).ready(function() {
-    setGameArea();
-
+    
     let player2 = getPlayerInfo();
+   
+    if(player2 != "Human" && player2 != "Computer"){
 
-    startGame(player2);
+        redirectToHomePage();
+    }else{
+        setGameArea();
+        startGame(player2);
+    }
+
 
 })
 
@@ -43,13 +50,20 @@ function startGame(player2){
                    currentPlayer= changePlayer(currentPlayer);
 
                    if(currentPlayer === 2 && player2 === 'Computer'){
+
                         let computerWinCheck = computerPlayer();
+
                         if(computerWinCheck === 0){
+
                         currentPlayer= changePlayer(currentPlayer);
+
                         }else if(computerWinCheck === 1){
+
                             //computer won
                             console.log ("computer won");
+                            gameResult(player2);
                         }else if(computerWinCheck === 2){
+
                             //game is draw
                             console.log("Game is drawn by computer");
                         }
@@ -58,10 +72,11 @@ function startGame(player2){
                }else if(isGameOn === 1){
                    //current player is winner
                    console.log(currentPlayer+ " own");
-
+                   gameResult(`player ${currentPlayer}`);
                }else if(isGameOn === 2){
                    //game is draw
                    console.log("Game is draw");
+                   gameResult(draw);
                }else{
                     //something is wrong
                     console.log("something is wrong");
@@ -153,6 +168,8 @@ function changePlayer(currentPlayer){
     
     let newPlayer = currentPlayer === 1? 2 : 1;
 
+    $("#player-info").text(`Player ${newPlayer} turn`);
+
     return newPlayer;
 }
 
@@ -160,14 +177,12 @@ function getPlayerInfo() {
 
     let p2= "";
 
-    let queryString = new Array(); // defined new array
-
     if (window.location.search.split('?').length > 1) {
         let params = window.location.search.split('?')[1].split('&');
             
         p2 = decodeURIComponent(params[0].split('=')[1]);
     }else{
-        //set up error 
+        //Todo: set up error 
         p2= "error";
 
     }
@@ -495,8 +510,34 @@ function isGameDraw() {
     return gameDrawStatus;
 }
 
-function gameFinish(winnerPlayer) {
-
+function gameResult(winnerPlayer) {
+    let winnertext = "";
     console.log("winner player is " + winnerPlayer);
+    if(winnerPlayer != draw){
+       winnertext = `...And WINNER IS ${winnerPlayer}`;
+    }else{
+        winnertext = "This Game Is Draw";
+    }
+    
+     $("#winner-text").text(winnertext);
+     $("#model-game-result").modal("show");
+}
 
+function redirectToHomePage(){
+
+    window.location.href = "/"
+}
+
+function toggleSound(){
+
+    if($("#music").children("i").hasClass("fa-volume-up")){
+        $("#music").children("i").removeClass("fa-volume-up").addClass("fa-volume-mute");
+    }else {
+        $("#music").children("i").removeClass("fa-volume-mute").addClass("fa-volume-up");
+    }
+
+}
+
+function reloadPage(){
+    location.reload();
 }
