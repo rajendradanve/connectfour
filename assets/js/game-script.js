@@ -3,6 +3,7 @@ const player2Coin = "yellow-coin";
 const clearCell = "empty-coin";
 const draw= "Draw";
 
+
 $(document).ready(function() {
     
     let player2 = getPlayerInfo();
@@ -12,7 +13,8 @@ $(document).ready(function() {
         redirectToHomePage();
     }else{
         setGameArea();
-       // $("#background-audio").play();
+       // $("#background-audio").({play})
+        
         startGame(player2);
     }
 
@@ -20,6 +22,7 @@ $(document).ready(function() {
 })
 
 function startGame(player2){
+    
 
     let currentPlayer = 1;
     
@@ -64,15 +67,12 @@ function startGame(player2){
                             console.log ("computer won");
                             gameResult(player2);
                         }else if(computerWinCheck === 2){
-
-                            //game is draw
-                            console.log("Game is drawn by computer");
+                            gameResult(draw);
                         }
                    }
 
                }else if(isGameOn === 1){
                    //current player is winner
-                   console.log(currentPlayer+ " own");
                    gameResult(`player ${currentPlayer}`);
                }else if(isGameOn === 2){
                    //game is draw
@@ -533,13 +533,16 @@ function toggleSound(){
 
     if($("#music").children("i").hasClass("fa-volume-up")){
         $("#music").children("i").removeClass("fa-volume-up").addClass("fa-volume-mute");
-       
-       // $("#background-audio").pause();
+
+        document.getElementById("background-audio").pause();
+        
+    
     }else {
         $("#music").children("i").removeClass("fa-volume-mute").addClass("fa-volume-up");
-        // $("#background-audio").play();
+        document.getElementById("background-audio").play();
+        
     }
-
+      document.getElementById("background-audio").loop = true;
 }
 
 function reloadPage(){
