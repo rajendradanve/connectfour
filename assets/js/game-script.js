@@ -157,8 +157,10 @@ function removeAddClass(column, row, removeClass, addClass) {
 
     let cellWidth = parseFloat($("#coin00").css("height").slice(0, -2));
     let animationTop = "-"+ (5-row)* cellWidth + "px"; //caculated releative position for animation
-            console.log(animationTop);
-    return $(`#coin${column}${row}`).addClass(addClass).css("top", animationTop).animate({top: 0}, 'slow').removeClass(removeClass);
+
+    $(`#coin${column}${row}`).removeClass(removeClass).addClass(addClass).css("top", animationTop).animate({top: 0}, 'slow');
+
+    return ;
     
 }
 
