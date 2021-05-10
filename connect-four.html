@@ -19,27 +19,31 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   
 </head>
-<body>
-
-    <div id="game-container">
+<body class="connect-four-page">
+    <div class="container-fluid">
+        <div class="row position-absolute top-50 start-50 translate-middle">
+            <div class="col">
+<div id="game-container">
         <div id="game-controller">
-            <div>
-            <div onclick="redirectToHomePage()"><i class="fas fa-house-user"></i></div>
-            <div onclick="reloadPage()"><i class="fas fa-redo-alt"></i></div>
-            </div>
-            <div><h3><snap id="player-info">Player 1 Turn</snap></h3></div>
-            <div id= "music" onclick="toggleSound()">
+            <div class = "controller-icon my-2" onclick="reloadPage()"><i class="fas fa-redo-alt"></i></div>
+            <div class = "controller-icon mt-2" onclick="redirectToHomePage()"><i class="fas fa-house-user"></i></div>
+            <div class = "controller-icon-music mt-2" id= "music" onclick="toggleSound()">
                 <i class="fas fa-volume-mute"></i>
                 <audio id="background-audio" type="audio/mpeg">
                     <source src="assets/audio/bensound-ukulele.mp3" type="audio/mpeg" />
         </audio>
             </div>
         </div>
+
+        <div class="mt-2"><h3 class="text-center"><snap id="player-info">Player 1 Turn</snap></h3></div>
         <div id="game-area">
 
         </div>
     </div>
-
+            </div>
+        </div>
+    
+</div>
 <!--model html for showing game result-->
     <div id="model-game-result" class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

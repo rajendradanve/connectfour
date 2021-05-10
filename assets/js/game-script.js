@@ -195,7 +195,7 @@ function getPlayerInfo() {
 function setGameArea() {
 
     //Assign width and height for game container div based on broswer width and height
-    let gameContainerWidth = window.innerWidth * 0.8;
+    let gameContainerWidth = window.innerWidth * 0.9;
     let gameContainerHeight = window.innerHeight;
     $("#game-container").css("width", gameContainerWidth);
     $("#game-container").css("height", gameContainerHeight);
