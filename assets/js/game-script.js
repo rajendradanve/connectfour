@@ -119,13 +119,16 @@ function computerPlayer() {
 function addActivePlayerCoin(selectedColumn, playerCoin) {
     
     let rowNumber = 0;
+
+    
+    
     
     while (rowNumber < 6) { // rowNumber required to checked only 6 rows from bottom.
 
         if (checkEmptyClass(selectedColumn, rowNumber)) {
-
+            
             removeAddClass(selectedColumn, rowNumber, clearCell, playerCoin);
-
+            
             if (rowNumber === 5) { //if coin goes to top last row of the game board then that column shall not be used for further play.
                 
                 $(`#coin${selectedColumn}6`).removeClass(player1Coin).removeClass(player2Coin).addClass(clearCell);
@@ -152,7 +155,11 @@ function checkEmptyClass(column, row) {
 //function to remove class and add another class from cell
 function removeAddClass(column, row, removeClass, addClass) {
 
-    return $(`#coin${column}${row}`).removeClass(removeClass).addClass(addClass);
+    let cellWidth = parseFloat($("#coin00").css("height").slice(0, -2));
+    let animationTop = "-"+ (5-row)* cellWidth + "px"; //caculated releative position for animation
+            console.log(animationTop);
+    return $(`#coin${column}${row}`).addClass(addClass).css("top", animationTop).animate({top: 0}, 'slow').removeClass(removeClass);
+    
 }
 
 //setup active player coin
@@ -227,7 +234,7 @@ function setGameArea() {
         $(`#column${i}`).addClass("column");
         for (let j = 0; j < 7; j++) {
             // j is number of row. i and j both creat cell grid.
-            $(`#column${i}`).append(`<div id="square-cell-${i}${j}"><div id="coin${i}${j}" class= "empty-coin"></div></div></div>`);
+            $(`#column${i}`).append(`<div id="square-cell-${i}${j}"><div class="empty-coin-out"><div id="coin${i}${j}" class= "empty-coin"></div></div></div></div>`);
             if (j == 6) {
                 $(`#square-cell-${i}${j}`).addClass("square-cell-entry");
             } else {
