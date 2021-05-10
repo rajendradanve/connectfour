@@ -521,6 +521,12 @@ function isGameDraw() {
 }
 
 function gameResult(winnerPlayer) {
+
+    for(let i=0; i<6; i++){
+        $(`#column${i}`).removeClass(player1Coin).removeClass(player2Coin).addClass(clearCell)
+        $(`#column${i}`).off("click").off("mouseenter").off("mouseleave");
+    }
+
     let winnertext = "";
     console.log("winner player is " + winnerPlayer);
     if(winnerPlayer != draw){
@@ -529,8 +535,8 @@ function gameResult(winnerPlayer) {
         winnertext = "This Game Is Draw";
     }
     
-     $("#winner-text").text(winnertext);
-    $("#model-game-result").modal("show");
+     $("#player-info").text(winnertext);
+    
 }
 
 function redirectToHomePage(){
