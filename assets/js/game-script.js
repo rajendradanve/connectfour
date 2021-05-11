@@ -96,22 +96,25 @@ function computerPlayer() {
 
     let isComputerWin = 0;
     let isComputerPlayed = false;
+    
+    
 
     while (!isComputerPlayed) {
         let computerColumn = Math.floor(Math.random() * 7);
-
+       
         if (checkEmptyClass(computerColumn, 5)) {
 
-            let computerRow = addActivePlayerCoin(computerColumn, computerCoin);
-            isComputerPlayed = true;
-            isComputerWin = checkIfWin(computerColumn, computerRow, computerCoin)
-            break;
+            $(`#coin${computerColumn}6`).removeClass(clearCell).addClass(computerCoin).animate({opacity : 0.7}, "fast").animate({opacity: 1}, "fast");
+                
+                let computerRow = addActivePlayerCoin(computerColumn, computerCoin);
+                isComputerWin = checkIfWin(computerColumn, computerRow, computerCoin);
+                isComputerPlayed = true;
+                 break;
         }
-
+        
     }
-
     return isComputerWin;
-
+   
 }
 
 
