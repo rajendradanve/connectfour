@@ -123,9 +123,6 @@ function addActivePlayerCoin(selectedColumn, playerCoin) {
     
     let rowNumber = 0;
 
-    
-    
-    
     while (rowNumber < 6) { // rowNumber required to checked only 6 rows from bottom.
 
         if (checkEmptyClass(selectedColumn, rowNumber)) {
@@ -144,7 +141,7 @@ function addActivePlayerCoin(selectedColumn, playerCoin) {
     }
 
     //removing coinClass for current player so that another player can play.
-    removeAddClass(selectedColumn, 6, playerCoin, "empty-coin");
+    removeAddClass(selectedColumn, 6, playerCoin, clearCell);
     return rowNumber;
 }
 
