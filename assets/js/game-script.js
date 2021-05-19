@@ -158,15 +158,15 @@ function insertActivePlayerCoinToGrid(selectedColumn) {
         row_no++;
     }
 
-    removeCoinFromTopRow();
+    //removing coinClass for current player so that another player can play.
+    removeAndAddClassFromCell({
+        column:selectedColumn, 
+        row: NO_OF_TOTAL_ROWS, 
+        removeClass: activePlayerCoin, 
+        addClass: EMPTY_COIN_CLASS
+    });
 
     return row_no;
-}
-
-function removeCoinFromTopRow(){
-    for(column=0; column<NO_OF_COLS; column++){
-    $(`#coin${column}${NO_OF_TOTAL_ROWS}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(EMPTY_COIN_CLASS);
-    }
 }
 
 function disableColumnForFurtherClick(colNo) {
