@@ -64,9 +64,11 @@ function startGame() {
 
                     if (isGameOn === 0) {
 
+                        changePlayer();
+
                         setTimeout(function () {
 
-                            changePlayer();
+                            
                            
                             if (currentPlayerId === 2 && second_player === COMPUTER_PLAYER) {
                                
@@ -106,7 +108,7 @@ function playComputersTurn() {
         if (checkIfCoinExists(computerColumn, NO_OF_GAME_ROWS)) {
             $(`#coin${computerColumn}${NO_OF_TOTAL_ROWS}`).removeClass(EMPTY_COIN_CLASS).addClass(PLAYER_2_COIN_CLASS).animate({
                 opacity: 0.7}, "medium").animate({opacity: 1}, "medium");
-                console.log("animation of computer done");
+                
             let computerRow = insertActivePlayerCoinToGrid(computerColumn);
             isComputerWon = checkIfPlayerWon(computerColumn, computerRow);
             isComputerPlayed = true;
@@ -183,7 +185,7 @@ function removeAndAddClassFromCell({column, row, removeClass, addClass}) {
 
     let cellWidth = parseFloat($("#coin00").css("height").slice(0, -2));
     let animationTop = "-" + (NO_OF_TOTAL_ROWS-row) * cellWidth + "px"; //caculated releative position for animation
-    console.log("column: "+column +", row: "+ row + ", removeClass: "+ removeClass +", addClass: "+ addClass);
+   
     $(`#coin${column}${row}`).removeClass(removeClass).addClass(addClass).css("top", animationTop).animate({
         top: 0
     }, "slow");
@@ -221,7 +223,7 @@ function getPlayerInfo() {
         //Todo: set up error
         second_player = "error";
     }
-    console.log(second_player);
+    
     return ;
 }
 
