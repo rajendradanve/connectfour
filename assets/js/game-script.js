@@ -10,11 +10,14 @@ const NO_OF_GAME_ROWS = 5;
 let currentPlayerId = 1;
 const MIN_COIN_COUNT_SEQ_REQUIRED = 4;
 const TIMEOUT_DELAY = 1000;
+let second_player = "";
+let activePlayerCoin = PLAYER_1_COIN_CLASS;
 
 $(document).ready(function () {
-    let player2 = getPlayerInfo();
+    
+    getPlayerInfo();
 
-    if (player2 != HUMAN_PLAYER && player2 != COMPUTER_PLAYER) {
+    if (second_player != HUMAN_PLAYER && second_player != COMPUTER_PLAYER) {
 
         redirectToHomePage();
 
@@ -22,40 +25,51 @@ $(document).ready(function () {
 
         setGameArea();
 
-        startGame(player2);
+        startGame();
     }
 });
 
-function startGame(player2) {
-    let currentPlayerId = 1;
-
+function startGame() {
+ 
     for (let col_no = 0; col_no < NO_OF_COLS; col_no++) {
         $(`#column${col_no}`)
             .mouseenter(function () {
                 if (checkIfCoinExists(col_no, NO_OF_GAME_ROWS)) {
+                    
                     //only allowed to add coin if top last row in the game board is not filled with coin.
-
-                    removeAndAddClassFromCell(col_no, NO_OF_TOTAL_ROWS, EMPTY_COIN_CLASS, activePlayerCoin(currentPlayerId)); // not show coin in the top entry row as no empty cell available.
+                    removeAndAddClassFromCell({
+                        column: col_no, 
+                        row: NO_OF_TOTAL_ROWS, 
+                        removeClass: EMPTY_COIN_CLASS, 
+                        addClass: activePlayerCoin
+                    }); // not show coin in the top entry row as no empty cell available.
                 }
             })
             .mouseleave(function () {
-                removeAndAddClassFromCell(col_no, NO_OF_TOTAL_ROWS, activePlayerCoin(currentPlayerId));
+                removeAndAddClassFromCell({
+                    column: col_no, 
+                    row: NO_OF_TOTAL_ROWS, 
+                    removeClass: activePlayerCoin,
+                    addClass: EMPTY_COIN_CLASS
+                });
             })
             .click(function () {
 
                 if (checkIfCoinExists(col_no, NO_OF_GAME_ROWS)) {
                     //Allowed to enter coin only if last row (6th) in game board is not filled with any coin.
 
-                    let row = insertActivePlayerCoinToGrid(col_no, activePlayerCoin(currentPlayerId), EMPTY_COIN_CLASS); //add coin of active player in the selected column and available row.
+                    let row = insertActivePlayerCoinToGrid(col_no, activePlayerCoin, EMPTY_COIN_CLASS); //add coin of active player in the selected column and available row.
 
-                    let isGameOn = checkIfWin(col_no, row, activePlayerCoin(currentPlayerId));
+                    let isGameOn = checkIfPlayerWon(col_no, row);
 
                     if (isGameOn === 0) {
 
                         setTimeout(function () {
-                            currentPlayerId = changePlayer(currentPlayerId);
 
-                            if (currentPlayerId === 2 && player2 === COMPUTER_PLAYER) {
+                            changePlayer();
+                           
+                            if (currentPlayerId === 2 && second_player === COMPUTER_PLAYER) {
+                               
                                 playComputersTurn();
 
                             }
@@ -80,8 +94,8 @@ function startGame(player2) {
 
 //function when one of the player is computer. Function will find random cell to put coin.
 function playComputersTurn() {
-    let activePlayer = 2; //if computer is playing, It is always 2nd player as per current game.
-    let computerCoin = activePlayerCoin(activePlayer);
+
+    //currently computer will be 2nd player. so PLAYER_2_COIN_CLASS used.
 
     let isComputerWon = 0;
     let isComputerPlayed = false;
@@ -89,26 +103,24 @@ function playComputersTurn() {
     while (!isComputerPlayed) {
         let computerColumn = Math.floor(Math.random() * 7);
 
-        if (checkIfCoinExists(computerColumn, 5)) {
-            $(`#coin${computerColumn}6`).removeClass(EMPTY_COIN_CLASS).addClass(computerCoin).animate({
-                opacity: 0.7
-            }, "fast").animate({
-                opacity: 1
-            }, "fast");
-
-            let computerRow = insertActivePlayerCoinToGrid(computerColumn, computerCoin);
-            isComputerWon = checkIfWin(computerColumn, computerRow, computerCoin);
+        if (checkIfCoinExists(computerColumn, NO_OF_GAME_ROWS)) {
+            $(`#coin${computerColumn}${NO_OF_TOTAL_ROWS}`).removeClass(EMPTY_COIN_CLASS).addClass(PLAYER_2_COIN_CLASS).animate({
+                opacity: 0.7}, "medium").animate({opacity: 1}, "medium");
+                console.log("animation of computer done");
+            let computerRow = insertActivePlayerCoinToGrid(computerColumn);
+            isComputerWon = checkIfPlayerWon(computerColumn, computerRow);
             isComputerPlayed = true;
             break;
         }
     }
 
-
     if (isComputerWon === 0) {
-        currentPlayerId = changePlayer(currentPlayerId);
+
+        changePlayer();
+
     } else if (isComputerWon === 1) {
 
-        gameResult(player2);
+        gameResult(second_player);
 
     } else if (isComputerWon === 2) {
 
@@ -118,18 +130,24 @@ function playComputersTurn() {
 }
 
 //function to add active player coin in the empty cell and remove column if place is not available.
-function insertActivePlayerCoinToGrid(selectedColumn, playerCoin) {
+function insertActivePlayerCoinToGrid(selectedColumn) {
+    
     let row_no = 0;
 
-    while (row_no < 6) {
+    while (row_no < NO_OF_TOTAL_ROWS) {
         // row_norequired to checked only 6 rows from bottom.
 
         if (checkIfCoinExists(selectedColumn, row_no)) {
-            removeAndAddClassFromCell(selectedColumn, row_no, EMPTY_COIN_CLASS, playerCoin);
+            removeAndAddClassFromCell({
+                column: selectedColumn, 
+                row: row_no, 
+                removeClass: EMPTY_COIN_CLASS, 
+                addClass: activePlayerCoin
+            });
 
             if (row_no === NO_OF_GAME_ROWS) {
+                
                 //if coin goes to top last row of the game board then that column shall not be used for further play.
-
                 disableColumnForFurtherClick(selectedColumn);
 
             }
@@ -140,25 +158,32 @@ function insertActivePlayerCoinToGrid(selectedColumn, playerCoin) {
         row_no++;
     }
 
-    //removing coinClass for current player so that another player can play.
-    removeAndAddClassFromCell(selectedColumn, NO_OF_TOTAL_ROWS, playerCoin, EMPTY_COIN_CLASS);
+    removeCoinFromTopRow();
+
     return row_no;
 }
 
+function removeCoinFromTopRow(){
+    for(column=0; column<NO_OF_COLS; column++){
+    $(`#coin${column}${NO_OF_TOTAL_ROWS}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(EMPTY_COIN_CLASS);
+    }
+}
+
 function disableColumnForFurtherClick(colNo) {
-    return $(`#coin${colNo}6`).removeClass(player1Coin).removeClass(player2Coin).addClass(clearCell);
+    return $(`#coin${colNo}${NO_OF_GAME_ROWS}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(EMPTY_COIN_CLASS);
 }
 
 //function to check if cell is empty to add coin
 function checkIfCoinExists(column, row) {
-    return $(`#coin${column}${row}`).hasClass("empty-coin");
+    return $(`#coin${column}${row}`).hasClass(EMPTY_COIN_CLASS);
 }
 
 //function to remove class and add another class from cell
-function removeAndAddClassFromCell(column, row, removeClass, addClass) {
-    let cellWidth = parseFloat($("#coin00").css("height").slice(0, -2));
-    let animationTop = "-" + (5 - row) * cellWidth + "px"; //caculated releative position for animation
+function removeAndAddClassFromCell({column, row, removeClass, addClass}) {
 
+    let cellWidth = parseFloat($("#coin00").css("height").slice(0, -2));
+    let animationTop = "-" + (NO_OF_TOTAL_ROWS-row) * cellWidth + "px"; //caculated releative position for animation
+    console.log("column: "+column +", row: "+ row + ", removeClass: "+ removeClass +", addClass: "+ addClass);
     $(`#coin${column}${row}`).removeClass(removeClass).addClass(addClass).css("top", animationTop).animate({
         top: 0
     }, "slow");
@@ -168,37 +193,39 @@ function removeAndAddClassFromCell(column, row, removeClass, addClass) {
 
 //setup active player coin
 
-function activePlayerCoin(playerNumber) {
-    let activeCoin = playerNumber === 1 ? PLAYER_1_COIN_CLASS : PLAYER_2_COIN_CLASS;
+function setActivePlayerCoin() {
 
-    return activeCoin;
+    activePlayerCoin = currentPlayerId === 1 ? PLAYER_1_COIN_CLASS : PLAYER_2_COIN_CLASS;
+
+    return;
 }
 
 // change player
-function changePlayer(currentPlayerId) {
-    let newPlayer = currentPlayerId === 1 ? 2 : 1;
+function changePlayer() {
 
-    $("#player-info").text(`Player ${newPlayer} turn`);
+    currentPlayerId = currentPlayerId === 1 ? 2 : 1;
+    setActivePlayerCoin();
+    $("#player-info").text(`Player ${currentPlayerId} turn`);
 
-    return newPlayer;
+    return;
 }
 
+//function to get information about second player (Computer or Human)
 function getPlayerInfo() {
-    let p2 = "";
-
+   
     if (window.location.search.split("?").length > 1) {
         let params = window.location.search.split("?")[1].split("&");
 
-        p2 = decodeURIComponent(params[0].split("=")[1]);
+        second_player = decodeURIComponent(params[0].split("=")[1]);
     } else {
         //Todo: set up error
-        p2 = "error";
+        second_player = "error";
     }
-
-    return p2;
+    console.log(second_player);
+    return ;
 }
 
-//DOM using java. Setting up gaming graphics
+//DOM using javascript. Setting up gaming graphics
 function setGameArea() {
     //Assign width and height for game container div based on broswer width and height
     let gameContainerWidth = window.innerWidth * 0.9;
@@ -256,10 +283,10 @@ This function checks if there are any four same coins in a
 */
 
 //checking if any of winning condition satisfied
-function checkIfWin(i, j, winningCheckClass) {
-    let winningInt = 0;
+function checkIfPlayerWon(playedColumn, playedRow) {
+    let winningInt = 0; //0 for game continue, 1 for game won by active player, 2 for game draw.
 
-    if (isColumnWinning(i, j, winningCheckClass) || isRowWining(i, j, winningCheckClass) || isDiagonalWinning(i, j, winningCheckClass)) {
+    if (isColumnWinning(playedColumn, playedRow, activePlayerCoin) || isRowWining(playedColumn, playedRow, activePlayerCoin) || isDiagonalWinning(playedColumn, playedRow, activePlayerCoin)) {
         winningInt = 1; // winning condition satisfied. stop game.
     } else if (isGameDraw()) {
         winningInt = 2; // game is GAME_DRAW. No empty cells to add coins. No one wins
@@ -444,8 +471,8 @@ function isDiagonalWinning(column, row, coinColorClass) {
 function isGameDraw() {
     let gameDrawStatus = true;
 
-    for (let i = 0; i < 7; i++) {
-        if (checkIfCoinExists(i, 5)) {
+    for (let colNo = 0; colNo < 7; colNo++) {
+        if (checkIfCoinExists(colNo, NO_OF_GAME_ROWS)) {
             gameDrawStatus = false;
             break;
         }
@@ -454,9 +481,10 @@ function isGameDraw() {
 }
 
 function gameResult(winnerPlayer) {
-    for (let i = 0; i < 6; i++) {
-        $(`#column${i}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(EMPTY_COIN_CLASS);
-        $(`#column${i}`).off("click").off("mouseenter").off("mouseleave");
+
+    for (let col_no = 0; col_no < NO_OF_COLS; col_no++) {
+        $(`#column${col_no}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(EMPTY_COIN_CLASS);
+        $(`#column${col_no}`).off("click").off("mouseenter").off("mouseleave");
     }
 
     let winnertext = "";
