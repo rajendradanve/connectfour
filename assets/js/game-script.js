@@ -288,7 +288,7 @@ This function checks if there are any four same coins in a
 function checkIfPlayerWon(playedColumn, playedRow) {
     let winningInt = 0; //0 for game continue, 1 for game won by active player, 2 for game draw.
 
-    if (isColumnWinning(playedColumn, playedRow, activePlayerCoin) || isRowWining(playedColumn, playedRow, activePlayerCoin) || isDiagonalWinning(playedColumn, playedRow, activePlayerCoin)) {
+    if (isColumnWinning(playedColumn, playedRow) || isRowWining(playedColumn, playedRow) || isDiagonalWinning(playedColumn, playedRow)) {
         winningInt = 1; // winning condition satisfied. stop game.
     } else if (isGameDraw()) {
         winningInt = 2; // game is GAME_DRAW. No empty cells to add coins. No one wins
@@ -299,7 +299,7 @@ function checkIfPlayerWon(playedColumn, playedRow) {
     return winningInt;
 }
 
-function isColumnWinning(column, row, coinColorClass) {
+function isColumnWinning(column, row) {
     let numberOfCoinsColumn = 1; //to check if 4 coins are in a row.
     let isColumnWinner = false;
     if (row > 2) {
@@ -307,7 +307,7 @@ function isColumnWinning(column, row, coinColorClass) {
 
         //for loop to check if there are same coins in a column
         for (let j = row - 1; j >= row - 3; j--) {
-            if ($(`#coin${column}${j}`).hasClass(coinColorClass)) {
+            if ($(`#coin${column}${j}`).hasClass(activePlayerCoin)) {
                 numberOfCoinsColumn++;
             }
 
@@ -320,7 +320,7 @@ function isColumnWinning(column, row, coinColorClass) {
 }
 
 //Below function check if four same coins are in a same row.
-function isRowWining(column, row, coinColorClass) {
+function isRowWining(column, row) {
     let numberOfCoinsRow = 1;
     let isRowWinner = false;
     let minColumnCheck = column <= 3 ? 0 : column - 3; //only need to check max 3 columns on left if available
@@ -330,7 +330,7 @@ function isRowWining(column, row, coinColorClass) {
     //below while loop checking left side of the row if same conis are present
 
     while (i >= minColumnCheck) {
-        if ($(`#coin${i}${row}`).hasClass(coinColorClass)) {
+        if ($(`#coin${i}${row}`).hasClass(activePlayerCoin)) {
             numberOfCoinsRow++;
         } else {
             break; // loop breaks if immidate cells don't have same class.
@@ -345,7 +345,7 @@ function isRowWining(column, row, coinColorClass) {
         let j = column + 1;
 
         while (j <= maxColumnCheck) {
-            if ($(`#coin${j}${row}`).hasClass(coinColorClass)) {
+            if ($(`#coin${j}${row}`).hasClass(activePlayerCoin)) {
                 numberOfCoinsRow++;
             } else {
                 break; // loop breaks if immidate cells don't have same class.
@@ -361,113 +361,143 @@ function isRowWining(column, row, coinColorClass) {
 
     return isRowWinner;
 }
-// Below function check if four coins are same diagonally.
-function isDiagonalWinning(column, row, coinColorClass) {
-    let diagonalWinner = false;
 
-    //left to right check. As per testing condition for left top cells and right bottom cells diagonal winning is not possible.
+// Below function check if four coins are same diagonally.
+function isDiagonalWinning(column, row) {
+
+    if(diagonalLeftToRightWinningCheck(column, row) || diagonalRightToLeftWinningCheck(column, row)){
+
+        return true;
+    }else {
+        return false;
+    }
+
+}
+
+function diagonalLeftToRightWinningCheck(column, row){
+
+      //left to right check. As per testing condition for left top cells and right bottom cells diagonal winning is not possible.
     // below if statement is used to remove above cells from checking.
 
     if ((row > column && row - column >= 3) || (row < column && column - row >= 4)) {
-        diagonalWinner = false;
-    } else {
-        let numberOfDiagonalLeftToRight = 1; // for left to right condition. Value one is given as current cell will already pass the test
-        let minColumnCheckLeftToRight = column <= 3 ? 0 : column - 3; //only need to check max 3 columns on left if available
-        let maxColumnCheckLeftToRight = column >= 3 ? 6 : column + 3; // only need to check max 3 column on right if available
-        let minRowCheckLeftToRight = row <= 3 ? 0 : row - 3; // only need to check 3 down rows if available
-        let maxRowCheckLeftToRight = row >= 3 ? 5 : row + 3; // only need to check 3 up rows if available of max 5
-        let i = column - 1; //to check downward items.
-        let j = row - 1; // to check downward items
 
-        //below while loop check diagonal cells to left side (if cells are available)
-        while (i >= minColumnCheckLeftToRight && j >= minRowCheckLeftToRight) {
-            if ($(`#coin${i}${j}`).hasClass(coinColorClass)) {
-                numberOfDiagonalLeftToRight++;
-            } else {
-                break; // loop breaks if immidate cells don't have same class.
+        return false;
+    }else{
+
+    let totalLoopCounter = 3; //Need to loop max 3 times to check winning condition.
+    let row_down_check_idx = row-1; // setting initial value to check coins on left side of the current coin cell
+    let col_down_check_idx = column-1;//setting initial value to check coins on left side of the current coin cell
+    let winCounterCheck = 1; // current cell already has active player coin. So value is set to 1
+
+    //below loop will check left side row and column diagonally.
+        while(totalLoopCounter>0 && col_down_check_idx>=0 && row_down_check_idx >= 0){
+
+            if ($(`#coin${col_down_check_idx}${row_down_check_idx}`).hasClass(activePlayerCoin)) {
+
+                winCounterCheck++;
+
+            }else{
+                break;
             }
 
-            i--;
-            j--;
+            row_down_check_idx--;
+            col_down_check_idx--;
+            totalLoopCounter--;
+
         }
 
-        //if condition check winning condition already acheived or not
-        if (numberOfDiagonalLeftToRight != 4) {
-            //reassign value to i and j
-            i = column + 1;
-            j = row + 1;
-            //Below while loop check diagonal cell to right (if cells are available)
-            while (i <= maxColumnCheckLeftToRight && j <= maxRowCheckLeftToRight) {
-                if ($(`#coin${i}${j}`).hasClass(coinColorClass)) {
-                    numberOfDiagonalLeftToRight++;
-                } else {
-                    break; // loop breaks if immidate cells don't have same class.
+        if(winCounterCheck != MIN_COIN_COUNT_SEQ_REQUIRED){ //if winCounterCheck is 4 then winning condition is satisfied and no need for further checks.
+  
+
+            totalLoopCounter = 3; //reassigning value of the counter to 3 to check left to right condition upward.
+            let row_up_check_idx = row+1; // setting initial value to check coins on right side of the current coin cell
+            let col_up_check_idx = column+1;//setting initial value to check coins on right side of the current coin cell
+
+            while(totalLoopCounter > 0 && col_up_check_idx < NO_OF_COLS && row_up_check_idx < NO_OF_GAME_ROWS){
+                if ($(`#coin${col_up_check_idx}${row_up_check_idx}`).hasClass(activePlayerCoin)) {
+
+                    winCounterCheck++;
+
+                }else{
+                    break;
                 }
-                i++;
-                j++;
+                row_up_check_idx++;
+                col_up_check_idx++;
+                totalLoopCounter--;
             }
+
         }
 
-        if (numberOfDiagonalLeftToRight == 4) {
-            diagonalWinner = true;
+        if(winCounterCheck === MIN_COIN_COUNT_SEQ_REQUIRED){
+            return true;
+        }else{
+            return false;
         }
+
     }
+}
 
-    //Right to Left check
-    // Right to left check required to done if left to right condition doesn't satisfy winning condition.
-    if (!diagonalWinner) {
-        // As per testing condition left bottom cells and right top cells diagonal winning is not possible.
-        // below if statement is used to remove above cells from checking.
-        if (row + column <= 2 || column + row >= 9) {
-            diagonalWinner = false;
+function diagonalRightToLeftWinningCheck(column, row){
+ // As per testing condition left bottom cells and right top cells diagonal winning is not possible.
+// below if statement is used to remove above cells from checking. This will avoid extra looping time.
+    if (row + column <= 2 || column + row >= 9) {
+
+            return false;
+
         } else {
-            let numberOfDiagonalRightToLeft = 1; // for Rith to left condition. Value one is given as current cell will already pass the test
 
-            let minColumnCheckRightToLeft = column <= 3 ? 0 : column - 3; //only need to check max 3 columns on left if available
-            let maxColumnCheckRightToLeft = column >= 3 ? 6 : column + 3; // only need to check max 3 column on right if available
-            let minRowCheckRightToLeft = row <= 3 ? 0 : row - 3; // only need to check 3 down rows if available
-            let maxRowCheckRightToLeft = row >= 3 ? 5 : row + 3; // only need to check 3 up rows if available of max 5
+            let totalLoopCounter = 3; //Need to loop max 3 times to check winning condition.
+            let row_down_check_idx = row-1; // setting initial value to check coins on right bottom side of the current coin cell
+            let col_up_check_idx = column+1;//setting initial value to check coins on right bottom side of the current coin cell
+            let winCounterCheck = 1; // current cell already has active player coin. So value is set to 1
 
-            //reassigning values to i (column) and j (rows)
-            i = column + 1; //to check downward items towards right . Number of column increases towards right
-            j = row - 1; // to check downward items towards right
+            //below loop will check right bottom side current row and column diagonally.
+        while(totalLoopCounter>0 && col_up_check_idx< NO_OF_COLS && row_down_check_idx >= 0){
 
-            //below while loop check diagonal cells to left side (if cells are available)
-            while (i <= maxColumnCheckRightToLeft && j >= minRowCheckRightToLeft) {
-                if ($(`#coin${i}${j}`).hasClass(coinColorClass)) {
-                    numberOfDiagonalRightToLeft++;
-                } else {
-                    break; // loop breaks if immidate cells don't have same class.
-                }
+            if ($(`#coin${col_up_check_idx}${row_down_check_idx}`).hasClass(activePlayerCoin)) {
 
-                i++;
-                j--;
+                winCounterCheck++;
+
+            }else{
+                break;
             }
 
-            //if condition check winning condition already acheived or not
-            if (numberOfDiagonalRightToLeft != 4) {
-                //reassign value to i and j
-                i = column - 1;
-                j = row + 1;
-                //Below while loop check diagonal cell to right (if cells are available)
-                while (i >= minColumnCheckRightToLeft && j <= maxRowCheckRightToLeft) {
-                    if ($(`#coin${i}${j}`).hasClass(coinColorClass)) {
-                        numberOfDiagonalRightToLeft++;
-                    } else {
-                        break; // loop breaks if immidate cells don't have same class.
-                    }
-                    i--;
-                    j++;
-                }
-            }
+            row_down_check_idx--;
+            col_down_check_idx++;
+            totalLoopCounter--;
 
-            if (numberOfDiagonalRightToLeft == 4) {
-                diagonalWinner = true;
-            }
         }
-    }
 
-    return diagonalWinner;
+        if(winCounterCheck != MIN_COIN_COUNT_SEQ_REQUIRED){ //if winCounterCheck is 4 then winning condition is satisfied and no need for further checks.
+  
+            totalLoopCounter = 3; //reassigning value of the counter to 3 to check left to right condition upward.
+            let row_up_check_idx = row+1; // setting initial value to check coins on right side of the current coin cell
+            let col_down_check_idx = column-1;//setting initial value to check coins on right side of the current coin cell
+
+            while(totalLoopCounter > 0 && col_down_check_idx >= 0 && row_up_check_idx < NO_OF_GAME_ROWS){
+
+                if ($(`#coin${col_down_check_idx}${row_up_check_idx}`).hasClass(activePlayerCoin)) {
+
+                    winCounterCheck++;
+
+                }else{
+
+                    break;
+                }
+                row_up_check_idx++;
+                col_up_check_idx--;
+                totalLoopCounter--;
+            }
+
+        }
+
+        if(winCounterCheck === MIN_COIN_COUNT_SEQ_REQUIRED){
+            return true;
+        }else{
+            return false;
+        }
+
+        }
 }
 
 function isGameDraw() {
