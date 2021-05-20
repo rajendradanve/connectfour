@@ -229,6 +229,7 @@ function getPlayerInfo() {
 
 //DOM using javascript. Setting up gaming graphics
 function setGameArea() {
+
     //Assign width and height for game container div based on broswer width and height
     let gameContainerWidth = window.innerWidth * 0.9;
     let gameContainerHeight = window.innerHeight;
@@ -243,13 +244,10 @@ function setGameArea() {
     // below formula compare 60% of width vs 80% of height and takes the minimum
     let gameAreaSize = gameContainerWidth * 0.6 >= availableHeightForGameArea * 0.9 ? availableHeightForGameArea * 0.9 : gameContainerWidth * 0.6;
 
-    //calculated margin available and divided for top and bottom
-    let gameAreaMargin = (availableHeightForGameArea - gameAreaSize) / 2;
-
     //assign width, height and margin to game-area div
     $("#game-area").css("width", gameAreaSize + "px");
     $("#game-area").css("height", gameAreaSize + "px");
-    $("#game-area").css("margin-top", gameAreaMargin + "px");
+    
 
     //adding column and cells html using javascript and JQuery
     // number of rows will be 7 including row for coin insert. i: number of column, j: number of row
