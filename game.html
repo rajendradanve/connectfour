@@ -15,10 +15,15 @@
    </head>
    <body class="connect-four-page">
       <div class="container-fluid">
-         <div class="row position-absolute top-50 start-50 translate-middle">
-            <div class="col">
+         <div class="row m-0 p-0">
+            
+            <div class="col position-absolute top-50 start-50 translate-middle">
+                
                <div id="game-container">
+
+                   <div id="game-controller-container">
                   <div id="game-controller">
+                      
                      <div class = "controller-icon my-2" onclick="reloadPage()"><i class="fas fa-redo-alt"></i></div>
                      <div class = "controller-icon mt-2" onclick="redirectToHomePage()"><i class="fas fa-house-user"></i></div>
                      <div class = "controller-icon-music mt-2" id= "music" onclick="toggleSound()">
@@ -32,6 +37,7 @@
                      <h3 class="text-center">
                         <snap id="player-info">Player 1 Turn</snap>
                      </h3>
+                  </div>
                   </div>
                   <div id="game-area">
                   </div>

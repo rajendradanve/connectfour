@@ -1,6 +1,7 @@
-const PLAYER_1_COIN_CLASS = "red-coin";
-const PLAYER_2_COIN_CLASS = "yellow-coin";
+const PLAYER_1_COIN_CLASS = "red-pokeball";
+const PLAYER_2_COIN_CLASS = "yellow-pokeball";
 const EMPTY_COIN_CLASS = "empty-coin";
+const NO_COIN_CLASS = "no-coin";
 const GAME_DRAW = "Draw";
 const HUMAN_PLAYER = "Human";
 const COMPUTER_PLAYER = "Computer";
@@ -136,10 +137,11 @@ function insertActivePlayerCoinToGrid(selectedColumn) {
     
     let row_no = 0;
 
-    while (row_no < NO_OF_TOTAL_ROWS) {
+    while (row_no <= NO_OF_GAME_ROWS) {
         // row_norequired to checked only 6 rows from bottom.
-
+        
         if (checkIfCoinExists(selectedColumn, row_no)) {
+            console.log("column: "+ selectedColumn + "row : "+ row_no);
             removeAndAddClassFromCell({
                 column: selectedColumn, 
                 row: row_no, 
@@ -172,7 +174,7 @@ function insertActivePlayerCoinToGrid(selectedColumn) {
 }
 
 function disableColumnForFurtherClick(colNo) {
-    return $(`#coin${colNo}${NO_OF_GAME_ROWS}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(EMPTY_COIN_CLASS);
+    return $(`#coin${colNo}${NO_OF_TOTAL_ROWS}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(NO_COIN_CLASS);
 }
 
 //function to check if cell is empty to add coin
@@ -230,40 +232,31 @@ function getPlayerInfo() {
 //DOM using javascript. Setting up gaming graphics
 function setGameArea() {
 
-    //Assign width and height for game container div based on broswer width and height
-    let gameContainerWidth = window.innerWidth * 0.9;
-    let gameContainerHeight = window.innerHeight;
-    $("#game-container").css("width", gameContainerWidth);
-    $("#game-container").css("height", gameContainerHeight);
-
-    //calculate height of available game-container height - game-controller height
-    let availableHeightForGameArea = gameContainerHeight - parseFloat($("#game-controller").css("height").slice(0, -2));
-
-    //calculated sized for game-area div based on width and height.
-    // Size required for game-area div required to be square within game-container
-    // below formula compare 60% of width vs 80% of height and takes the minimum
-    let gameAreaSize = gameContainerWidth * 0.6 >= availableHeightForGameArea * 0.9 ? availableHeightForGameArea * 0.9 : gameContainerWidth * 0.6;
+    let availableHeightForGameArea = window.innerHeight - parseFloat($("#game-controller-container").css("height").slice(0, -2)) - 30;
+    let availableWidthForGameArea = window.innerWidth -40;
+    
+    let gameAreaSize = availableWidthForGameArea >= availableHeightForGameArea ? availableHeightForGameArea  : availableWidthForGameArea;
 
     //assign width, height and margin to game-area div
     $("#game-area").css("width", gameAreaSize + "px");
     $("#game-area").css("height", gameAreaSize + "px");
     
-
     //adding column and cells html using javascript and JQuery
-    // number of rows will be 7 including row for coin insert. i: number of column, j: number of row
-    // when row is top row  j = 6 class of square-cell-entry is added and for other rows square-cell-game-board is added to create board look
+    // number of rows will be 7 including row for coin insert. 
+    // when row is top row  row_no = 6 class of square-cell-entry is added and for other rows square-cell-game-board is added to create board look
     // for each square cell and coin circle unique id is generated.
-    for (let i = 0; i < 7; i++) {
-        // i is number for column from left to right
-        $("#game-area").append(`<div id="column${i}"></div>`);
-        $(`#column${i}`).addClass("column");
-        for (let j = 0; j < 7; j++) {
-            // j is number of row. i and j both creat cell grid.
-            $(`#column${i}`).append(`<div id="square-cell-${i}${j}"><div class="empty-coin-out"><div id="coin${i}${j}" class= "empty-coin"></div></div></div></div>`);
-            if (j == 6) {
-                $(`#square-cell-${i}${j}`).addClass("square-cell-entry");
+
+    for (let col_no = 0; col_no < NO_OF_COLS; col_no++) {
+       
+        $("#game-area").append(`<div id="column${col_no}"></div>`);
+        $(`#column${col_no}`).addClass("column");
+        for (let row_no = 0; row_no <= NO_OF_TOTAL_ROWS; row_no++) {
+            
+            $(`#column${col_no}`).append(`<div id="square-cell-${col_no}${row_no}"><div class="empty-coin-out"><div id="coin${col_no}${row_no}" class= "empty-coin"></div></div></div></div>`);
+            if (row_no === NO_OF_TOTAL_ROWS) {
+                $(`#square-cell-${col_no}${row_no}`).addClass("square-cell-entry");
             } else {
-                $(`#square-cell-${i}${j}`).addClass("square-cell-game-board");
+                $(`#square-cell-${col_no}${row_no}`).addClass("square-cell-game-board");
             }
         }
     }
@@ -461,7 +454,7 @@ function diagonalRightToLeftWinningCheck(column, row){
             }
 
             row_down_check_idx--;
-            col_down_check_idx++;
+            col_up_check_idx++;
             totalLoopCounter--;
 
         }
@@ -520,12 +513,12 @@ function gameResult(winnerPlayer) {
     let winnertext = "";
     console.log("winner player is " + winnerPlayer);
     if (winnerPlayer != GAME_DRAW) {
-        winnertext = `...And WINNER IS ${winnerPlayer}`;
+        winnertext = `...And WINNER IS <br>${winnerPlayer}`;
     } else {
-        winnertext = "This Game Is Draw";
+        winnertext = "This Game Is <br> Draw";
     }
 
-    $("#player-info").text(winnertext);
+    $("#player-info").text(winnertext).animate({opacity: 0.7, fontSize: '2rem'}, "slow").animate({opacity: 1}, "slow");;
 }
 
 function redirectToHomePage() {

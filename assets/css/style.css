@@ -8,7 +8,7 @@ body {
     font-family: "Petrona", serif;
 }
 
-h1 {
+h1, h3 {
     font-weight: 900;
     font-style: italic;
     color: #363b81;
@@ -38,27 +38,27 @@ h1 {
 }
 
 #random-coin-1 {
-    background: white url("../images/red-coin.png") center/cover;
+    background: white url("../images/red-pokeball.png") center/cover;
     animation: move-in-steps 7s infinite;
 }
 
 #random-coin-2 {
-    background: white url("../images/yellow-coin.png") center/cover;
+    background: white url("../images/yellow-pokeball.png") center/cover;
     animation: move-in-steps 5s infinite;
 }
 
 #random-coin-3 {
-    background: white url("../images/red-coin.png") center/cover;
+    background: white url("../images/red-pokeball.png") center/cover;
     animation: move-in-steps 6s infinite;
 }
 
 #random-coin-4 {
-    background: white url("../images/yellow-coin.png") center/cover;
+    background: white url("../images/yellow-pokeball.png") center/cover;
     animation: move-in-steps 7s infinite;
 }
 
 #random-coin-5 {
-    background: white url("../images/red-coin.png") center/cover;
+    background: white url("../images/red-pokeball.png") center/cover;
     animation: move-in-steps 5s infinite;
 }
 
@@ -96,7 +96,7 @@ h1 {
     font-weight: 900;
 }
 
-/* CSS for connect-four.html */
+/* CSS for game.html */
 
 .connect-four-page {
     background-color: #ffcb05;
@@ -104,10 +104,10 @@ h1 {
 
 #game-controller {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 #game-area {
@@ -116,7 +116,8 @@ h1 {
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .column {
@@ -156,22 +157,32 @@ h1 {
     margin: 0;
 }
 
-.red-coin {
+.no-coin{
+   
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: gray;
+    margin: 0;
+
+}
+
+.red-pokeball {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     margin: 5% auto;
     border: 2px black solid;
     box-sizing: border-box;
-    background: red url("../images/red-coin.png") center/cover;
+    background: red url("../images/red-pokeball.png") center/cover;
     position: relative;
 }
 
-.yellow-coin {
+.yellow-pokeball {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: yellow url("../images/yellow-coin.png") center/cover;
+    background: yellow url("../images/yellow-pokeball.png") center/cover;
     margin: 5% auto;
     border: 2px black solid;
     box-sizing: border-box;
@@ -181,17 +192,21 @@ h1 {
 .controller-icon {
     height: auto;
     width: auto;
-    font-size: 3rem;
+    font-size: 2.5rem;
     display: inline-block;
     color: #3d7dca;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 .controller-icon-music {
     height: auto;
     width: auto;
-    font-size: 4rem;
+    font-size: 3rem;
     display: inline-block;
     color: #3d7dca;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 .controller-icon:hover {
