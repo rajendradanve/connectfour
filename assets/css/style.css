@@ -231,6 +231,27 @@ h1, h3 {
     border: 1px solid gray;
 }
 
+@media (max-width:320px){
+    .controller-icon {
+    height: auto;
+    width: auto;
+    font-size: 2rem;
+    display: inline-block;
+    color: #3d7dca;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.controller-icon-music {
+    height: auto;
+    width: auto;
+    font-size: 2.5rem;
+    display: inline-block;
+    color: #3d7dca;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+}
 
 /* Error Page CSS */
 

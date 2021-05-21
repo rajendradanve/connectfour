@@ -14,8 +14,14 @@
 <body>
     <div class="container-fluid error-container">
         <div class="position-absolute top-50 start-50 translate-middle  p-4 error-btn-container">
-            <button class="btn btn-warning m-4 p-4">Go To Main Page</button>
+            <button class="btn btn-warning m-4 p-4" onclick="redirectToHomePage()">Go To Main Page</button>
         </div>
     </div>
+
+    <script>
+        function redirectToHomePage(){
+            window.location.href = "./";
+        }
+    </script>
 </body>
 </html>

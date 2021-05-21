@@ -14,6 +14,7 @@ const TIMEOUT_DELAY = 1000;
 let second_player = "";
 let activePlayerCoin = PLAYER_1_COIN_CLASS;
 
+
 $(document).ready(function () {
 
     getPlayerInfo();
@@ -94,7 +95,8 @@ function startGame() {
                         gameResult(GAME_DRAW);
                     } else {
                         //something is wrong
-                        console.log("something is wrong");
+                       
+                        redirectToErrorPage();
                     }
                 }
             });
@@ -243,7 +245,7 @@ function getPlayerInfo() {
         second_player = decodeURIComponent(params[0].split("=")[1]);
     } else {
         //Todo: set up error
-        second_player = "error";
+        redirectToErrorPage()
     }
 
     return;
@@ -567,9 +569,13 @@ function toggleSound() {
         $("#music").prop("title", "Music Mute");
         document.getElementById("background-audio").play();
     }
-    //document.getElementById("background-audio").loop = true;
+   
 }
 
 function reloadPage() {
     location.reload();
+}
+
+function redirectToErrorPage(){
+    window.location.href = "./error.html";
 }
