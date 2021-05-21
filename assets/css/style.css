@@ -222,3 +222,11 @@ h1, h3 {
 .redirect-controller {
     display: inline-block;
 }
+
+.game-result-div {
+    width: auto;
+    height: auto;
+    background-color: white;
+    border-radius: 2rem;
+    border: 1px solid gray;
+}

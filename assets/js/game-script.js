@@ -18,6 +18,8 @@ $(document).ready(function () {
 
     getPlayerInfo();
 
+    $("#game-result").hide();
+
     if (second_player != HUMAN_PLAYER && second_player != COMPUTER_PLAYER) {
 
         redirectToHomePage();
@@ -85,10 +87,10 @@ function startGame() {
 
                     } else if (isGameOn === 1) {
                         //current player is winner
-                        gameResult(`player ${currentPlayerId}`);
+                        gameResult(`Player ${currentPlayerId}`);
                     } else if (isGameOn === 2) {
                         //game is GAME_DRAW
-                        console.log("Game is GAME_DRAW");
+                       
                         gameResult(GAME_DRAW);
                     } else {
                         //something is wrong
@@ -165,8 +167,6 @@ function insertActivePlayerCoinToGrid(selectedColumn) {
 
             }
 
-
-
             break; //come out of for loop for row_noafter condition is satisfied once.
         }
 
@@ -174,7 +174,6 @@ function insertActivePlayerCoinToGrid(selectedColumn) {
     }
 
     //removing coinClass for current player so that another player can play.
-
 
     return row_no;
 }
@@ -198,8 +197,16 @@ function removeAndAddClassToCell({
     addClass
 }) {
 
+    
     let cellWidth = parseFloat($("#coin00").css("height").slice(0, -2));
-    let animationTop = "-" + (NO_OF_TOTAL_ROWS - row) * cellWidth + "px"; //caculated releative position for animation
+
+    let animationTop = "";
+
+        if(currentPlayerId === 2 && second_player === COMPUTER_PLAYER){
+            animationTop = "-" + (NO_OF_TOTAL_ROWS-row +1)  * cellWidth + "px"; //caculated releative position for animation
+        }else{
+            animationTop = "-" + (NO_OF_TOTAL_ROWS - row) * cellWidth + "px"; //caculated releative position for animation
+        }
 
     $(`#coin${column}${row}`).removeClass(removeClass).addClass(addClass).css("top", animationTop).animate({
         top: 0
@@ -529,20 +536,21 @@ function gameResult(winnerPlayer) {
         $(`#column${col_no}`).off("click").off("mouseenter").off("mouseleave");
     }
 
-    let winnertext = "";
+    $("#player-info").text("");
+    
+    let gameResultText = "";
 
     if (winnerPlayer != GAME_DRAW) {
-        winnertext = `...And Winner Is ${winnerPlayer}`;
+        
+        gameResultText= `<h1>${winnerPlayer} Won </h1>`;
+
     } else {
-        winnertext = "This Game Is Draw";
+        
+        gameResultText= `<h1>This Game Is <br> Draw </h1>`
     }
 
-    $("#player-info").text(winnertext).animate({
-        opacity: 0.7,
-        fontSize: '2rem'
-    }, "slow").animate({
-        opacity: 1
-    }, "slow");;
+    
+    $("#game-result").append(gameResultText).addClass('game-result-div').show().animate ({fontSize: '4rem'}, "slow");
 }
 
 function redirectToHomePage() {
