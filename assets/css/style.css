@@ -141,6 +141,11 @@ h1, h3 {
     background-color: white;
 }
 
+.square-cell-entry-disable {
+    flex: 1 1;
+    background-color: rgba(197, 192, 192, 0.9);
+}
+
 .empty-coin-out {
     width: 90%;
     height: 90%;
@@ -157,12 +162,12 @@ h1, h3 {
     margin: 0;
 }
 
-.no-coin{
+.disable-coin{
    
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: gray;
+    background-color: rgba(197, 192, 192, 0.9);
     margin: 0;
 
 }
@@ -172,7 +177,7 @@ h1, h3 {
     height: 100%;
     border-radius: 50%;
     margin: 5% auto;
-    border: 2px black solid;
+    border: 1px black solid;
     box-sizing: border-box;
     background: red url("../images/red-pokeball.png") center/cover;
     position: relative;
@@ -184,7 +189,7 @@ h1, h3 {
     border-radius: 50%;
     background: yellow url("../images/yellow-pokeball.png") center/cover;
     margin: 5% auto;
-    border: 2px black solid;
+    border: 1px black solid;
     box-sizing: border-box;
     position: relative;
 }
