@@ -560,10 +560,11 @@ function redirectToHomePage() {
 function toggleSound() {
     if ($("#music").children("i").hasClass("fa-volume-up")) {
         $("#music").children("i").removeClass("fa-volume-up").addClass("fa-volume-mute");
-
+        $("#music").prop("title", "Music On");
         document.getElementById("background-audio").pause();
     } else {
         $("#music").children("i").removeClass("fa-volume-mute").addClass("fa-volume-up");
+        $("#music").prop("title", "Music Mute");
         document.getElementById("background-audio").play();
     }
     //document.getElementById("background-audio").loop = true;

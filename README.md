@@ -99,3 +99,9 @@ Welcome to my Connect Four game
         Font family
         font-family: 'Petrona', serif;
 font-family: 'Roboto', sans-serif;
+
+
+Credits
+
+oops image
+<a href="https://www.freepik.com/vectors/clouds">Clouds vector created by jcomp - www.freepik.com</a>
