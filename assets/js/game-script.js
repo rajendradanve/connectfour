@@ -544,11 +544,11 @@ function gameResult(winnerPlayer) {
 
     if (winnerPlayer != GAME_DRAW) {
         
-        gameResultText= `<h1>${winnerPlayer} Won </h1>`;
+        gameResultText= `<h1 class="text-center">${winnerPlayer} Won </h1>`;
 
     } else {
         
-        gameResultText= `<h1>This Game Is <br> Draw </h1>`
+        gameResultText= `<h1 class="text-center">This Game Is <br> Draw </h1>`
     }
 
     

@@ -1,11 +1,16 @@
-Welcome to my Connect Four game
+# **Pokeball Connect Four- MS2**
+    
+![Main Page Responsive Design](assets/images/responsive-main-page.png)
+![Game Page Responsive Design](assets/images/responsive-game-page.png)
+
+For live website [click here](https://rajendradanve.github.io/connectfour)
 
 #   Table of Content
 
- 1. UX
-    *   Project Goals
-    *   Player Goals
-    *   Developer Goals
+ 1. [UX](#UX)
+    *   [Project Goals](#project-goal)
+    *   [Player Goals](#player-goal)
+    *   [Developer Goals](#developer-goals)
     *   User Stories
     *   Design Choice
     *   Wireframe
