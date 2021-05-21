@@ -37,13 +37,16 @@ function startGame() {
             .mouseenter(function () {
                 if (checkIfCoinExists(col_no, NO_OF_GAME_ROWS)) {
 
-                    //only allowed to add coin if top last row in the game board is not filled with coin.
+                    if(currentPlayerId=== 1 || (currentPlayerId === 2 && second_player != COMPUTER_PLAYER)){
+                            //only allowed to add coin if top last row in the game board is not filled with coin.
                     removeAndAddClassToCell({
                         column: col_no,
                         row: NO_OF_TOTAL_ROWS,
                         removeClass: EMPTY_COIN_CLASS,
                         addClass: activePlayerCoin
                     }); // not show coin in the top entry row as no empty cell available.
+                    }
+                    
                 }
             })
             .mouseleave(function () {
@@ -265,6 +268,12 @@ function setGameArea() {
             $(`#column${col_no}`).append(`<div id="square-cell-${col_no}${row_no}"><div class="empty-coin-out"><div id="coin${col_no}${row_no}" class= "empty-coin"></div></div></div></div>`);
             if (row_no === NO_OF_TOTAL_ROWS) {
                 $(`#square-cell-${col_no}${row_no}`).addClass("square-cell-entry");
+                if(col_no === 0){
+                    $(`#square-cell-${col_no}${row_no}`).css("border-left", "1px solid gray");
+                }
+              if(col_no === (NO_OF_COLS-1)){
+                    $(`#square-cell-${col_no}${row_no}`).css("border-right", "1px solid gray");
+                }
             } else {
                 $(`#square-cell-${col_no}${row_no}`).addClass("square-cell-game-board");
             }
