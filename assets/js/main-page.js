@@ -1,10 +1,19 @@
 $(document).ready(function () {
+
+    let randomCoinHTML = "";
     let randomCoinSize = window.innerWidth * 0.1;
     let windowHeight = window.innerHeight;
+
+    for(let randomCoin = 1; randomCoin <= 5; randomCoin++){
+        randomCoinHTML= randomCoinHTML+`<div id="random-coin-${randomCoin}" class="random-coin"></div>`;
+    }
+    $("#animation-container").append(randomCoinHTML);
 
     $(".random-coin").css("width", randomCoinSize);
     $(".random-coin").css("height", randomCoinSize);
     $(".random-coin").css("top", -randomCoinSize * 2);
+
+    
 });
 
 function redirectToGamePage() {
