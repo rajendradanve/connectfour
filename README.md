@@ -5,98 +5,130 @@
 
 For live website [click here](https://rajendradanve.github.io/connectfour)
 
-#   Table of Content
+#   **Table of Content**
 
- 1. [UX](#UX)
+ 1. About(#about)
+ 2. [UX](#UX)
     *   [Project Goals](#project-goal)
     *   [Player Goals](#player-goal)
     *   [Developer Goals](#developer-goals)
-    *   User Stories
-    *   Design Choice
-    *   Wireframe
+    *   [User Stories](#user-stories)
+    *   [Design](#design)
+    *   [Wireframe](#wireframe)
 
  2. Features
-    *   Existing Features
-    *   Features for the future development
+    *   [Existing Features](#existing-features)
+    *   [Features Left to Implement](#features-left-to-implement)
 
-3.  Technologies Used
+3.  [Technologies-Used](#Technologies-Used)
 
-4.  Testing
+4.  [Testing](#Testing)
 
-5. Deployment
+5. [Deployment](#Deployment)
 
-6. Credits
-    *   Content
-    *   Media
-    *   Code
-    *   Acknolwdgement  
+6. [Credit](#Credit)
+    *   [Content](#content)
+    *   [Media](#media)
+    *   [Code](#code)
+    *   [Acknowledgements](#acknowledgements) 
 
- # UX
+ # **About**
+ Connect four is classic game which is not only fun to play but also required stragergic thinking. 
+Pokeball connect four uses Pokeball theme with this game. 
+This is 2 player game and game board has 7 wide and 6 high grid cell where player put the his coins.
+First player who able to put four of his coins either in a stright row, column or diagonal (without any 
+other coins inbetween is the winner).
 
-##  Project Goal
-    Main goal of the project is develop fun, exciting and stragergic game which can be played alone or with friend.
-    Game is designed mainly for kids of age 5+ years. Game can also be played by adults for brain trigger.
 
-##   Player Goal
-    A game is meant to be used specially by kids but can be used by adults to play with kids or by adult or combination.
+ # **UX**
+
+##  **Project Goal**
+Main goal of the project is develop fun, exciting and stragergic game which 
+can be played alone or with friend. Game is designed mainly for kids of age 5+ years. 
+Game can also be played by adults for brain trigger. 
+This game is a developed as a part of "Interactive Front-End Development Milestone Project" 
+with the use of frontend technologies such as  HTML, CSS and Javascript. 
+
+
+
+## **Targeted Audiance**
+
+- This game is mainly meant to be used specially by kids which help then to spend time while developing 
+   stragergic thinking.
+- This is 2 player game but can be played alone while second player is computer. 
+- Kids can play this game with parents and another friend . 
+- Of course, adults can play this game just to time pass when they want to relax and wanted some challanging 
+  task while relaxing.
+- This game is not gender specific and can be played by any gender. But in general pokemon is more popular 
+   in boys than girls so mostly themewise this is more suitable for boys.
+
+##   **Player Goal**
+
+**Goal for Kid** 
     
-        * Easy game to play which teaches to think stratergically 
-        * Easy controls so that kids can play easily
-        * Can be played alone (computer as 2nd player) or with family member or friend
-        * Simple understanble instructions about how to play game
-        * Easy to start new game to start from beggining
-        * Audio/muscial interaction to feel good and gives feeling of what's happening in the game
+* Easy and fun game to play which also teaches to think stratergically.
+* Easy controls so that kids can play easily.
+* Can be played alone (with computer as 2nd player) or with family member or friend.
+* Simple understandble instructions about how to play game.
+* Audio interaction suitable for game.
 
-##   Parent Goal
+**Goal for Parent**
 
-        * Game which is easy to play but also will teach my kid about how to think logically
-        * Iteraction with audio
-        * Big buttons with easy to understand function
-        * Easily understanble and accesable instructions if required
-        * Game which parent can able to play with kid and generate bond
-        * Just game which will not divert kids with any unwanted advertisements
+* Game which is easy to play but also will teach my kid about how to think logically.
+* Interative controls or with easy to understand function.
+* Easily understanble and accesable instructions if required.
+* Game which parent can able to play with kid and generate bond.
+* Just game which will not divert kids with any unwanted advertisements.
 
-##   Adult Goal
-
-        * Game which give a small trigger to brain while relaxing
-        * Game which can be play with computer or with friend
-        * Able to mute music
-        * Don't want to see diverion advertisement as aim to relax
-       
 
 ## Developer Goal
-        To develop game which has
-        * Simple design which kids can easily understand and play
-        * Big buttons which are suitable for screen size 
+To develop game which has
+* Shows developers understanding about Interactive frontend development.
+* Simple design which mainly suitable for kids can easily understandable and easy to play.
+* Big buttons which are suitable for screen size. 
+* Dyanamic grid design based on screen size.  
         
 
+## **User Stories**
 
-# User Stories
+-**General Player**
+Simple, fun game which can be played by anyone. While playing it can also challange brain and can teach stragergic and 
+logical thinking.
 
-## As a kid (age 5 to 10 year) , I want
+-   **As a kid (age 5 to 10 year) , I want**
 
-        * Easy to use screen layout with less buttons
-        * Game where I can play with less controls
-        * Game which I can play alone and also with friends or with my parent
-        * Game which will think me to think stratergically
+* Easy to use screen layout with less buttons
+* Game where I can play with less controls
+* Game which I can play alone and also with friends or with my parent
+* Game which will think me to think stratergically
 
-##  As a Parent, I want
-        * Easy and simple screen layout so that my kids can play game easily
-        * Simple and minimal control 
-        * No advertisement so that kids are not getting divert to unwanted stuff
-        * Learn to develop logical thinking ability while playing
-        * Able to play with my kid just for fun to generabe parental bonding together
+-   **As a Parent, I want**
+* Easy and simple screen layout so that my kids can play game easily
+* Simple and minimal control 
+* No advertisement so that kids are not getting divert to unwanted stuff
+* Learn to develop logical thinking ability while playing
+* Able to play with my kid just for fun to generabe parental bonding together
     
-## As a Adult, I want
-        * Some brain trigger while relaxing
-        * Able to play without much other distractions (advertisement)
-        * Able to play with friend or kids
+-   **As a Adult, I want**
+* Some brain trigger while relaxing
+* Able to play without much other distractions (advertisement)
+* Able to play with friend or kids
 
-#   Design Choice
+## **Design Choice**
 
-        
+- **Colour Scheme**
+Main colors used are from got from pokemon theme colour which as mainly yellow, blue and navy blue color. 
+Color codes taken from [this link](https://brandpalettes.com/pokemon-color-codes/)
 
-        Icons- Drum and Mute taken from freepik.com. 
+- **Typography**
+Petrona font is mainly used through out the website with serif as a back up font in case of any reason the font isn't being imported into the site correctly.
+Petrona looks stylish but still clean font to read and correctly goes with simple design. Fonts are imported using [Google Fonts](https://fonts.google.com/).
+
+- **Pages**
+Game has mainly 2 pages. Index.html page for choosing second player and game.html page for main game page.
+Also error.html page is design in case there is any error in the game. 
+
+       
         add below div in the footer
         <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
