@@ -1,268 +1,238 @@
 /* Common CSS */
+
 body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-    font-family: "Petrona", serif;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+	font-family: "Petrona", serif;
 }
-
-h1, h3 {
-    font-weight: 900;
-    font-style: italic;
-    color: #363b81;
+h1,
+h3 {
+	font-weight: 900;
+	font-style: italic;
+	color: #363b81;
 }
-
 /* CSS for index.html */
 
 .index-container {
-    /*background-color: #FFCB05; */
-    width: 100%;
-    height: 100vh;
-    background: #ffcb05 url("../images/pokemon-background1.jpeg") center/cover;
+	/*background-color: #FFCB05; */
+	width: 100%;
+	height: 100vh;
+	background: #ffcb05 url("../images/pokemon-background1.jpeg") center/cover;
 }
 #animation-container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    background-size: contain;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	background-size: contain;
 }
 .random-coin {
-    border-radius: 50%;
-    margin: 5% auto;
-    position: relative;
-    background-color: white;
-
-    position: relative;
+	border-radius: 50%;
+	margin: 5% auto;
+	position: relative;
+	background-color: white;
+	position: relative;
 }
-
 #random-coin-1 {
-    background: white url("../images/red-pokeball.png") center/cover;
-    animation: move-in-steps 7s infinite;
+	background: white url("../images/red-pokeball.png") center/cover;
+	animation: move-in-steps 7s infinite;
 }
-
 #random-coin-2 {
-    background: white url("../images/yellow-pokeball.png") center/cover;
-    animation: move-in-steps 5s infinite;
+	background: white url("../images/yellow-pokeball.png") center/cover;
+	animation: move-in-steps 5s infinite;
 }
-
 #random-coin-3 {
-    background: white url("../images/red-pokeball.png") center/cover;
-    animation: move-in-steps 6s infinite;
+	background: white url("../images/red-pokeball.png") center/cover;
+	animation: move-in-steps 6s infinite;
 }
-
 #random-coin-4 {
-    background: white url("../images/yellow-pokeball.png") center/cover;
-    animation: move-in-steps 7s infinite;
+	background: white url("../images/yellow-pokeball.png") center/cover;
+	animation: move-in-steps 7s infinite;
 }
-
 #random-coin-5 {
-    background: white url("../images/red-pokeball.png") center/cover;
-    animation: move-in-steps 5s infinite;
+	background: white url("../images/red-pokeball.png") center/cover;
+	animation: move-in-steps 5s infinite;
 }
-
 #game-input-container {
-    width: fit-content;
-    height: fit-content;
-    min-width: 35%;
-    min-height: 40%;
-    background-color: rgba(251, 215, 67, 0.9);
-    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6);
-    border-radius: 10%;
+	width: fit-content;
+	height: fit-content;
+	min-width: 35%;
+	min-height: 40%;
+	background-color: rgba(251, 215, 67, 0.9);
+	box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6);
+	border-radius: 10%;
 }
-
 .winning-img {
-    max-width: 200px;
-    max-height: 200px;
+	max-width: 200px;
+	max-height: 200px;
 }
-
 @keyframes move-in-steps {
-    0% {
-        top: -5%;
-    }
-    50% {
-        transform: rotate(180deg);
-    }
-    100% {
-        top: 100%;
-        transform: rotate(360deg);
-    }
+	0% {
+		top: -5%;
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	100% {
+		top: 100%;
+		transform: rotate(360deg);
+	}
 }
-
 .main-button {
-    background-color: #3d7dca;
-    color: white;
-    font-weight: 900;
+	background-color: #3d7dca;
+	color: white;
+	font-weight: 900;
 }
-
 /* CSS for game.html */
 
 .connect-four-page {
-    background-color: #ffcb05;
+	background-color: #ffcb05;
 }
-
 #game-controller {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
-
 #game-area {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
+	display: flex;
+	justify-content: center;
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
-
 .column {
-    flex: 1 1;
-    height: 100%;
-    background-color: white;
-    padding: 0;
-    display: flex;
-    flex-direction: column-reverse;
+	flex: 1 1;
+	height: 100%;
+	background-color: white;
+	padding: 0;
+	display: flex;
+	flex-direction: column-reverse;
 }
-
 .square-cell-game-board {
-    flex: 1 1;
-    background-color: #3d7dca;
-    border: 0.1em gray solid;
-    border-radius: 5px;
+	flex: 1 1;
+	background-color: #3d7dca;
+	border: 0.1em gray solid;
+	border-radius: 5px;
 }
-
 .square-cell-entry {
-    flex: 1 1;
-    background-color: whitesmoke;
-    border-top: 1px solid gray;
+	flex: 1 1;
+	background-color: whitesmoke;
+	border-top: 1px solid gray;
 }
-
 .square-cell-entry-disable {
-    flex: 1 1;
-    background-color: rgba(197, 192, 192, 0.9);
+	flex: 1 1;
+	background-color: rgba(197, 192, 192, 0.9);
 }
-
 .empty-coin-out {
-    width: 90%;
-    height: 90%;
-    border-radius: 50%;
-    background-color: whitesmoke;
-    margin: 5% auto;
+	width: 90%;
+	height: 90%;
+	border-radius: 50%;
+	background-color: whitesmoke;
+	margin: 5% auto;
 }
-
 .empty-coin {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: whitesmoke;
-    margin: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: whitesmoke;
+	margin: 0;
 }
-
-.disable-coin{
-   
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: rgba(197, 192, 192, 0.9);
-    margin: 0;
-
+.disable-coin {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: rgba(197, 192, 192, 0.9);
+	margin: 0;
 }
-
 .red-pokeball {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    margin: 5% auto;
-    border: 1px black solid;
-    box-sizing: border-box;
-    background: red url("../images/red-pokeball.png") center/cover;
-    position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	margin: 5% auto;
+	border: 1px black solid;
+	box-sizing: border-box;
+	background: red url("../images/red-pokeball.png") center/cover;
+	position: relative;
 }
-
 .yellow-pokeball {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: yellow url("../images/yellow-pokeball.png") center/cover;
-    margin: 5% auto;
-    border: 1px black solid;
-    box-sizing: border-box;
-    position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background: yellow url("../images/yellow-pokeball.png") center/cover;
+	margin: 5% auto;
+	border: 1px black solid;
+	box-sizing: border-box;
+	position: relative;
 }
-
 .controller-icon {
-    height: auto;
-    width: auto;
-    font-size: 2.5rem;
-    display: inline-block;
-    color: #3d7dca;
-    margin-left: 3rem;
-    margin-right: 3rem;
+	height: auto;
+	width: auto;
+	font-size: 2.5rem;
+	display: inline-block;
+	color: #3d7dca;
+	margin-left: 3rem;
+	margin-right: 3rem;
 }
-
 .controller-icon-music {
-    height: auto;
-    width: auto;
-    font-size: 3rem;
-    display: inline-block;
-    color: #3d7dca;
-    margin-left: 3rem;
-    margin-right: 3rem;
+	height: auto;
+	width: auto;
+	font-size: 3rem;
+	display: inline-block;
+	color: #3d7dca;
+	margin-left: 3rem;
+	margin-right: 3rem;
 }
-
-.controller-icon:hover, .controller-icon-music:hover  {
-    cursor: pointer;
+.controller-icon:hover,
+.controller-icon-music:hover {
+	cursor: pointer;
 }
-
 .redirect-controller {
-    display: inline-block;
+	display: inline-block;
 }
-
 .game-result-div {
-    width: auto;
-    height: auto;
-    background-color: white;
-    border-radius: 2rem;
-    border: 1px solid gray;
+	width: auto;
+	height: auto;
+	background-color: white;
+	border-radius: 2rem;
+	border: 1px solid gray;
 }
-
-@media (max-width:320px){
-    .controller-icon {
-    height: auto;
-    width: auto;
-    font-size: 2rem;
-    display: inline-block;
-    color: #3d7dca;
-    margin-left: 2rem;
-    margin-right: 2rem;
+@media (max-width: 320px) {
+	.controller-icon {
+		height: auto;
+		width: auto;
+		font-size: 2rem;
+		display: inline-block;
+		color: #3d7dca;
+		margin-left: 2rem;
+		margin-right: 2rem;
+	}
+	.controller-icon-music {
+		height: auto;
+		width: auto;
+		font-size: 2.5rem;
+		display: inline-block;
+		color: #3d7dca;
+		margin-left: 2rem;
+		margin-right: 2rem;
+	}
 }
-
-.controller-icon-music {
-    height: auto;
-    width: auto;
-    font-size: 2.5rem;
-    display: inline-block;
-    color: #3d7dca;
-    margin-left: 2rem;
-    margin-right: 2rem;
-}
-}
-
 /* Error Page CSS */
 
 .error-container {
-     /*background-color: #FFCB05; */
-    width: 100%;
-    height: 100vh;
-    background: #ffcb05 url("../images/oops.jpg") center/cover;
+	/*background-color: #FFCB05; */
+	width: 100%;
+	height: 100vh;
+	background: #ffcb05 url("../images/oops.jpg") center/cover;
 }
-
-.error-btn-container{
-    background-color: rgba(197, 192, 192, 0.7);
-    border-radius: 3rem;
+.error-btn-container {
+	background-color: rgba(197, 192, 192, 0.7);
+	border-radius: 3rem;
 }

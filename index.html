@@ -1,134 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Pokeball Connect Four</title>
-      <!--link for google fonts-->
-      <link
-         href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,400;1,300;1,400;1,700;1,800&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,500&display=swap"
-         rel="stylesheet">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-      <!--fontawsome-->
-      <script src="https://kit.fontawesome.com/023e38a18b.js" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="assets/css/style.css">
-   </head>
-   <body class="index-body">
-      <div class="container-fluid position-relative index-container">
-         <div id="animation-container">
-          
-         </div>
-         <div id="game-input-container" class="row position-absolute top-50 start-50 translate-middle ">
-            <div class="col-6 d-grid gap-3 my-5 mx-auto ">
-               <h1 class="text-center p-2">Pokeball <span> Connect Four </span></h1>
-               <button type="button" class="main-button btn border  rounded" data-bs-toggle="modal"
-                  data-bs-target="#model-start-play">New Game</button>
-               <button type="button" class="main-button btn border border-2 rounded" data-bs-toggle="modal"
-                  data-bs-target="#model-how-to-play">How To Play</button>
-            </div>
-         </div>
-      </div>
-      <!--model html for selecting number of player and starting the game-->
-      <div id="model-start-play" class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-               <div class="modal-header mx-3">
-                  <h3>Against Whom You Are Playing?</h3>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-               <div class="modal-body">
-                  <div class="container-fluid">
-                     <div class="row">
-                        <div class="col">
-                           <form method="post ">
-                              <div class="d-flex justify-content-center my-2">
-                                 <div class="row">
-                                    <div class="col-2 px-0">
-                                       <input id="player-2-human" type="radio" name="player-2" value="Human"
-                                          checked>
-                                    </div>
-                                    <div class="col-4">
-                                       <label class="player-2-human-lable text-center" for="player-2-human">
-                                          <i class="fas fa-child fa-3x"></i>
-                                          <h4>Human</h4>
-                                       </label>
-                                    </div>
-                                    <div class="col-2">
-                                       <input id="player-2-computer" type="radio" name="player-2"
-                                          value="Computer">
-                                    </div>
-                                    <div class="col-4">
-                                       <label class="player-2-computer-label text-center" for="player-2-computer">
-                                          <i class="fas fa-laptop fa-3x"></i>
-                                          <h4>Computer</h4>
-                                       </label>
-                                    </div>
-                                 </div>
-                              </div>
-                           </form>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" onclick="redirectToGamePage()">Start Game</button>
-               </div>
-            </div>
-         </div>
-      </div>
 
-      <!--model html for instruction of the game-->
-      <div id="model-how-to-play" class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                
-               <div class="modal-body">
-                  <h4>Game Information</h4>
-                  <p>Pokeball Connect Four game board has 6 rows (Horizontal) and 7 columns (vertical). This is 2
-                     player game. So you can either play on the computer or you can play with your family/friend. The
-                     first player has a red Pokeball coin and the second player has a yellow Pokeball coin.
-                     Left-click on the column where the player wants to put his coin. If you are playing against the
-                     computer (as player 2), these moves will be played automatically.
-                  </p>
-                  <h4>Winning</h4>
-                  <p>The player who builds the first line with four of his Pokeball coins is the winner. The line can
-                     be vertical, horizontal, or diagonal. See the below images. While you are trying to make your
-                     Pokeball line you need to make sure that your opponent doesn't finish his line first.
-                  </p>
-                  <div class="d-flex flex-column align-items-center">
-                     <div class="winning-images" class="">
-                        <img class="winning-img" src="./assets/images/row.png"
-                           alt="pokeball connect four row winning example">
-                        <p class="text-center"><strong>Example of row winning <br> (See 4 red pokeball in a row)</strong></p>
-                     </div>
-                     <div>
-                        <img class="winning-img mx-2" src="./assets/images/column.png"
-                           alt="pokeball connect four column winning example">
-                        <p class="text-center"><strong>Example of column winning <br> (See 4 yellow pokeball in a column)</strong></p>
-                     </div>
-                     <div>
-                        <img class="winning-img mx-2" src="./assets/images/diagonal.png"
-                           alt="pokeball connect four diagonal winning example">
-                        <p class="text-center"><strong>Example of diagonal winning <br> (See 4 yellow pokeball in a diagonal)</strong></p>
-                     </div>
-                  </div>
-               </div>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pokeball Connect Four</title>
+	<!--link for google fonts-->
+	<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,400;1,300;1,400;1,700;1,800&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+	<!--fontawsome-->
+	<script src="https://kit.fontawesome.com/023e38a18b.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
 
-            </div>
-         </div>
-      </div>
-      </div>
-      <script src="https://code.jquery.com/jquery-3.6.0.js"
-         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-      <script src="assets/js/main-page.js"></script>
-   </body>
+<body class="index-body">
+	<div class="container-fluid position-relative index-container">
+		<div id="animation-container"></div>
+		<div id="game-input-container" class="row position-absolute top-50 start-50 translate-middle ">
+			<div class="col-6 d-grid gap-3 my-5 mx-auto ">
+				<h1 class="text-center p-2">Pokeball <span> Connect Four </span></h1>
+				<button type="button" class="main-button btn border  rounded" data-bs-toggle="modal" data-bs-target="#model-start-play">New Game</button>
+				<button type="button" class="main-button btn border border-2 rounded" data-bs-toggle="modal" data-bs-target="#model-how-to-play">How To Play</button>
+			</div>
+		</div>
+	</div>
+	<!--model html for selecting number of player and starting the game-->
+	<div id="model-start-play" class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header mx-3">
+					<h3>Against Whom You Are Playing?</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col">
+								<form method="post ">
+									<div class="d-flex justify-content-center my-2">
+										<div class="row">
+											<div class="col-2 px-0">
+												<input id="player-2-human" type="radio" name="player-2" value="Human" checked>
+											</div>
+											<div class="col-4">
+												<label class="player-2-human-lable text-center" for="player-2-human"> <i class="fas fa-child fa-3x"></i>
+													<h4>Human</h4>
+												</label>
+											</div>
+											<div class="col-2">
+												<input id="player-2-computer" type="radio" name="player-2" value="Computer">
+											</div>
+											<div class="col-4">
+												<label class="player-2-computer-label text-center" for="player-2-computer"> <i class="fas fa-laptop fa-3x"></i>
+													<h4>Computer</h4>
+												</label>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="redirectToGamePage()">Start Game</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--model html for instruction of the game-->
+	<div id="model-how-to-play" class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h4>Game Information</h4>
+					<p>Pokeball Connect Four game board has 6 rows (Horizontal) and 7 columns (vertical). This is 2 player game. So you can either play on the computer or you can play with your family/friend. The first player has a red Pokeball coin and the second player has a yellow Pokeball coin. Left-click on the column where the player wants to put his coin. If you are playing against the computer (as player 2), these moves will be played automatically.</p>
+					<h4>Winning</h4>
+					<p>The player who builds the first line with four of his Pokeball coins is the winner. The line can be vertical, horizontal, or diagonal. See the below images. While you are trying to make your Pokeball line you need to make sure that your opponent doesn't finish his line first.</p>
+					<div class="d-flex flex-column align-items-center">
+						<div class="winning-images" class="">
+							<img class="winning-img" src="./assets/images/row.png" alt="pokeball connect four row winning example">
+							<p class="text-center"><strong>Example of row winning <br> (See 4 red pokeball in a row)</strong>
+							</p>
+						</div>
+						<div>
+							<img class="winning-img mx-2" src="./assets/images/column.png" alt="pokeball connect four column winning example">
+							<p class="text-center"><strong>Example of column winning <br> (See 4 yellow pokeball in a column)</strong>
+							</p>
+						</div>
+						<div>
+							<img class="winning-img mx-2" src="./assets/images/diagonal.png" alt="pokeball connect four diagonal winning example">
+							<p class="text-center"><strong>Example of diagonal winning <br> (See 4 yellow pokeball in a diagonal)</strong>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="assets/js/main-page.js"></script>
+</body>
+
 </html>

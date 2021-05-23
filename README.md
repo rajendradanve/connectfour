@@ -224,6 +224,9 @@ Also error.html page is design in case there is any error in the game.
 
   - W3C CSS Validation Service has been used to test the CSS codes.
 
+- [Code Beautifier](http://minifycode.com/html-beautifier/)
+
+    -   The tools to minify and beautify JavaScript, CSS and HTML codes.
 
 
 
