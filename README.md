@@ -128,7 +128,18 @@ Petrona looks stylish but still clean font to read and correctly goes with simpl
 Game has mainly 2 pages. Index.html page for choosing second player and game.html page for main game page.
 Also error.html page is design in case there is any error in the game. 
 
-       
+-   **Wireframes**
+
+[Desktop wireframe](assets/wireframe/Wireframe-for-desktop.pdf)
+
+[Tablet wireframe](assets/wireframe/Wireframe-For-Tablet.pdf)
+
+[Mobile wireframe](assets/wireframe/Wireframe-Phone.pdf)
+
+## **Features**
+
+### **Existing Features**
+
         add below div in the footer
         <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
