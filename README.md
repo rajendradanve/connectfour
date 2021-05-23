@@ -140,6 +140,94 @@ Also error.html page is design in case there is any error in the game.
 
 ### **Existing Features**
 
+-   Index Page: Main feature of index page is to choose opponent player and provide instruction about how to play game.
+    To justify pokeball theme page has background image from pokemon. Also page has animated red and yellow pokeball.
+    It is possible to choose second player as another human or computer. 
+    
+-   Game Page: Game page has 3 buttons - refresh, home and music toggle. Main game board has 7 columns and 6 rows.
+    One more of the top row is used to insert the coin. When second player is computer yellow pokeball coin will be played randomly.
+
+-   Music on and off switch - which allows the users to switch on the music if they would like to. 
+
+-   If any player won or game is draw , further coin playing is not possible. 
+
+### **Features Left to Implement**
+
+-   Choosing who will play first in case one of the player is computer. 
+
+-   Possibility for player to choose the pokeball.
+
+-   Logical moves by computer when one of the player is computer.
+
+
+## **Technologies Used**
+
+### Languages Used
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML#:~:text=The%20HyperText%20Markup%20Language%2C%20or,displayed%20in%20a%20web%20browser.)
+
+  - The language used to give the site its main structure and all necessary features.
+
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+
+  - The language used to give the application its visual effects including the font, color and layout etc.
+
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+  - The language used to implement the site's interactive features, allow the users to be interactive and make actions during their visit.
+
+### Frameworks, Libraries & Programs Used
+
+- [Bootstrap](https://getbootstrap.com/)
+
+    - Bootstrap library is used create responsive design, beautiful buttons, modal template.
+
+- [Jquery](https://jquery.com/)
+
+    - Jquery library used create DOM elements, event handling, animation.
+
+- [Github](https://github.com/)
+
+  - Github is used to create, store and maintain all codes in a repository.
+
+  - Github is also used as the site hosting service for the final website to be published on.
+
+- [Git Version control](https://git-scm.com/)
+
+  - Git 2.31.1 for Mac is used for commit and push codes to Github.
+
+- [Google Fonts](https://fonts.google.com/)
+
+  - The font used for text is imported from google fonts.
+
+- [Fontawesome](https://fontawesome.com/)
+
+  - The icons used for this game are taken from fontawesome.
+
+- [Balsamiq](https://balsamiq.com/)
+
+  - The wireframes were created using Balsamiq.
+
+- [Google DevTools](https://developer.chrome.com/docs/devtools/)
+
+  - Google DevTools was extensively used throughout the project for various styling, testing and debugging purposes.
+
+- [Am I Responsive](http://ami.responsivedesign.is/)
+
+  - Am I responsive to create the mock-up image presented at the start of this document.
+
+- [W3C Markup Validation service](https://validator.w3.org/)
+
+  - W3C Markup Validation Service has been used to test the HTML codes.
+
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+
+  - W3C CSS Validation Service has been used to test the CSS codes.
+
+
+
+
+
         add below div in the footer
         <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
