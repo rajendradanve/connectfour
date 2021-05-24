@@ -49,14 +49,14 @@ function startGame() {
 					});
             }
 		}).mouseleave(function () {
-            if (checkIfCellEmpty(col_no, NO_OF_GAME_ROWS)) {
+           
 			removeAndAddClassToCell({
 				column: col_no,
 				row: NO_OF_TOTAL_ROWS,
 				removeClass: activePlayerCoin,
 				addClass: EMPTY_COIN_CLASS
             });
-        }
+    
 		}).click(function () {
 			if (checkIfCellEmpty(col_no, NO_OF_GAME_ROWS)) {
 				//Allowed to enter coin only if last row (6th) in game board is not filled with any coin.
@@ -142,7 +142,16 @@ function insertActivePlayerCoinToGrid(selectedColumn) {
 //Function to disable top row to enter any coin if all cells on game board are filled with pokeball coins.
 function disableColumnForFurtherClick(colNo) {
 	$(`#coin${colNo}${NO_OF_TOTAL_ROWS}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(DISABLE_COIN_CLASS).removeClass(EMPTY_COIN_CLASS);
-	$(`#square-cell-${colNo}${NO_OF_TOTAL_ROWS}`).removeClass("square-cell-entry").addClass("square-cell-entry-disable");
+    $(`#square-cell-${colNo}${NO_OF_TOTAL_ROWS}`).removeClass("square-cell-entry").addClass("square-cell-entry-disable");
+    $(`#square-cell-${colNo}${NO_OF_TOTAL_ROWS}`).children('div').removeClass('empty-coin-out').addClass('empty-coin-out-disable');
+    if(colNo === 0){
+         $(`#square-cell-${colNo}${NO_OF_TOTAL_ROWS}`).css("border-left", "1px solid gray");
+    }
+    if(colNo === (NO_OF_COLS-1)){
+
+        $(`#square-cell-${colNo}${NO_OF_TOTAL_ROWS}`).css("border-right", "1px solid gray");
+    }
+
 	return;
 }
 //Function to check if cell is empty to add coin
