@@ -231,16 +231,131 @@ Also error.html page is design in case there is any error in the game.
 
 
 
-        add below div in the footer
-        <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+## **Testing**
+
+To be added
+
+## **Deployment**
+
+### **Deploy To GitHub Pages**
+
+1. Logged into Github account.
+
+2. Select repository.
+
+3. Select connectfour.
+
+4. On the top right navigation click on settings.
+
+5. Under the settings section, scroll down to the GitHub Pages section.
+
+6. Select Main Branch from the source dropdown menu.
+
+7. Click save.
+
+8. Once clicked, this publishes the project to GitHub Pages and displays the site URL. Click on the URL to view the live site.
+
+### **Making a clone or download zip to run locally**
+
+1. Log into GitHub account.
+
+2. Select repository.
+
+3. Select connectfour.
+
+4. Click on the Code dropdown button next to the green Gitpod button.
+
+5. Click on the clipboard icon to copy the clone URL.
+
+6. Open Git Bash.
+
+7. Change the current working directory to the location where you want the cloned directory.
+
+8. Type "git clone" in the Command Line and then paste the URL copied in step 5.
+
+9. Press enter to create your local clone.
+
+10. Alternately, click on Download ZIP, unpack locally and open with a local code editor.
+
+### **Forking the GitHub Repository**
+
+1. Log into GitHub.
+
+2. Select repository.
+
+3. Select connectfour.
+
+4. At the very top right corner click "fork".
+
+5. You will have a copy of the original repository in your own GitHub account.
+
+## **Credits**
+
+Connect four is a classic game and my kids loves to play this game in their spare time. 
+As my son used to play with pokeball when I got idea to make this game with pokeball theme.
+So would like to give credit to my kids for providing me idea.
+All the codes are written by myself after learning from resources. 
+The resources and the links I used to learn each concepts are the following:
+
+### **Code**
+
+- [w3schools](https://www.w3schools.com/) 
+    - [audio](https://www.w3schools.com/html/html5_audio.asp)
+    - [setTimeout](https://www.w3schools.com/js/js_timing.asp)
+    - [CSS background-image](https://www.w3schools.com/cssref/pr_background-image.asp)
+    - [Animation using Jquery](https://www.w3schools.com/jquery/jquery_animate.asp)
+    - [Hide scrollbar for a page](https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp)
 
 
-        Font family
-        font-family: 'Petrona', serif;
-font-family: 'Roboto', sans-serif;
+- [Bootstrap](https://getbootstrap.com/)
+    -[Bootstrap modal](https://getbootstrap.com/docs/5.0/components/modal/)
+    -[Buttons](https://getbootstrap.com/docs/5.0/components/buttons/)
 
+- [Jquery](https://jquery.com/)
+    - Jquery overall documentation used to understand concepts mainly for creating and updating DOM, animation, and event handler.
 
-Credits
+- [MDN Resources](https://developer.mozilla.org/en-US/docs/Web/Reference)
+    - MDS resources are used to understand concepts mainly for creating and updating DOM, animation, and event handler.
 
-oops image
-<a href="https://www.freepik.com/vectors/clouds">Clouds vector created by jcomp - www.freepik.com</a>
+- For continous animation of pokeball at Index.html page help is taken from [this link](https://css-tricks.com/using-multi-step-animations-transitions/)
+
+- For rotation of pokeball while falling down help is taken from [this link](https://css-tricks.com/almanac/properties/t/transform-origin/) 
+
+- Transfering opponent player information from index.html to game.html, help is taken from [this link](https://www.aspsnippets.com/Articles/Redirect-to-another-Page-with-multiple-Parameters-using-JavaScript.aspx)
+
+### **Color**
+
+- Color codes taken pokemon theme color palette at [this link](https://brandpalettes.com/pokemon-color-codes/)
+
+- Apart from above colour white and whitesmoke colors are used.
+
+- When all coins are filled in a particular column rgba(197, 192, 192, 0.9) colour is used to indicate not possible to enter any coin.
+
+### **Media**
+
+- Index page background image taken from [this link](https://wallpapercave.com/w/HrO79ZR)
+
+- Pokeball images extracted from the image found at [this link](https://www.clipartkey.com/search/pokeball/)
+
+- Music file while playing game is downloaded from [this link](https://www.bensound.com/royalty-free-music/track/ukulele)
+
+- Error page background image is taken from [freepik website](www.freepik.com) and image is downloaded from [this link](https://www.freepik.com/vectors/clouds)
+        
+
+### **Acknowledgements**
+
+I would like to thank:
+
+- My mentor Akshat Garg for his encouragement and valuable comments for this project. 
+Thanks to his guidence and tips to improve me code.
+
+- lessons from code institute
+
+- Help from in the Slack community
+
+- Tutor support and student care team.
+
+- My kids because of whom I came up with idea of this project.
+
+Should you have any queries please reach me on rajendradanve@gmail.com
+
