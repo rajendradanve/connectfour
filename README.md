@@ -194,7 +194,7 @@ Also error.html page is design in case there is any error in the game.
 
 - [Git Version control](https://git-scm.com/)
 
-  - Git 2.31.1 for Mac is used for commit and push codes to Github.
+  - Git 2.30.1 for Mac is used for commit and push codes to Github.
 
 - [Google Fonts](https://fonts.google.com/)
 
