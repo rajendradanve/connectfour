@@ -18,10 +18,7 @@ h3 {
 	color: #363b81;
 }
 
-.logo {
-    max-width: 300px;
-    min-width: 200px;
-}
+
 /* CSS for index.html */
 
 .index-container {
@@ -98,6 +95,11 @@ h3 {
 
 .connect-four-page {
 	background-color: #ffcb05;
+}
+
+.logo {
+    max-width: 300px;
+    min-width: 200px;
 }
 #game-controller {
 	display: flex;
