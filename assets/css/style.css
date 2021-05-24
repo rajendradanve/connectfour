@@ -10,11 +10,17 @@ body {
 	/* Firefox */
 	font-family: "Petrona", serif;
 }
+
 h1,
 h3 {
 	font-weight: 900;
 	font-style: italic;
 	color: #363b81;
+}
+
+.logo {
+    max-width: 300px;
+    min-width: 200px;
 }
 /* CSS for index.html */
 
