@@ -7,7 +7,7 @@ For live website [click here](https://rajendradanve.github.io/connectfour)
 
 #   **Table of Content**
 
- 1. About(#about)
+ 1. [About](#About)
  2. [UX](#UX)
     *   [Project Goals](#project-goal)
     *   [Player Goals](#player-goal)
