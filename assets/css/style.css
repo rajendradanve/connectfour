@@ -92,6 +92,10 @@ h3 {
     background-color: #003A70!important;
     color: rgba(255, 255, 255, 0.9)
 }
+
+.player-lable{
+    color: #003A70;
+}
 /* CSS for game.html */
 
 .connect-four-page {
