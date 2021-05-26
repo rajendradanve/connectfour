@@ -15,7 +15,7 @@ h1,
 h3 {
 	font-weight: 800;
 	font-style: italic;
-	color: #363b81;
+	color: #3D7DCA;
 }
 
 
@@ -63,8 +63,6 @@ h3 {
 #game-input-container {
 	width: fit-content;
 	height: fit-content;
-	min-width: 35%;
-	min-height: 40%;
 	background-color: rgba(251, 215, 67, 0.9);
 	box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6);
 	border-radius: 10%;
@@ -87,9 +85,12 @@ h3 {
 	}
 }
 .main-button {
-	background-color: #3d7dca;
-	color: white;
-	font-weight: 900;
+	background-color: #3D7DCA!important;
+}
+
+.main-button:hover {
+    background-color: #003A70!important;
+    color: rgba(255, 255, 255, 0.9)
 }
 /* CSS for game.html */
 
