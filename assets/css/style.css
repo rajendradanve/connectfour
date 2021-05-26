@@ -30,6 +30,8 @@ h3 {
 #animation-container {
 	width: 100%;
 	height: 100vh;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	background-size: contain;
 }
@@ -42,29 +44,39 @@ h3 {
 }
 #random-coin-1 {
 	background: white url("../images/red-pokeball.png") center/cover;
-	animation: move-in-steps 7s infinite;
+	-webkit-animation: move-in-steps 7s infinite;
+	        animation: move-in-steps 7s infinite;
 }
 #random-coin-2 {
 	background: white url("../images/yellow-pokeball.png") center/cover;
-	animation: move-in-steps 5s infinite;
+	-webkit-animation: move-in-steps 5s infinite;
+	        animation: move-in-steps 5s infinite;
 }
 #random-coin-3 {
 	background: white url("../images/red-pokeball.png") center/cover;
-	animation: move-in-steps 6s infinite;
+	-webkit-animation: move-in-steps 6s infinite;
+	        animation: move-in-steps 6s infinite;
 }
 #random-coin-4 {
 	background: white url("../images/yellow-pokeball.png") center/cover;
-	animation: move-in-steps 7s infinite;
+	-webkit-animation: move-in-steps 7s infinite;
+	        animation: move-in-steps 7s infinite;
 }
 #random-coin-5 {
 	background: white url("../images/red-pokeball.png") center/cover;
-	animation: move-in-steps 5s infinite;
+	-webkit-animation: move-in-steps 5s infinite;
+	        animation: move-in-steps 5s infinite;
 }
 #game-input-container {
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
 	width: fit-content;
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
 	height: fit-content;
 	background-color: rgba(251, 215, 67, 0.9);
-	box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6);
+	        box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6);
 	border-radius: 10%;
 }
 .winning-img {
@@ -72,16 +84,32 @@ h3 {
 	max-height: 200px;
 }
 /* reference - https://css-tricks.com/using-multi-step-animations-transitions/  and https://css-tricks.com/almanac/properties/t/transform-origin/*/
+@-webkit-keyframes move-in-steps {
+	0% {
+		top: -5%;
+	}
+	50% {
+		-webkit-transform: rotate(180deg);
+		        transform: rotate(180deg);
+	}
+	100% {
+		top: 100%;
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
 @keyframes move-in-steps {
 	0% {
 		top: -5%;
 	}
 	50% {
-		transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+		        transform: rotate(180deg);
 	}
 	100% {
 		top: 100%;
-		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
 	}
 }
 .main-button {
@@ -107,15 +135,25 @@ h3 {
     min-width: 200px;
 }
 #game-controller {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
 #game-area {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 	background-color: white;
 	margin-left: auto;
 	margin-right: auto;
@@ -123,30 +161,45 @@ h3 {
 	margin-bottom: 15px;
 }
 .column {
-	flex: 1 1;
+	-webkit-box-flex: 1;
+	    -ms-flex: 1 1;
+	        flex: 1 1;
 	height: 100%;
 	background-color: white;
 	padding: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column-reverse;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: reverse;
+	    -ms-flex-direction: column-reverse;
+	        flex-direction: column-reverse;
 }
 .square-cell-game-board {
-	flex: 1 1;
+	-webkit-box-flex: 1;
+	    -ms-flex: 1 1;
+	        flex: 1 1;
 	background-color: #3d7dca;
 	border: 0.1em gray solid;
 	border-radius: 5px;
 }
 .square-cell-entry {
-	flex: 1 1;
+	-webkit-box-flex: 1;
+	    -ms-flex: 1 1;
+	        flex: 1 1;
 	background-color: whitesmoke;
     border-top: 1px solid gray;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 .square-cell-entry-disable {
-	flex: 1 1;
+	-webkit-box-flex: 1;
+	    -ms-flex: 1 1;
+	        flex: 1 1;
     background-color: rgba(197, 192, 192, 0.9);
     border-top: 1px solid gray;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 .empty-coin-out {
 	width: 90%;
@@ -182,7 +235,8 @@ h3 {
 	border-radius: 50%;
 	margin: 5% auto;
 	border: 1px black solid;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	background: red url("../images/red-pokeball.png") center/cover;
 	position: relative;
 }
@@ -193,7 +247,8 @@ h3 {
 	background: yellow url("../images/yellow-pokeball.png") center/cover;
 	margin: 5% auto;
 	border: 1px black solid;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	position: relative;
 }
 .controller-icon {

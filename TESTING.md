@@ -1,6 +1,6 @@
-### **TESTING
+# **TESTING**
 
-## **HTML
+## **HTML**
 HTML is vallidated using online [HTML Validator](https://validator.w3.org/) tool.
 -   **index.html :** Validation showed error that "Element h4 not allowed as child of element label"
     h4 element removed from lable instead <br> is used to show player name bellow icon.
@@ -9,27 +9,27 @@ HTML is vallidated using online [HTML Validator](https://validator.w3.org/) tool
     Removed "type" attribute from audio element to remove error.
 
 
-## **CSS
+## **CSS**
 CSS is validated using online [CSS Validator](https://validator.w3.org/) tool.
 -   **style.css :**Validation showed error that "scrollbar-width property doesn't exist" and "-ms-overflow-style" is an unknown vendor extension
     This is not removed as this css property is used to hide scrollbar for a page on firefox and EDGE browser for as mention in [this link](https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp)
 
-## **Javascript
+## **Javascript**
 Javascript is validated using online [JSHint](https://jshint.com/) tool.
 -   **main-page.js :** Received warnings related to use of let and use of $ sign which can be ignored.
 
 -   **game-script.js :** Received warning related to use of let, template literal syntax and use of const which can be ignored.
 
 
-## **Testing Based on User Stories
+## **Testing Based on User Stories**
 
-### **General player
+### **General player**
 As aim of the game was to make is simple game with minimal controls and avoid destractions of anykind. 
 After testing index.html page, I released that when I use radio button user has to perform one click extra to enter in the game.
 To avoid this I changed radio option to buttons which will directly redirect to the game by choosing correct option of 2nd player.
 icons are used inside button to provide visual information about with whom user want to play. This also provide better look.
 
-### **Kids
+### **Kids**
 - For kids aim was to have simple and easy screen layout.
   Main page has only 2 buttons with attractive background. One button to enter new game which provides option to choose opponent player. 
   Second button provides instructions about how to play game. It is assumed that parents will explain instructions to the kids who can not read.
@@ -49,9 +49,34 @@ icons are used inside button to provide visual information about with whom user 
 -   Game to teach strategic thinking
     As basic aim of the game to make strategic moves of the coin to win. Kids will learn to think and observe before taking decision.
     
-### **parents
+### **Parents**
 -   Destraction free layout
     Layout is quite simple and aim to increase focus while playing game. At main page some animation added to generate interest. 
     At game page big icons are added and most of the space is used for game board. This page has only 3 controls. 
     Fancy look and animation is avoided. 
-    
+
+-   Able to develop logical thinking while playing.
+    This game is logical game and player has to think before playing his moves. 
+
+### **Adult**
+-   Need some brain activity while relaxing
+    Game is quite simple and just need to think logically before playing your moves.
+    Few controls to enter in the game.
+
+Some of the testing cases for parents and adults are already covered in general player and kids player.
+
+## **Further Testing
+*   The Chrome extension [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb?hl=en) has been run and checked.
+*   Website tested on [Mobile-Friendly Test - Google Search Console](https://search.google.com/test/mobile-friendly) and validated correctly.
+*   Run style sheet code through [Autoprefixer CSS online](http://autoprefixer.github.io/) and pasted prefixed code back into the style sheet.
+*   The website has been checked on devices such as large screen, laptop, tablet, and Android phones with different sizes.
+*   The website has been opened on Safari, Chrome and Mozilla both on phones and laptops to check for any display issues across browsers.
+*   My kids, wife and friends have been asked to provide feedback and if any potential major issues.
+*   Website performance is tested using [Google Lighhouse](https://developers.google.com/web/tools/lighthouse) and below are the screenshot from the result
+    *   index.html page
+        ![Index Page Lighthouse Report](./assets/images/lighthouse-index.png)
+
+    *   game.html page
+        ![Game Page Lighthouse Report](./assets/images/lighthouse-game.png)
+        
+## **Manual Testing**
