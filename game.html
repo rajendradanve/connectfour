@@ -28,15 +28,13 @@
 							<div class="controller-icon mt-2" onclick="redirectToHomePage()" data-bs-toggle="tooltip" data-bs-placement="top" title="Go To Home Page"><i class="fas fa-house-user"></i>
 							</div>
 							<div class="controller-icon-music mt-2" id="music" onclick="toggleSound()" data-bs-toggle="tooltip" data-bs-placement="top" title="Music On"> <i class="fas fa-volume-mute"></i>
-								<audio id="background-audio" type="audio/mpeg">
+								<audio id="background-audio">
 									<source src="./assets/audio/bensound-ukulele.mp3" type="audio/mpeg" />
 								</audio>
 							</div>
 						</div>
 						<div class="mt-2">
-							<h3 class="text-center">
-                        <snap id="player-info">Player 1 Turn</snap>
-                     </h3>
+							<h3 id="player-info" class="text-center">Player 1 Turn</h3>
 						</div>
 					</div>
 					<div id="game-area"></div>

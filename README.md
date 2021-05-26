@@ -49,8 +49,6 @@ Game can also be played by adults for brain trigger.
 This game is a developed as a part of "Interactive Front-End Development Milestone Project" 
 with the use of frontend technologies such as  HTML, CSS and Javascript. 
 
-
-
 ## **Targeted Audiance**
 
 - This game is mainly meant to be used specially by kids which help then to spend time while developing 
@@ -88,19 +86,17 @@ To develop game which has
 * Big buttons which are suitable for screen size. 
 * Dyanamic grid design based on screen size.  
         
-
 ## **User Stories**
 
 -**General Player**
 Simple, fun game which can be played by anyone. While playing it can also challange brain and can teach stragergic and 
-logical thinking.
+logical thinking. Game shall be easy to play and avoid too much options and control. 
 
--   **As a kid (age 5 to 10 year) , I want**
-
+-   **As a kid (age 6+) , I want**
 * Easy to use screen layout with less buttons
 * Game where I can play with less controls
 * Game which I can play alone and also with friends or with my parent
-* Game which will think me to think stratergically
+* Game which will teach me to think stratergically
 
 -   **As a Parent, I want**
 * Easy and simple screen layout so that my kids can play game easily
