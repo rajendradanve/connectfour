@@ -11,13 +11,16 @@ const NO_OF_GAME_ROWS = 5;
 let currentPlayerId = 1;
 const MIN_COIN_COUNT_SEQ_REQUIRED = 4;
 const TIMEOUT_DELAY = 1000;
-let second_player = "";
+let secondPlayer = "";
 let activePlayerCoin = PLAYER_1_COIN_CLASS;
+const GAME_CONTINUE_INT = 0;
+const GAME_WON_INT = 1;
+const GAME_DRAW_INT = 2;
 
 $(document).ready(function () {
 	getPlayerInfo();
 	$("#game-result").hide(); //Hide game result div.
-	if (second_player != HUMAN_PLAYER && second_player != COMPUTER_PLAYER) {
+	if (secondPlayer != HUMAN_PLAYER && secondPlayer != COMPUTER_PLAYER) {
 		redirectToHomePage();
 	} else {
 		setGameArea();
@@ -27,14 +30,14 @@ $(document).ready(function () {
 
 //Function to start game with event handler
 function startGame() {
-	for (let col_no = 0; col_no < NO_OF_COLS; col_no++) {
-		$(`#column${col_no}`).mouseenter(function () {
-			if (checkIfCellEmpty(col_no, NO_OF_GAME_ROWS)) {
+	for (let colNo = 0; colNo < NO_OF_COLS; colNo++) {
+		$(`#column${colNo}`).mouseenter(function () {
+			if (checkIfCellEmpty(colNo, NO_OF_GAME_ROWS)) {
                 //only allowed to add coin if top last row in the game board (5th row index) is not filled with coin.
-				if (currentPlayerId === 1 || (currentPlayerId === 2 && second_player != COMPUTER_PLAYER)) {
+				if (currentPlayerId === 1 || (currentPlayerId === 2 && secondPlayer != COMPUTER_PLAYER)) {
 					
 					removeAndAddClassToCell({
-						column: col_no,
+						column: colNo,
 						row: NO_OF_TOTAL_ROWS,
 						removeClass: EMPTY_COIN_CLASS,
 						addClass: activePlayerCoin
@@ -42,7 +45,7 @@ function startGame() {
 				}
 			}else{
                 removeAndAddClassToCell({
-						column: col_no,
+						column: colNo,
 						row: NO_OF_TOTAL_ROWS,
 						removeClass: EMPTY_COIN_CLASS,
 						addClass: DISABLE_COIN_CLASS
@@ -51,29 +54,29 @@ function startGame() {
 		}).mouseleave(function () {
            
 			removeAndAddClassToCell({
-				column: col_no,
+				column: colNo,
 				row: NO_OF_TOTAL_ROWS,
 				removeClass: activePlayerCoin,
 				addClass: EMPTY_COIN_CLASS
             });
     
 		}).click(function () {
-			if (checkIfCellEmpty(col_no, NO_OF_GAME_ROWS)) {
+			if (checkIfCellEmpty(colNo, NO_OF_GAME_ROWS)) {
 				//Allowed to enter coin only if last row (6th) in game board is not filled with any coin.
-				let row = insertActivePlayerCoinToGrid(col_no, activePlayerCoin, EMPTY_COIN_CLASS); //add coin of active player in the selected column and available row.
-				let isGameOn = checkIfPlayerWon(col_no, row);
-				if (isGameOn === 0) {
+				let row = insertActivePlayerCoinToGrid(colNo, activePlayerCoin, EMPTY_COIN_CLASS); //add coin of active player in the selected column and available row.
+				let isGameOn = checkIfPlayerWon(colNo, row);
+				if (isGameOn === GAME_CONTINUE_INT) {
 					changePlayer();
 					setTimeout(function () {
-						if (currentPlayerId === 2 && second_player === COMPUTER_PLAYER) {
+						if (currentPlayerId === 2 && secondPlayer === COMPUTER_PLAYER) {
 							playComputersTurn();
 						}
 					}, TIMEOUT_DELAY);
 					//continue Game. change player change class
-				} else if (isGameOn === 1) {
+				} else if (isGameOn === GAME_WON_INT) {
 					//current player is winner
 					gameResult(`Player ${currentPlayerId}`);
-				} else if (isGameOn === 2) {
+				} else if (isGameOn === GAME_DRAW_INT) {
 					//game is GAME_DRAW
 					gameResult(GAME_DRAW);
 				} else {
@@ -99,11 +102,11 @@ function playComputersTurn() {
 			break;
 		}
 	}
-	if (isComputerWon === 0) {
+	if (isComputerWon === GAME_CONTINUE_INT) {
 		changePlayer();
-	} else if (isComputerWon === 1) {
-		gameResult(second_player);
-	} else if (isComputerWon === 2) {
+	} else if (isComputerWon === GAME_WON_INT) {
+		gameResult(secondPlayer);
+	} else if (isComputerWon === GAME_DRAW_INT) {
 		gameResult(GAME_DRAW);
 	}
 	return;
@@ -117,27 +120,27 @@ function insertActivePlayerCoinToGrid(selectedColumn) {
 		removeClass: activePlayerCoin,
 		addClass: EMPTY_COIN_CLASS
 	});
-	let row_no = 0;
-	while (row_no <= NO_OF_GAME_ROWS) {
+	let rowNo = 0;
+	while (rowNo <= NO_OF_GAME_ROWS) {
 		// row_norequired to checked only 6 rows from bottom.
-		if (checkIfCellEmpty(selectedColumn, row_no)) {
+		if (checkIfCellEmpty(selectedColumn, rowNo)) {
 			removeAndAddClassToCell({
 				column: selectedColumn,
-				row: row_no,
+				row: rowNo,
 				removeClass: EMPTY_COIN_CLASS,
 				addClass: activePlayerCoin
             });
             
-			if (row_no === NO_OF_GAME_ROWS) {
+			if (rowNo === NO_OF_GAME_ROWS) {
 				//if coin goes to top last row of the game board then that column shall not be used for further play.
 				disableColumnForFurtherClick(selectedColumn);
 			}
 			break; //come out of for loop for row_noafter condition is satisfied once.
 		}
-		row_no++;
+		rowNo++;
 	}
 	//removing coinClass for current player so that another player can play.
-	return row_no;
+	return rowNo;
 }
 //Function to disable top row to enter any coin if all cells on game board are filled with pokeball coins.
 function disableColumnForFurtherClick(colNo) {
@@ -167,7 +170,7 @@ function removeAndAddClassToCell({
 }) {
 	let cellWidth = parseFloat($("#coin00").css("height").slice(0, -2));
 	let animationTop = "";
-	if (currentPlayerId === 2 && second_player === COMPUTER_PLAYER) {
+	if (currentPlayerId === 2 && secondPlayer === COMPUTER_PLAYER) {
 		animationTop = "-" + (NO_OF_TOTAL_ROWS - row + 1) * cellWidth + "px"; //caculated releative position for animation
 	} else {
 		animationTop = "-" + (NO_OF_TOTAL_ROWS - row) * cellWidth + "px"; //caculated releative position for animation
@@ -193,7 +196,7 @@ function changePlayer() {
 function getPlayerInfo() {
 	if (window.location.search.split("?").length > 1) {
 		let params = window.location.search.split("?")[1].split("&");
-		second_player = decodeURIComponent(params[0].split("=")[1]);
+		secondPlayer = decodeURIComponent(params[0].split("=")[1]);
 	} else {
 		//Todo: set up error
 		redirectToErrorPage()
@@ -213,21 +216,21 @@ function setGameArea() {
 	// number of rows will be 7 including row for coin insert. 
 	// when row is top row  row_no = 6 class of square-cell-entry is added and for other rows square-cell-game-board is added to create board look
 	// for each square cell and coin circle unique id is generated.
-	for (let col_no = 0; col_no < NO_OF_COLS; col_no++) {
-		$("#game-area").append(`<div id="column${col_no}"></div>`);
-		$(`#column${col_no}`).addClass("column");
-		for (let row_no = 0; row_no <= NO_OF_TOTAL_ROWS; row_no++) {
-			$(`#column${col_no}`).append(`<div id="square-cell-${col_no}${row_no}"><div class="empty-coin-out"><div id="coin${col_no}${row_no}" class= "empty-coin"></div></div></div></div>`);
-			if (row_no === NO_OF_TOTAL_ROWS) {
-				$(`#square-cell-${col_no}${row_no}`).addClass("square-cell-entry");
-				if (col_no === 0) {
-					$(`#square-cell-${col_no}${row_no}`).css("border-left", "1px solid gray");
+	for (let colNo = 0; colNo < NO_OF_COLS; colNo++) {
+		$("#game-area").append(`<div id="column${colNo}"></div>`);
+		$(`#column${colNo}`).addClass("column");
+		for (let rowNo = 0; rowNo <= NO_OF_TOTAL_ROWS; rowNo++) {
+			$(`#column${colNo}`).append(`<div id="square-cell-${colNo}${rowNo}"><div class="empty-coin-out"><div id="coin${colNo}${rowNo}" class= "empty-coin"></div></div></div></div>`);
+			if (rowNo === NO_OF_TOTAL_ROWS) {
+				$(`#square-cell-${colNo}${row_no}`).addClass("square-cell-entry");
+				if (colNo === 0) {
+					$(`#square-cell-${colNo}${rowNo}`).css("border-left", "1px solid gray");
 				}
-				if (col_no === (NO_OF_COLS - 1)) {
-					$(`#square-cell-${col_no}${row_no}`).css("border-right", "1px solid gray");
+				if (colNo === (NO_OF_COLS - 1)) {
+					$(`#square-cell-${colNo}${rowNo}`).css("border-right", "1px solid gray");
 				}
 			} else {
-				$(`#square-cell-${col_no}${row_no}`).addClass("square-cell-game-board");
+				$(`#square-cell-${colNo}${rowNo}`).addClass("square-cell-game-board");
 			}
 		}
 	}
@@ -246,13 +249,13 @@ This function checks if there are any four same coins in a
 
 //Fucntion to Check if any of winning condition satisfied
 function checkIfPlayerWon(playedColumn, playedRow) {
-	let winningInt = 0; //0 for game continue, 1 for game won by active player, 2 for game draw.
+	let winningInt = GAME_CONTINUE_INT; //0 for game continue, 1 for game won by active player, 2 for game draw.
 	if (isColumnWinning(playedColumn, playedRow) || isRowWining(playedColumn, playedRow) || isDiagonalWinning(playedColumn, playedRow)) {
-		winningInt = 1; // winning condition satisfied. stop game.
+		winningInt = GAME_WON_INT; // winning condition satisfied. stop game.
 	} else if (isGameDraw()) {
-		winningInt = 2; // game is GAME_DRAW. No empty cells to add coins. No one wins
+		winningInt = GAME_DRAW_INT; // game is GAME_DRAW. No empty cells to add coins. No one wins
 	} else {
-		winningInt = 0;
+		winningInt = GAME_CONTINUE_INT;
 	}
 	return winningInt;
 }
@@ -264,11 +267,11 @@ function isColumnWinning(column, row) {
 	if (row > 2) {
 		//don't need to check column winning condition if row is less than 3.
 		//for loop to check if there are same coins in a column
-		for (let j = row - 1; j >= row - 3; j--) {
-			if ($(`#coin${column}${j}`).hasClass(activePlayerCoin)) {
+		for (let row_down_Idx = row - 1; row_down_Idx >= row - 3; row_down_Idx--) {
+			if ($(`#coin${column}${row_down_Idx}`).hasClass(activePlayerCoin)) {
 				numberOfCoinsColumn++;
 			}
-			if (numberOfCoinsColumn == 4) {
+			if (numberOfCoinsColumn == MIN_COIN_COUNT_SEQ_REQUIRED) {
 				isColumnWinner = true;
 			}
 		}
@@ -280,32 +283,32 @@ function isRowWining(column, row) {
     let winCounterCheckRow = 1;
     let totoalLoopCounterRow = 3;
 	
-	let col_left_idx = column - 1;
+	let colLeftIdx = column - 1;
 	//below while loop checking left side of the row if same conis are present
-	while (totoalLoopCounterRow > 0 && col_left_idx >= 0) {
-		if ($(`#coin${col_left_idx}${row}`).hasClass(activePlayerCoin)) {
+	while (totoalLoopCounterRow > 0 && colLeftIdx >= 0) {
+		if ($(`#coin${colLeftIdx}${row}`).hasClass(activePlayerCoin)) {
 			winCounterCheckRow++;
 		} else {
 			break; // loop breaks if immidate cells don't have same class.
 		}
-        col_left_idx--;
+        colLeftIdx--;
         totoalLoopCounterRow--;
 	}
 	//below while loop checks right of the row if same class present
-	if (winCounterCheckRow != 4) {
-        let col_right_idx = column + 1;
+	if (winCounterCheckRow != MIN_COIN_COUNT_SEQ_REQUIRED) {
+        let colRightIdx = column + 1;
         totoalLoopCounterRow = 3;
-		while (totoalLoopCounterRow > 0 && col_right_idx < NO_OF_COLS) {
-			if ($(`#coin${col_right_idx}${row}`).hasClass(activePlayerCoin)) {
+		while (totoalLoopCounterRow > 0 && colRightIdx < NO_OF_COLS) {
+			if ($(`#coin${colRightIdx}${row}`).hasClass(activePlayerCoin)) {
 				winCounterCheckRow++;
 			} else {
 				break; // loop breaks if immidate cells don't have same class.
 			}
-            col_right_idx++;
+            colRightIdx++;
             totoalLoopCounterRow--;
 		}
 	}
-	if (winCounterCheckRow === 4) {
+	if (winCounterCheckRow === MIN_COIN_COUNT_SEQ_REQUIRED) {
 		return true;
 	}else{
         return false;
@@ -328,32 +331,32 @@ function diagonalLeftToRightWinningCheck(column, row) {
 		return false;
 	} else {
 		let totalLoopCounter = 3; //Need to loop max 3 times to check winning condition.
-		let row_down_check_idx = row - 1; // setting initial value to check coins on left side of the current coin cell
-		let col_down_check_idx = column - 1; //setting initial value to check coins on left side of the current coin cell
+		let rowDownCheckIdx = row - 1; // setting initial value to check coins on left side of the current coin cell
+		let colDownCheckIdx = column - 1; //setting initial value to check coins on left side of the current coin cell
 		let winCounterCheck = 1; // current cell already has active player coin. So value is set to 1
 		//below loop will check left side row and column diagonally.
-		while (totalLoopCounter > 0 && col_down_check_idx >= 0 && row_down_check_idx >= 0) {
-			if ($(`#coin${col_down_check_idx}${row_down_check_idx}`).hasClass(activePlayerCoin)) {
+		while (totalLoopCounter > 0 && colDownCheckIdx >= 0 && rowDownCheckIdx >= 0) {
+			if ($(`#coin${colDownCheckIdx}${rowDownCheckIdx}`).hasClass(activePlayerCoin)) {
 				winCounterCheck++;
 			} else {
 				break;
 			}
-			row_down_check_idx--;
-			col_down_check_idx--;
+			rowDownCheckIdx--;
+			colDownCheckIdxs--;
 			totalLoopCounter--;
 		}
 		if (winCounterCheck != MIN_COIN_COUNT_SEQ_REQUIRED) { //if winCounterCheck is 4 then winning condition is satisfied and no need for further checks.
 			totalLoopCounter = 3; //reassigning value of the counter to 3 to check left to right condition upward.
-			let row_up_check_idx = row + 1; // setting initial value to check coins on right side of the current coin cell
-			let col_up_check_idx = column + 1; //setting initial value to check coins on right side of the current coin cell
-			while (totalLoopCounter > 0 && col_up_check_idx < NO_OF_COLS && row_up_check_idx < NO_OF_GAME_ROWS) {
-				if ($(`#coin${col_up_check_idx}${row_up_check_idx}`).hasClass(activePlayerCoin)) {
+			let rowUpCheckIdx = row + 1; // setting initial value to check coins on right side of the current coin cell
+			let colUpCheckIdx = column + 1; //setting initial value to check coins on right side of the current coin cell
+			while (totalLoopCounter > 0 && colUpCheckIdx < NO_OF_COLS && rowUpCheckIdx < NO_OF_GAME_ROWS) {
+				if ($(`#coin${colUpCheckIdx}${rowUpCheckIdx}`).hasClass(activePlayerCoin)) {
 					winCounterCheck++;
 				} else {
 					break;
 				}
-				row_up_check_idx++;
-				col_up_check_idx++;
+				rowUpCheckIdx++;
+				colUpCheckIdx++;
 				totalLoopCounter--;
 			}
 		}
@@ -372,32 +375,32 @@ function diagonalRightToLeftWinningCheck(column, row) {
 		return false;
 	} else {
 		let totalLoopCounter = 3; //Need to loop max 3 times to check winning condition.
-		let row_down_check_idx = row - 1; // setting initial value to check coins on right bottom side of the current coin cell
-		let col_up_check_idx = column + 1; //setting initial value to check coins on right bottom side of the current coin cell
+		let rowDownCheckIdx = row - 1; // setting initial value to check coins on right bottom side of the current coin cell
+		let colUpCheckIdx = column + 1; //setting initial value to check coins on right bottom side of the current coin cell
 		let winCounterCheck = 1; // current cell already has active player coin. So value is set to 1
 		//below loop will check right bottom side current row and column diagonally.
-		while (totalLoopCounter > 0 && col_up_check_idx < NO_OF_COLS && row_down_check_idx >= 0) {
-			if ($(`#coin${col_up_check_idx}${row_down_check_idx}`).hasClass(activePlayerCoin)) {
+		while (totalLoopCounter > 0 && colUpCheckIdx < NO_OF_COLS && rowDownCheckIdx >= 0) {
+			if ($(`#coin${colUpCheckIdx}${rowDownCheckIdx}`).hasClass(activePlayerCoin)) {
 				winCounterCheck++;
 			} else {
 				break;
 			}
-			row_down_check_idx--;
-			col_up_check_idx++;
+			rowDownCheckIdx--;
+			colUpCheckIdx++;
 			totalLoopCounter--;
 		}
 		if (winCounterCheck != MIN_COIN_COUNT_SEQ_REQUIRED) { //if winCounterCheck is 4 then winning condition is satisfied and no need for further checks.
 			totalLoopCounter = 3; //reassigning value of the counter to 3 to check left to right condition upward.
-			let row_up_check_idx = row + 1; // setting initial value to check coins on right side of the current coin cell
+			let rowUpCheckIdx = row + 1; // setting initial value to check coins on right side of the current coin cell
 			let col_down_check_idx = column - 1; //setting initial value to check coins on right side of the current coin cell
-			while (totalLoopCounter > 0 && col_down_check_idx >= 0 && row_up_check_idx < NO_OF_GAME_ROWS) {
-				if ($(`#coin${col_down_check_idx}${row_up_check_idx}`).hasClass(activePlayerCoin)) {
+			while (totalLoopCounter > 0 && col_down_check_idx >= 0 && rowUpCheckIdx < NO_OF_GAME_ROWS) {
+				if ($(`#coin${col_down_check_idx}${rowUpCheckIdx}`).hasClass(activePlayerCoin)) {
 					winCounterCheck++;
 				} else {
 					break;
 				}
-				row_up_check_idx++;
-				col_up_check_idx--;
+				rowUpCheckIdx++;
+				colUpCheckIdx--;
 				totalLoopCounter--;
 			}
 		}
@@ -421,9 +424,9 @@ function isGameDraw() {
 }
 // Function to display game result.
 function gameResult(winnerPlayer) {
-	for (let col_no = 0; col_no < NO_OF_COLS; col_no++) {
-		$(`#column${col_no}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(EMPTY_COIN_CLASS);
-		$(`#column${col_no}`).off("click").off("mouseenter").off("mouseleave");
+	for (let colNo = 0; colNo < NO_OF_COLS; colNo++) {
+		$(`#column${colNo}`).removeClass(PLAYER_1_COIN_CLASS).removeClass(PLAYER_2_COIN_CLASS).addClass(EMPTY_COIN_CLASS);
+		$(`#column${colNo}`).off("click").off("mouseenter").off("mouseleave");
 	}
 	$("#player-info").text("");
 	let gameResultText = "";
