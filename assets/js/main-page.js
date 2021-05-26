@@ -11,9 +11,18 @@ $(document).ready(function () {
 	$(".random-coin").css("top", -randomCoinSize * 2);
 });
 
-function redirectToGamePage() {
+function humanOpponentRedirect(){
+
+    redirectToGamePage("Human");
+
+}
+
+function computerOpponentRedirect(){
+    redirectToGamePage("Computer");
+}
+
+function redirectToGamePage(player2) {
 	//getting selected 2nd player values for radio button
-	let player2 = $("input[name='player-2']:checked").val();
 	let url = "game.html?player2=" + encodeURIComponent(player2);
 	window.location.href = url;
 }

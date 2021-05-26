@@ -32,35 +32,18 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col">
-								<form>
+								
 									<div class="d-flex justify-content-around my-2">
-										<div class="row">
-											<div class="col-2 px-0">
-												<input id="player-2-human" type="radio" name="player-2" value="Human" checked>
-											</div>
-											<div class="col-4">
-												<label class="player-lable text-center" for="player-2-human"> <i class="fas fa-user-alt fa-3x"></i>
-													<br>Human
-												</label>
-											</div>
-											<div class="col-2">
-												<input id="player-2-computer" type="radio" name="player-2" value="Computer">
-											</div>
-											<div class="col-4">
-												<label class="player-lable text-center" for="player-2-computer"> <i class="fas fa-laptop fa-3x"></i>
-													<br>Computer
-												</label>
-											</div>
-										</div>
+										<button class="main-button btn btn-primary btn-lg" onclick="humanOpponentRedirect()"><i class="fas fa-user-alt"></i> VS <i class="fas fa-user-alt"></i></button>
+                                        <button class="main-button btn btn-primary btn-lg" onclick="computerOpponentRedirect()"><i class="fas fa-user-alt"></i> VS <i class="fas fa-laptop"></i></button>
 									</div>
-								</form>
+								
 							</div>
-						</div>
+                        </div>
+                        <div>
+                           
+                        </div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" onclick="redirectToGamePage()">Start Game</button>
 				</div>
 			</div>
 		</div>
@@ -73,25 +56,25 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
+                    
 					<h4>Game Information</h4>
-					<p>Pokeball Connect Four game board has 6 rows (Horizontal) and 7 columns (vertical). This is 2 player game. So you can either play on the computer or you can play with your family/friend. The first player has a red Pokeball coin and the second player has a yellow Pokeball coin. Left-click on the column where the player wants to put his coin. If you are playing against the computer (as player 2), these moves will be played automatically.</p>
+					<p>Pokeball Connect Four  is a 2 player game. This game board has 6 rows (Horizontal) and 7 columns (vertical). You can either play against the computer or you can play with your family member or a friend. The first player has a red Pokeball coin and the second player has a yellow Pokeball coin. Left-click on the column where the player wants to put his coin. If you are playing against the computer (as player 2), these moves will be played automatically.</p>
 					<h4>Winning</h4>
-					<p>The player who builds the first line with four of his Pokeball coins is the winner. The line can be vertical, horizontal, or diagonal. See the below images. While you are trying to make your Pokeball line you need to make sure that your opponent doesn't finish his line first.</p>
+					<p>The player who builds the first line with four of his Pokeball coins is the winner. The line can be vertical, horizontal, or diagonal. See the below images. While you are trying to make your Pokeball line you need to make sure that your opponent doesn't finish his line first. So you need to think stratergically and observe all the cells before playing your move.</p>
 					<div class="d-flex flex-row flex-wrap justify-content-around">
 						<div class="winning-images">
 							<img class="winning-img" src="./assets/images/row.png" alt="pokeball connect four row winning example">
-							<p class="text-center"><strong>Example of row winning <br> (See 4 red pokeball in a row)</strong>
-							</p>
-						</div>
-						<div class="winning-images ">
-							<img class="winning-img ms-4" src="./assets/images/column.png" alt="pokeball connect four column winning example">
-							<p class="text-center"><strong>Example of column winning <br> (See 4 yellow pokeball in a column)</strong>
-							</p>
+							<p class="text-center font-weight-bold mt-2"><strong>Example of row winning</strong></p>
 						</div>
 						<div class="winning-images">
-							<img class="winning-img ms-4" src="./assets/images/diagonal.png" alt="pokeball connect four diagonal winning example">
-							<p class="text-center"><strong>Example of diagonal winning <br> (See 4 yellow pokeball in a diagonal)</strong>
-							</p>
+							<img class="winning-img" src="./assets/images/column.png" alt="pokeball connect four column winning example">
+							<p class="text-center font-weight-bold mt-2"><strong>Example of column winning</strong></p>
+							
+						</div>
+						<div class="winning-images">
+							<img class="winning-img " src="./assets/images/diagonal.png" alt="pokeball connect four diagonal winning example">
+							<p class="text-center font-weight-bold mt-2"><strong>Example of diagonal winning</strong></p>
+							
 						</div>
 					</div>
 				</div>
