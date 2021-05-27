@@ -10,7 +10,7 @@ const NO_OF_TOTAL_ROWS = 6;
 const NO_OF_GAME_ROWS = 5;
 let currentPlayerId = 1;
 const MIN_COIN_COUNT_SEQ_REQUIRED = 4;
-const TIMEOUT_DELAY = 1000;
+const TIMEOUT_DELAY = 750;
 let secondPlayer = "";
 let activePlayerCoin = PLAYER_1_COIN_CLASS;
 const GAME_CONTINUE_INT = 0;
@@ -167,7 +167,7 @@ function removeAndAddClassToCell({
 	}
 	$(`#coin${column}${row}`).removeClass(removeClass).addClass(addClass).css("top", animationTop).animate({
 		top: 0
-	}, "slow");
+	}, TIMEOUT_DELAY);
 	return;
 }
 //Function to set active player coin

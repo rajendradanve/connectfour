@@ -104,5 +104,6 @@ Some of the testing cases for parents and adults are already covered in general 
     *   Checked if game board layout changed based on screen size (after refresh)
 
 ## **Known Bugs**
-Not a bug but it will be better to add some logical thinking to the computer moves instead of random to make the game more competitive. 
+When computer is playing as a second player and first player perform frequent left clicks very fast it sometime creates problem in terms of number of turns each players get. 
+It was not a frequest issue and will be worked on future update of this game. 
     
