@@ -4,35 +4,35 @@
 ![Game Page Responsive Design](./assets/images/responsive-game-page.png)
 
 For live website [click here](https://rajendradanve.github.io/connectfour)
+
 For github repository [click here](https://github.com/rajendradanve/connectfour)
 
 #   **Table of Content**
 
  1. [About](#About)
  2. [UX](#UX)
-    *   [Project Goals](#project-goal)
+    *   [Project Goals](#project-goals)
     *   [Targeted Audiance](#targeted-audiance)
     *   [Player Goals](#player-goals)
     *   [Developer Goals](#developer-goals)
     *   [User Stories](#user-stories)
-    *   [Design](#design)
-    *   [Wireframe](#wireframe)
+    *   [Design Choice](#design-choice)
+    *   [Wireframes](#wireframes)
 
- 2. Features
+ 2. [Features](#features)
     *   [Existing Features](#existing-features)
     *   [Features Left to Implement](#features-left-to-implement)
 
-3.  [Technologies-Used](#Technologies-Used)
+3.  [Technologies Used](#technologies-used)
+   
+4.  [Testing](#testing)
 
-4.  [Testing](#Testing)
+5. [Deployment](#deployment)
 
-5. [Deployment](#Deployment)
+6. [Credits](#credits)
 
-6. [Credit](#Credit)
-    *   [Content](#content)
-    *   [Media](#media)
-    *   [Code](#code)
-    *   [Acknowledgements](#acknowledgements) 
+7. [Acknowledgements](#acknowledgements)
+  
 
  # **About**
  Connect four is classic game which is not only fun to play but also required stragergic thinking. 
@@ -134,13 +134,13 @@ Petrona looks stylish but still clean font to read and correctly goes with simpl
 Game has mainly 2 pages. Index.html page for choosing second player and game.html page for main game page.
 Also error.html page is design in case there is any error in the game. 
 
--   **Wireframes**
+##  **Wireframes**
 
-    *   [Desktop wireframe](assets/wireframe/Wireframe-for-desktop.pdf)
+*   [Desktop wireframe](assets/wireframe/Wireframe-for-desktop.pdf)
 
-    *   [Tablet wireframe](assets/wireframe/Wireframe-For-Tablet.pdf)
+*   [Tablet wireframe](assets/wireframe/Wireframe-For-Tablet.pdf)
 
-    *   [Mobile wireframe](assets/wireframe/Wireframe-Phone.pdf)
+*   [Mobile wireframe](assets/wireframe/Wireframe-Phone.pdf)
 
 ## **Features**
 
@@ -161,14 +161,16 @@ Also error.html page is design in case there is any error in the game.
 
 -   Choosing who will play first in case one of the player is computer. 
 
--   Possibility for player to choose the pokeball.
+-   Possibility for player to choose the pokeball color.
 
 -   Logical moves by computer when one of the player is computer.
+
+-   More audio interaction to be added based on how game is procceding. 
 
 
 ## **Technologies Used**
 
-### Languages Used
+**Languages Used**
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML#:~:text=The%20HyperText%20Markup%20Language%2C%20or,displayed%20in%20a%20web%20browser.)
 
@@ -182,7 +184,7 @@ Also error.html page is design in case there is any error in the game.
 
   - The language used to implement the site's interactive features, allow the users to be interactive and make actions during their visit.
 
-### Frameworks, Libraries & Programs Used
+**Frameworks, Libraries & Programs Used**
 
 - [Bootstrap](https://getbootstrap.com/)
 
@@ -241,7 +243,7 @@ Testing documentation can be found separately at [TESTING.md](TESTING.md)
 
 ## **Deployment**
 
-### **Deploy To GitHub Pages**
+**Deploy To GitHub Pages**
 
 1. Logged into Github account.
 
@@ -259,7 +261,7 @@ Testing documentation can be found separately at [TESTING.md](TESTING.md)
 
 8. Once clicked, this publishes the project to GitHub Pages and displays the site URL. Click on the URL to view the live site.
 
-### **Making a clone or download zip to run locally**
+**Making a clone or download zip to run locally**
 
 1. Log into GitHub account.
 
@@ -281,7 +283,7 @@ Testing documentation can be found separately at [TESTING.md](TESTING.md)
 
 10. Alternately, click on Download ZIP, unpack locally and open with a local code editor.
 
-### **Forking the GitHub Repository**
+**Forking the GitHub Repository**
 
 1. Log into GitHub.
 
@@ -301,7 +303,7 @@ So would like to give credit to my kids for providing me idea.
 All the codes are written by myself after learning from resources. 
 The resources and the links I used to learn each concepts are the following:
 
-### **Code**
+**Code**
 
 - [w3schools](https://www.w3schools.com/) 
     - [audio](https://www.w3schools.com/html/html5_audio.asp)
@@ -326,7 +328,7 @@ The resources and the links I used to learn each concepts are the following:
 
 - Transfering opponent player information from index.html to game.html, help is taken from [this link](https://www.aspsnippets.com/Articles/Redirect-to-another-Page-with-multiple-Parameters-using-JavaScript.aspx)
 
-### **Color**
+**Color**
 
 - Color codes taken pokemon theme color palette at [this link](https://brandpalettes.com/pokemon-color-codes/)
 
@@ -334,7 +336,7 @@ The resources and the links I used to learn each concepts are the following:
 
 - When all coins are filled in a particular column rgba(197, 192, 192, 0.9) colour is used to indicate not possible to enter any coin.
 
-### **Media**
+**Media**
 
 - Index page background image taken from [this link](https://wallpapercave.com/w/HrO79ZR)
 
@@ -345,14 +347,14 @@ The resources and the links I used to learn each concepts are the following:
 - Error page background image is taken from [freepik website](www.freepik.com) and image is downloaded from [this link](https://www.freepik.com/vectors/clouds)
         
 
-### **Acknowledgements**
+## **Acknowledgements**
 
 I would like to thank:
 
 - My mentor Akshat Garg for his encouragement and valuable comments for this project. 
 Thanks to his guidence and tips to improve me code.
 
-- lessons from code institute
+- Lessons from code institute helped. Used regularly to check if I am following correct method of coading.
 
 - Help from in the Slack community
 
