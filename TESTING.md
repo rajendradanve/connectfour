@@ -11,7 +11,7 @@ HTML is validated using online [HTML Validator](https://validator.w3.org/) tool.
 
 ## **CSS**
 CSS is validated using online [CSS Validator](https://validator.w3.org/) tool.
--   **style.css :**Validation showed error that "scrollbar-width property doesn't exist" and "-ms-overflow-style" is an unknown vendor extension
+-   **style.css :** Validation showed error that "scrollbar-width property doesn't exist" and "-ms-overflow-style" is an unknown vendor extension
     This is not removed as this CSS property is used to hide the scrollbar for a page on firefox and EDGE browser for as mentioned in [this link](https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp)
 
 ## **Javascript**
@@ -65,7 +65,7 @@ icons are used inside buttons to provide visual information about with whom user
 
 Some of the testing cases for parents and adults are already covered in general players and kids players.
 
-## **Further Testing
+## **Further Testing**
 *   The Chrome extension [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb?hl=en) has been run and checked.
 *   Website tested on [Mobile-Friendly Test - Google Search Console](https://search.google.com/test/mobile-friendly) and validated correctly.
 *   Run style sheet code through [Autoprefixer CSS online](http://autoprefixer.github.io/) and pasted prefixed code back into the style sheet.
@@ -74,20 +74,22 @@ Some of the testing cases for parents and adults are already covered in general 
 *   My kids, wife, and friends have been asked to provide feedback and if any potential major issues.
 *   Website performance is tested using [Google Lighhouse](https://developers.google.com/web/tools/lighthouse) and below are the screenshot from the result
     *   index.html page
+
         ![Index Page Lighthouse Report](./assets/images/lighthouse-index.png)
 
     *   game.html page
+
         ![Game Page Lighthouse Report](./assets/images/lighthouse-game.png)
         
 ## **Manual Testing**
-*   Index Page
+*   **Index Page**
     *   Checked animation on index page for different screen sizes and if Pokeball size changes with screen. 
     *   Checked if the "New Game" button works properly and opens the modal to choose an opponent player. 
     *   Checked if game instructions buttons "How To Play" works properly and text in the modal is okay in all sizes. 
     *   Checked hovering effect for all buttons works properly. 
     *   Checked if the game redirects correctly to the game page after choosing an opponent player.
 
-*   Game Page
+*   **Game Page**
     *   Game tested many times checking different winning and draw cases to test if all conditions work. 
         Received the wrong result once while testing but not able to replicate the same case again. Played the game much time afterward to check all cases.
     *   Played game with kids and family members to test game if works as intended.
@@ -96,6 +98,6 @@ Some of the testing cases for parents and adults are already covered in general 
     *   Checked if tooltip text works properly.
     *   Checked if game board layout changed based on screen size (after refresh)
 
-## **Known Bugs
+## **Known Bugs**
 Not a bug but it will be better to add some logical thinking to the computer moves instead of random to make the game more competitive. 
     
