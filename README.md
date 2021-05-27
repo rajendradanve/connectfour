@@ -4,13 +4,15 @@
 ![Game Page Responsive Design](./assets/images/responsive-game-page.png)
 
 For live website [click here](https://rajendradanve.github.io/connectfour)
+For github repository [click here](https://github.com/rajendradanve/connectfour)
 
 #   **Table of Content**
 
  1. [About](#About)
  2. [UX](#UX)
     *   [Project Goals](#project-goal)
-    *   [Player Goals](#player-goal)
+    *   [Targeted Audiance](#targeted-audiance)
+    *   [Player Goals](#player-goals)
     *   [Developer Goals](#developer-goals)
     *   [User Stories](#user-stories)
     *   [Design](#design)
@@ -42,7 +44,7 @@ other coins inbetween is the winner).
 
  # **UX**
 
-##  **Project Goal**
+##  **Project Goals**
 Main goal of the project is develop fun, exciting and stragergic game which 
 can be played alone or with friend. Game is designed mainly for kids of age 5+ years. 
 Game can also be played by adults for brain trigger. 
@@ -60,7 +62,7 @@ with the use of frontend technologies such as  HTML, CSS and Javascript.
 - This game is not gender specific and can be played by any gender. But in general pokemon is more popular 
    in boys than girls so mostly themewise this is more suitable for boys.
 
-##   **Player Goal**
+##   **Player Goals**
 
 **Goal for Kid** 
     
@@ -79,7 +81,8 @@ with the use of frontend technologies such as  HTML, CSS and Javascript.
 * Just game which will not divert kids with any unwanted advertisements.
 
 
-## Developer Goal
+## **Developer Goals**
+
 To develop game which has
 * Shows developers understanding about Interactive frontend development.
 * Simple design which mainly suitable for kids can easily understandable and easy to play.
@@ -88,24 +91,28 @@ To develop game which has
         
 ## **User Stories**
 
--**General Player**
+**General Player**
+
 Simple, fun game which can be played by anyone. While playing it can also challange brain and can teach stragergic and 
 logical thinking. Game shall be easy to play and avoid too much options and control. 
 
--   **As a kid (age 6+) , I want**
+**As a kid (age 6+) , I want**
+
 * Easy to use screen layout with less buttons
 * Game where I can play with less controls
 * Game which I can play alone and also with friends or with my parent
 * Game which will teach me to think stratergically
 
--   **As a Parent, I want**
+**As a Parent, I want**
+
 * Easy and simple screen layout so that my kids can play game easily
 * Simple and minimal control 
 * No advertisement so that kids are not getting divert to unwanted stuff
 * Learn to develop logical thinking ability while playing
 * Able to play with my kid just for fun to generabe parental bonding together
     
--   **As a Adult, I want**
+**As a Adult, I want**
+
 * Some brain trigger while relaxing
 * Able to play without much other distractions (advertisement)
 * Able to play with friend or kids
@@ -113,24 +120,27 @@ logical thinking. Game shall be easy to play and avoid too much options and cont
 ## **Design Choice**
 
 - **Colour Scheme**
+
 Main colors used are from got from pokemon theme colour which as mainly yellow, blue and navy blue color. 
 Color codes taken from [this link](https://brandpalettes.com/pokemon-color-codes/)
 
 - **Typography**
+
 Petrona font is mainly used through out the website with serif as a back up font in case of any reason the font isn't being imported into the site correctly.
 Petrona looks stylish but still clean font to read and correctly goes with simple design. Fonts are imported using [Google Fonts](https://fonts.google.com/).
 
 - **Pages**
+
 Game has mainly 2 pages. Index.html page for choosing second player and game.html page for main game page.
 Also error.html page is design in case there is any error in the game. 
 
 -   **Wireframes**
 
-[Desktop wireframe](assets/wireframe/Wireframe-for-desktop.pdf)
+    *   [Desktop wireframe](assets/wireframe/Wireframe-for-desktop.pdf)
 
-[Tablet wireframe](assets/wireframe/Wireframe-For-Tablet.pdf)
+    *   [Tablet wireframe](assets/wireframe/Wireframe-For-Tablet.pdf)
 
-[Mobile wireframe](assets/wireframe/Wireframe-Phone.pdf)
+    *   [Mobile wireframe](assets/wireframe/Wireframe-Phone.pdf)
 
 ## **Features**
 
@@ -225,11 +235,9 @@ Also error.html page is design in case there is any error in the game.
     -   The tools to minify and beautify JavaScript, CSS and HTML codes.
 
 
-
-
 ## **Testing**
 
-To be added
+Testing documentation can be found separately at [TESTING.md](TESTING.md)
 
 ## **Deployment**
 
@@ -302,7 +310,6 @@ The resources and the links I used to learn each concepts are the following:
     - [Animation using Jquery](https://www.w3schools.com/jquery/jquery_animate.asp)
     - [Hide scrollbar for a page](https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp)
 
-
 - [Bootstrap](https://getbootstrap.com/)
     -[Bootstrap modal](https://getbootstrap.com/docs/5.0/components/modal/)
     -[Buttons](https://getbootstrap.com/docs/5.0/components/buttons/)
@@ -354,4 +361,3 @@ Thanks to his guidence and tips to improve me code.
 - My kids because of whom I came up with idea of this project.
 
 Should you have any queries please reach me on rajendradanve@gmail.com
-
