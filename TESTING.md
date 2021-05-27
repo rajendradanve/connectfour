@@ -1,5 +1,10 @@
 # **TESTING**
 
+For live website [click here](https://rajendradanve.github.io/connectfour)
+
+For GitHub repository [click here](https://github.com/rajendradanve/connectfour)
+
+
 ## **HTML**
 HTML is validated using online [HTML Validator](https://validator.w3.org/) tool.
 -   **index.html:** Validation showed an error that "Element h4 not allowed as child of element label"
