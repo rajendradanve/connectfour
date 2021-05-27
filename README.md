@@ -5,7 +5,7 @@
 
 For live website [click here](https://rajendradanve.github.io/connectfour)
 
-For github repository [click here](https://github.com/rajendradanve/connectfour)
+For GitHub repository [click here](https://github.com/rajendradanve/connectfour)
 
 #   **Table of Content**
 
@@ -35,104 +35,98 @@ For github repository [click here](https://github.com/rajendradanve/connectfour)
   
 
  # **About**
- Connect four is classic game which is not only fun to play but also required stragergic thinking. 
-Pokeball connect four uses Pokeball theme with this game. 
-This is 2 player game and game board has 7 wide and 6 high grid cell where player put the his coins.
-First player who able to put four of his coins either in a stright row, column or diagonal (without any 
-other coins inbetween is the winner).
+ Connect four is a classic game that is not only fun to play but also required strategic thinking. 
+Pokeball connects four uses Pokeball theme with this game. 
+This is 2 player game and game board has 7 wide and 6 high grid cell where player put his coins.
+The first player who able to put four of his coins either in a straight row, column, or diagonal (without any other coins in between is the winner).
 
 
  # **UX**
 
 ##  **Project Goals**
-Main goal of the project is develop fun, exciting and stragergic game which 
-can be played alone or with friend. Game is designed mainly for kids of age 5+ years. 
-Game can also be played by adults for brain trigger. 
-This game is a developed as a part of "Interactive Front-End Development Milestone Project" 
-with the use of frontend technologies such as  HTML, CSS and Javascript. 
+The main goal of the project is to develop a fun, exciting, and strategic game which can be played alone or with a friend. The game is designed mainly for kids of age 5+ years. 
+The game can also be played by adults for brain triggers. 
+This game is developed as a part of the "Interactive Front-End Development Milestone Project" 
+with the use of front-end technologies such as  HTML, CSS, and Javascript. 
 
 ## **Targeted Audiance**
 
-- This game is mainly meant to be used specially by kids which help then to spend time while developing 
-   stragergic thinking.
-- This is 2 player game but can be played alone while second player is computer. 
-- Kids can play this game with parents and another friend . 
-- Of course, adults can play this game just to time pass when they want to relax and wanted some challanging 
-  task while relaxing.
-- This game is not gender specific and can be played by any gender. But in general pokemon is more popular 
-   in boys than girls so mostly themewise this is more suitable for boys.
+- This game is mainly meant to be used especially by kids which helps them to spend time while developing strategic thinking.
+- This is 2 player game but can be played alone while the second player is a computer. 
+- Kids can play this game with parents and other friends. 
+- Of course, adults can play this game just to time pass when they want to relax and wanted some challenging task while relaxing.
+- This game is not gendered specific and can be played by any gender. But in general, pokemon is more popular with boys than girls so mostly theme-wise this is more suitable for boys.
 
 ##   **Player Goals**
 
 **Goal for Kid** 
     
-* Easy and fun game to play which also teaches to think stratergically.
+* Easy and fun game to play which also teaches to think strategically.
 * Easy controls so that kids can play easily.
-* Can be played alone (with computer as 2nd player) or with family member or friend.
-* Simple understandble instructions about how to play game.
-* Audio interaction suitable for game.
+* Can be played alone (with the computer as 2nd player) or with a family member or friend.
+* Simple understandable instructions about how to play the game.
+* Audio interaction suitable for the game.
 
 **Goal for Parent**
 
 * Game which is easy to play but also will teach my kid about how to think logically.
-* Interative controls or with easy to understand function.
-* Easily understanble and accesable instructions if required.
+* Interactive controls or with easy to understand function.
+* Easily understandable and accessible instructions if required.
 * Game which parent can able to play with kid and generate bond.
 * Just game which will not divert kids with any unwanted advertisements.
 
 
 ## **Developer Goals**
 
-To develop game which has
-* Shows developers understanding about Interactive frontend development.
+To develop the game which has
+* Shows developer's understanding of Interactive frontend development.
 * Simple design which mainly suitable for kids can easily understandable and easy to play.
 * Big buttons which are suitable for screen size. 
-* Dyanamic grid design based on screen size.  
+* Dynamic grid design based on screen size.  
         
 ## **User Stories**
 
 **General Player**
 
-Simple, fun game which can be played by anyone. While playing it can also challange brain and can teach stragergic and 
-logical thinking. Game shall be easy to play and avoid too much options and control. 
+A simple, fun game that can be played by anyone. While playing it can also challenge the brain and can teach strategic and logical thinking. The game shall be easy to play and avoid too many options and control. 
 
-**As a kid (age 6+) , I want**
+**As a kid (age 6+), I want**
 
-* Easy to use screen layout with less buttons
-* Game where I can play with less controls
+* Easy to use screen layout with fewer buttons
+* Game where I can play with fewer controls
 * Game which I can play alone and also with friends or with my parent
-* Game which will teach me to think stratergically
+* Game which will teach me to think strategically
 
 **As a Parent, I want**
 
-* Easy and simple screen layout so that my kids can play game easily
+* Easy and simple screen layout so that my kids can play the game easily
 * Simple and minimal control 
 * No advertisement so that kids are not getting divert to unwanted stuff
 * Learn to develop logical thinking ability while playing
-* Able to play with my kid just for fun to generabe parental bonding together
+* Able to play with my kid just for fun to generate parental bonding together
     
-**As a Adult, I want**
+**As an Adult, I want**
 
 * Some brain trigger while relaxing
-* Able to play without much other distractions (advertisement)
+* Able to play without any other distractions (advertisement)
 * Able to play with friend or kids
 
 ## **Design Choice**
 
 - **Colour Scheme**
 
-Main colors used are from got from pokemon theme colour which as mainly yellow, blue and navy blue color. 
+The main colors used are from got from pokemon theme colors which as mainly yellow, blue, and navy blue color. 
 Color codes taken from [this link](https://brandpalettes.com/pokemon-color-codes/)
 
 - **Typography**
 
-Petrona font is mainly used through out the website with serif as a back up font in case of any reason the font isn't being imported into the site correctly.
-Petrona looks stylish but still clean font to read and correctly goes with simple design. Fonts are imported using [Google Fonts](https://fonts.google.com/).
+Petrona font is mainly used throughout the website with a serif as a backup font in case of any reason the font isn't being imported into the site correctly.
+Petrona looks stylish but still clean font to read and correctly goes with a simple design. Fonts are imported using [Google Fonts](https://fonts.google.com/).
 
 - **Pages**
 
-Game has mainly 2 pages. Index.html page for choosing second player and game.html page for main game page.
-Also error.html page is design in case there is any error in the game. 
+The game has mainly 2 pages. Index.html page for choosing a second player and game.html page for main game page.
+Also, the error.html page is designed in case there is an error in the game. 
 
 ##  **Wireframes**
 
@@ -146,26 +140,26 @@ Also error.html page is design in case there is any error in the game.
 
 ### **Existing Features**
 
--   Index Page: Main feature of index page is to choose opponent player and provide instruction about how to play game.
-    To justify pokeball theme page has background image from pokemon. Also page has animated red and yellow pokeball.
-    It is possible to choose second player as another human or computer. 
+-   Index Page: The main feature of the index page is to choose an opponent player and provide instruction about how to play the game.
+    To justify Pokeball theme page has a background image from pokemon. Also, the page has animated red and yellow Pokeball.
+    It is possible to choose a second player as another human or computer. 
     
--   Game Page: Game page has 3 buttons - refresh, home and music toggle. Main game board has 7 columns and 6 rows.
-    One more of the top row is used to insert the coin. When second player is computer yellow pokeball coin will be played randomly.
+-   Game Page: The game page has 3 buttons - refresh, home, and music toggle. The main game board has 7 columns and 6 rows.
+    One more of the top row is used to insert the coin. When the second player is computer yellow Pokeball coin will be played randomly.
 
 -   Music on and off switch - which allows the users to switch on the music if they would like to. 
 
--   If any player won or game is draw , further coin playing is not possible. 
+-   If any player won or the game is drawn, further coin playing is not possible. 
 
 ### **Features Left to Implement**
 
--   Choosing who will play first in case one of the player is computer. 
+-   Choosing who will play first in case one of the players is a computer. 
 
--   Possibility for player to choose the pokeball color.
+-   Possibility for the player to choose the Pokeball color.
 
--   Logical moves by computer when one of the player is computer.
+-   Logical moves by the computer when one of the players is a computer.
 
--   More audio interaction to be added based on how game is procceding. 
+-   More audio interaction to be added based on how the game is proceeding. 
 
 
 ## **Technologies Used**
@@ -178,21 +172,21 @@ Also error.html page is design in case there is any error in the game.
 
 - [CSS3](https://en.wikipedia.org/wiki/CSS)
 
-  - The language used to give the application its visual effects including the font, color and layout etc.
+  - The language used to give the application its visual effects including the font, color, and layout, etc.
 
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-  - The language used to implement the site's interactive features, allow the users to be interactive and make actions during their visit.
+  - The language used to implement the site's interactive features, allows the users to be interactive and take actions during their visit.
 
 **Frameworks, Libraries & Programs Used**
 
 - [Bootstrap](https://getbootstrap.com/)
 
-    - Bootstrap library is used create responsive design, beautiful buttons, modal template.
+    - Bootstrap library is used to create responsive design, beautiful buttons, modal templates.
 
 - [Jquery](https://jquery.com/)
 
-    - Jquery library used create DOM elements, event handling, animation.
+    - Jquery library used to create DOM elements, event handling, animation.
 
 - [Github](https://github.com/)
 
@@ -218,7 +212,7 @@ Also error.html page is design in case there is any error in the game.
 
 - [Google DevTools](https://developer.chrome.com/docs/devtools/)
 
-  - Google DevTools was extensively used throughout the project for various styling, testing and debugging purposes.
+  - Google DevTools was extensively used throughout the project for various styling, testing, and debugging purposes.
 
 - [Am I Responsive](http://ami.responsivedesign.is/)
 
@@ -234,7 +228,7 @@ Also error.html page is design in case there is any error in the game.
 
 - [Code Beautifier](http://minifycode.com/html-beautifier/)
 
-    -   The tools to minify and beautify JavaScript, CSS and HTML codes.
+    -   The tools to minify and beautify JavaScript, CSS, and HTML codes.
 
 
 ## **Testing**
@@ -281,7 +275,7 @@ Testing documentation can be found separately at [TESTING.md](TESTING.md)
 
 9. Press enter to create your local clone.
 
-10. Alternately, click on Download ZIP, unpack locally and open with a local code editor.
+10. Alternately, click on Download ZIP, unpack locally, and open with a local code editor.
 
 **Forking the GitHub Repository**
 
@@ -297,11 +291,11 @@ Testing documentation can be found separately at [TESTING.md](TESTING.md)
 
 ## **Credits**
 
-Connect four is a classic game and my kids loves to play this game in their spare time. 
-As my son used to play with pokeball when I got idea to make this game with pokeball theme.
-So would like to give credit to my kids for providing me idea.
+Connect four is a classic game and my kids love to play this game in their spare time. 
+As my son used to play with Pokeball when I got an idea to make this game with a Pokeball theme.
+So would like to give credit to my kids for providing me an idea.
 All the codes are written by myself after learning from resources. 
-The resources and the links I used to learn each concepts are the following:
+The resources and the links I used to learn each concept are the following:
 
 **Code**
 
@@ -322,9 +316,9 @@ The resources and the links I used to learn each concepts are the following:
 - [MDN Resources](https://developer.mozilla.org/en-US/docs/Web/Reference)
     - MDS resources are used to understand concepts mainly for creating and updating DOM, animation, and event handler.
 
-- For continous animation of pokeball at Index.html page help is taken from [this link](https://css-tricks.com/using-multi-step-animations-transitions/)
+- For continuous animation of Pokeball at Index.html page help is taken from [this link](https://css-tricks.com/using-multi-step-animations-transitions/)
 
-- For rotation of pokeball while falling down help is taken from [this link](https://css-tricks.com/almanac/properties/t/transform-origin/) 
+- For rotation of Pokeball while falling help is taken from [this link](https://css-tricks.com/almanac/properties/t/transform-origin/) 
 
 - Transfering opponent player information from index.html to game.html, help is taken from [this link](https://www.aspsnippets.com/Articles/Redirect-to-another-Page-with-multiple-Parameters-using-JavaScript.aspx)
 
@@ -332,9 +326,9 @@ The resources and the links I used to learn each concepts are the following:
 
 - Color codes taken pokemon theme color palette at [this link](https://brandpalettes.com/pokemon-color-codes/)
 
-- Apart from above colour white and whitesmoke colors are used.
+- Apart from the above color white and whitesmoke colors are used.
 
-- When all coins are filled in a particular column rgba(197, 192, 192, 0.9) colour is used to indicate not possible to enter any coin.
+- When all coins are filled in a particular column rgba(197, 192, 192, 0.9) color is used to indicate not possible to enter any coin.
 
 **Media**
 
@@ -342,7 +336,7 @@ The resources and the links I used to learn each concepts are the following:
 
 - Pokeball images extracted from the image found at [this link](https://www.clipartkey.com/search/pokeball/)
 
-- Music file while playing game is downloaded from [this link](https://www.bensound.com/royalty-free-music/track/ukulele)
+- Music file while playing the game is downloaded from [this link](https://www.bensound.com/royalty-free-music/track/ukulele)
 
 - Error page background image is taken from [freepik website](www.freepik.com) and image is downloaded from [this link](https://www.freepik.com/vectors/clouds)
         
@@ -352,14 +346,14 @@ The resources and the links I used to learn each concepts are the following:
 I would like to thank:
 
 - My mentor Akshat Garg for his encouragement and valuable comments for this project. 
-Thanks to his guidence and tips to improve me code.
+Thanks to his guidance and tips to improve my code.
 
-- Lessons from code institute helped. Used regularly to check if I am following correct method of coading.
+- Lessons from code institute helped. Used regularly to check if I am following the correct method of coding.
 
-- Help from in the Slack community
+- Help from in the Slack community.
 
 - Tutor support and student care team.
 
-- My kids because of whom I came up with idea of this project.
+- My kids because of whom I came up with the idea of this project.
 
-Should you have any queries please reach me on rajendradanve@gmail.com
+Should you have any queries please reach me at rajendradanve@gmail.com.
